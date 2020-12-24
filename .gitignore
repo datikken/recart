@@ -6,6 +6,7 @@
 /public/product_images
 /vendor
 /.env
+/public
 /public_html
 .env.backup
 .phpunit.result.cache
