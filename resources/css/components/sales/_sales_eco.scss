@@ -1,0 +1,132 @@
+.sales_eco {
+    width: 100%;
+    margin-bottom: 15px;
+    height: 173px;
+
+    @include breakpoint($phone) {
+        height: 400px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    &-wrapper {
+        height: 100%;
+        @include bg(contain, center);
+        cursor: pointer;
+        background-size: cover;
+        margin: 0 16px;
+        background-image: url(/images/sales/turtle.png);
+        display: flex;
+
+        @include breakpoint($medium) {
+            margin: 0 0 16px;
+        }
+
+        &_item {
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 20px 0 0 20px;
+            border-left: 2px solid $yellow;
+            padding: 30px 0 0 60px;
+            max-height: 330px;
+
+            @include breakpoint($medium) {
+                margin: 30px 0 0 60px;
+                height: 330px;
+            }
+
+            &-btn {
+                margin-bottom: 20px;
+                .flat_btn {
+                    box-shadow: 0 0 10px rgba(253, 217, 53, .6);
+                }
+            }
+
+            &-desc, &-head {
+                font-family: $font;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 100%;
+                letter-spacing: -0.02em;
+                text-transform: uppercase;
+                color: #FDD935;
+                text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            }
+
+            &-head {
+                color: #fff;
+                max-width: 250px;
+                font-family: $font;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 100%;
+                letter-spacing: -0.02em;
+                text-transform: uppercase;
+
+                @include breakpoint($medium) {
+                    max-width: 480px;
+                }
+
+                p {
+                    text-align: unset;
+                    font-family: $semifont;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 18px;
+                    letter-spacing: 0.02em;
+                    text-transform: uppercase;
+                    color: #fff;
+                    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+
+                    @include breakpoint($medium) {
+                        font-size: 36px;
+                        line-height: 100%;
+                    }
+                }
+
+                span {
+                    font-family: $semifont;
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}
+
+.eco_flat_btn {
+    width: 130px !important;
+    height: 30px !important;
+    border: 2px solid #FDD935;
+    box-sizing: border-box;
+    border-radius: 50px !important;
+    background: transparent !important;
+
+    @include breakpoint($medium) {
+        width: 330px !important;
+        height: 70px !important;
+    }
+
+    span {
+        font-family: $font;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #FDD935;
+
+        @include breakpoint($medium) {
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.04em;
+        }
+    }
+}
