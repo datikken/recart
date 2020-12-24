@@ -56,7 +56,7 @@ class Slider extends Resource
             FileUpload::make("Image", "path")
                 ->thumbnail(function ($image) {
                     return $image
-                        ? asset('storage/' . $image)
+                        ? asset('storage/information_images' . $image)
                         : '';
                 })
                 ->disk("local")

@@ -3,7 +3,7 @@
     <div class="info_content-item" :id="inf.id">
         <div class="info_content-item_inner">
             <div class="info_content-item_inner-icon payment">
-                <!--<img src="{{ Storage::url('information_icons/' . inf.image) }}"/>-->
+                <img src=""/>
             </div>
             <div class="info_content-item_inner-heading"> {{ inf.category }} </div>
         </div>
@@ -41,6 +41,9 @@
 <script>
     export default {
         name: "InformationItem",
-        props: ['inf']
+        props: ['inf'],
+        mounted() {
+            console.warn(this.$props)
+        }
     }
 </script>

@@ -4,9 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
+use GeneaLabs\NovaFileUploadField\FileUpload;
 
 class InformationPost extends Resource
 {
@@ -43,7 +42,15 @@ class InformationPost extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Image::make('icon_path', null, 'local'),
+            FileUpload::make("Image", "icon_path")
+                ->thumbnail(function ($image) {
+                    return $image
+                        ? asset('storage/' . $image)
+                        : '';
+                })
+                ->disk("local")
+                ->path("information_images")
+                ->prunable(),
             Text::make('name'),
             Text::make('heading'),
             Text::make('description'),

@@ -4,7 +4,7 @@
 
         <div class="info">
             <div class="info_content">
-                <InformationItem />
+                <InformationItem v-for="item in posts" :inf="item" />
             </div>
         </div>
     </Fragment>
@@ -19,13 +19,16 @@
     export default {
         name: "Information",
         layout: MainLayout,
+        data: () => ({
+            posts: []
+        }),
         components: {
             InformationItem,
             Breadcrumbs,
             Fragment
         },
         mounted() {
-            console.warn();
+            this.posts = this.$page.information_posts;
         }
     }
 </script>
