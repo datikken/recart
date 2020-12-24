@@ -6,7 +6,6 @@ import vueDebounce from 'vue-debounce'
 import Vue from 'vue';
 import VueMeta from 'vue-meta'
 import PortalVue from 'portal-vue';
-
 import VueTruncate from 'vue-truncate-filter';
 import {InertiaApp} from '@inertiajs/inertia-vue';
 import {InertiaForm} from 'laravel-jetstream';
@@ -37,7 +36,7 @@ Vue.use(InertiaForm);
 Vue.use(PortalVue);
 Vue.use(Fragment.Plugin)
 Vue.use(VueMeta)
-Vue.use(LoadScript);
+Vue.use(LoadScript)
 Vue.filter('formatDate', function(value) {
     if (value) {
         return moment(String(value)).format('MM.DD.YYYY')
