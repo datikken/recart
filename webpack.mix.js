@@ -6,6 +6,19 @@ const purgecss = require('@fullhuman/postcss-purgecss')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/css/app.scss', 'public/css/app.css')
+    .options({
+        postCss: [
+            cssImport(),
+            cssNesting(),
+            ...mix.inProduction() ? [
+                purgecss({
+                    content: ['./resources/js/**/*.vue'],
+                    defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+                    whitelistPatternsChildren: [/nprogress/],
+                }),
+            ] : [],
+        ],
+    })
     .webpackConfig({
         output: {chunkFilename: 'js/[name].js?id=[chunkhash]'},
         resolve: {
