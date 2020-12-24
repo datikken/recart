@@ -43,6 +43,9 @@
         data: () => ({
             images: []
         }),
+        methods: {
+
+        },
         mounted() {
             let that = this;
 
@@ -68,11 +71,3 @@
         layout: MainLayout
     }
 </script>
-
-<style>
-
-    @import "https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css";
-    @import "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";
-    @import "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css";
-
-</style>

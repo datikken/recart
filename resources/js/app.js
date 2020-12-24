@@ -7,12 +7,12 @@ import Vue from 'vue';
 import VueMeta from 'vue-meta'
 import PortalVue from 'portal-vue';
 import VueTruncate from 'vue-truncate-filter';
+import Fragment from 'vue-fragment'
+import LoadScript from 'vue-plugin-load-script';
 import {InertiaApp} from '@inertiajs/inertia-vue';
 import {InertiaForm} from 'laravel-jetstream';
 import store from './Store/store';
-import Fragment from 'vue-fragment'
-import LoadScript from 'vue-plugin-load-script';
-import moment from 'moment'
+import moment from 'moment';
 
 const app = document.getElementById('app');
 
