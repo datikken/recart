@@ -19,40 +19,40 @@
 
                     <li class="menu_wrapper-item-main_menu-item-text_secondary-text" v-for="post in informationPosts"
                         :key="post.id">
-                        <a href="/information">
+                        <inertia-link :href="route('information')">
                             <span>{{ post.category }}</span>
-                        </a>
+                        </inertia-link>
                     </li>
                 </ul>
 
                 <ul class="menu_wrapper-item-main_menu" data-desktopMenuBlock @mouseenter="showDesktopMenuDropDown">
                     <li class="menu_wrapper-item-main_menu-item" data-mainDropdownItem>
                         <span class="menu_wrapper-item-main_menu-item-text">
-                            <a href="/catalog">Каталог</a>
+                            <inertia-link :href="route('catalog')">Каталог</inertia-link>
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         </span>
                     </li>
                     <li class="menu_wrapper-item-main_menu-item" data-mainDropdownItem>
                         <span class="menu_wrapper-item-main_menu-item-text">
-                            <a href="/about">О нас</a>
+                            <inertia-link :href="route('about')">О нас</inertia-link>
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         </span>
                     </li>
                     <li class="menu_wrapper-item-main_menu-item" data-mainDropdownItem>
                         <span class="menu_wrapper-item-main_menu-item-text">
-                            <a href="/hits">Хит парад принтеров</a>
+                            <inertia-link :href="route('hits')">Хит парад принтеров</inertia-link>
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         </span>
                     </li>
                     <!--<li class="menu_wrapper-item-main_menu-item">-->
                         <!--<span class="menu_wrapper-item-main_menu-item-text">-->
-                            <!--<a href="/hits">Акции</a>-->
+                            <!--<inertia-link href="/hits">Акции</inertia-link>-->
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         <!--</span>-->
                     <!--</li>-->
                     <li class="menu_wrapper-item-main_menu-item" data-mainDropdownItem>
                         <span class="menu_wrapper-item-main_menu-item-text">
-                            <a href="/blog">Блог</a>
+                            <inertia-link :href="route('blog')">Блог</inertia-link>
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         </span>
                     </li>
@@ -71,7 +71,7 @@
                         data-mainDropdownItem
                         class="menu_wrapper-item-main_menu-item">
                         <span class="menu_wrapper-item-main_menu-item-text">
-                            <a href="/contacts">Контакты</a>
+                            <inertia-link :href="route('contacts')">Контакты</inertia-link>
                             <!--<img src="/images/icons/arrow_right.svg" alt="arrow"/>-->
                         </span>
                     </li>

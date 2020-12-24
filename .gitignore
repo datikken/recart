@@ -7,6 +7,7 @@
 /vendor
 /.env
 /public
+/storage
 /public_html
 .env.backup
 .phpunit.result.cache
