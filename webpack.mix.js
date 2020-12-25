@@ -32,5 +32,4 @@ mix.js('resources/js/app.js', 'public/js')
     .autoload({  // or Mix.autoload() ?
         'jquery': ['$', 'window.jQuery', 'jQuery']
     })
-    .version()
     .sourceMaps()

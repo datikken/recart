@@ -4,7 +4,7 @@
 
         <div class="info">
             <div class="info_content">
-                <InformationItem v-for="item in posts" :inf="item" />
+                <InformationItem v-for="item in posts" :inf="item" :key="item[0].id" />
             </div>
         </div>
     </Fragment>
@@ -27,24 +27,8 @@
             Breadcrumbs,
             Fragment
         },
-        methods: {
-            separeteCategories(prop) {
-                let that = this;
-
-                prop.forEach(arr => {
-                    that.posts.push(arr)
-                })
-            }
-        },
         mounted() {
-            let prop = this.$page.information_posts;
-            let array = Object.values(prop);
-
-            if (prop.length > 1) {
-                this.separeteCategories(array)
-            }
-
-            console.warn(this.$page)
+            this.posts = this.$store.state.informationPosts;
         }
     }
 </script>

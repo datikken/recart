@@ -9,7 +9,7 @@ import {
 } from './utils/index'
 import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
-
+import {getAllInformationPosts} from './information/index'
 import {
     getFilteredProducts,
     addProductToCart,
@@ -29,6 +29,8 @@ import {
 } from './products/index'
 
 let mutations = {
+    //information
+    getAllInformationPosts,
     //ui
     showNotification,
     blockFormInputs,
@@ -227,20 +229,7 @@ let mutations = {
         let block = document.querySelector('#delivery_type');
         block.classList.add('deliveryTypeError');
         state.deliveryType = 'error';
-    }
-    ,
-    getAllInformationPosts(state) {
-        fetch('/getAllInformationPosts', {
-            method: "GET"
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                state.informationPosts = data;
-            });
-    }
-    ,
+    },
     showDeliveryTypeHelper() {
         let helper = document.querySelector('[data-delivery-type_helper]');
         helper.classList.add('no_opacity');

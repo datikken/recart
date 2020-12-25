@@ -16,9 +16,16 @@
                     <li class="header_wrapper-item_menu-item">
                         <inertia-link preserve-scroll :href="route('information')" class="header_wrapper-item_menu-item_link">Информация</inertia-link>
                         <ul class="header_wrapper-item_menu-item-secondary">
-                            <inertia-link class="header_wrapper-item_menu-item-secondary_item"
-                               :href="route('information')">
-                                <li>Test</li>
+                            <inertia-link
+                                :key="link"
+                                :href="route('information')"
+                                class="header_wrapper-item_menu-item-secondary_item"
+                                v-for="link in informationLinks"
+                            >
+                                <li
+                                    class="header_wrapper-item_menu-item-secondary_item_link">
+                                    {{ link }}
+                                </li>
                             </inertia-link>
                         </ul>
                     </li>
@@ -51,7 +58,51 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex';
+
     export default {
-        name: "Header"
+        name: "Header",
+        data: () => ({
+            informationLinks: []
+        }),
+        methods: {
+            ...mapActions([
+                'GET_ALL_INFORMATION_POSTS'
+            ])
+        },
+        computed: {
+            ...mapGetters([
+                'informationPosts',
+            ])
+        },
+        watch: {
+            informationPosts(oldVal, newVal) {
+                let linksArr = [];
+                let arr = Object.values(newVal);
+
+                oldVal.forEach(el => {
+                    let category = Object.values(el);
+
+                    category.forEach(cat => {
+                        let linkName = cat.name;
+
+                        if(!linksArr.includes(linkName)) {
+                            linksArr.push(linkName)
+                        }
+                    })
+                })
+
+                this.informationLinks = linksArr;
+            }
+        },
+        created() {
+            this.GET_ALL_INFORMATION_POSTS();
+        }
     }
 </script>
+
+<style>
+    .header_wrapper-item_menu-item-secondary_item_link {
+        color: black;
+    }
+</style>

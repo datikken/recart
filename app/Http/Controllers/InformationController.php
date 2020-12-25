@@ -7,7 +7,9 @@ use Inertia\Inertia;
 
 class InformationController extends Controller
 {
-    public function index()
+    protected $result;
+
+    public function __construct()
     {
         $posts = DB::table('information_posts')
             ->orderBy('name')
@@ -22,19 +24,24 @@ class InformationController extends Controller
             if ($cur_name != $obj->name) {
                 $newArr = array();
                 array_push($result, $newArr);
-                    $cur_name = $obj->name;
-                }
+                $cur_name = $obj->name;
+            }
 
-                array_push($result[count($result) - 1], $obj);
+            array_push($result[count($result) - 1], $obj);
         }
 
-        return Inertia::render('Information/Information', [
-            'information_posts' => $result
-        ]);
+        $this->result = $result;
     }
 
-    public function sort_by_face($a, $b)
+    public function index()
     {
+        return Inertia::render('Information/Information');
+    }
 
+    public function get_all_posts()
+    {
+        $res = $this->result;
+
+        return response()->json($res);
     }
 }

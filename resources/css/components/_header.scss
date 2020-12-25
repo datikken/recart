@@ -91,6 +91,7 @@
                     position: relative;
                     font-family: $mfont;
                     margin-bottom: 0;
+                    height: 60px;
 
                     &:last-child {
                         margin-right: 78px;
@@ -103,13 +104,9 @@
                         }
                     }
 
-                    a {
-                        color: #fff !important;
-                    }
-
                     &:nth-child(2):hover {
                         .header_wrapper-item_menu-item-secondary {
-                            height: 122px;
+                            height: auto;
                         }
                         .header_wrapper-item_menu-item_link:after {
                             width: 100%;
@@ -127,7 +124,7 @@
                             position: absolute;
                             bottom: 0;
                             left: 50%;
-                            top: 25px;
+                            top: 45px;
                             height: 2px;
                             width: 0;
                             background: transparent;
@@ -146,7 +143,7 @@
 
                     &-secondary {
                         position: absolute;
-                        top: 32px;
+                        top: 54px;
                         margin: 0;
                         background: #fff;
                         width: 130px;
@@ -166,7 +163,13 @@
                         }
 
                         &_item {
+                            display: block;
                             color: $black !important;
+
+                            &_link {
+                                width: 100%;
+                                display: block;
+                            }
 
                             &:hover::before {
                                 display: none;
@@ -191,6 +194,7 @@
 
                             &:hover {
                                 background: $black;
+                                border-bottom: none;
                                 color: $white;
                             }
                         }
