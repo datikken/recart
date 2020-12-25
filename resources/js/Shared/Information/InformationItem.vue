@@ -33,6 +33,9 @@
     export default {
         name: "InformationItem",
         props: ['inf'],
+        mounted() {
+            console.warn(this.$props.inf)
+        },
         methods: {
             switchClass(arr, className) {
                 arr.forEach(m => {
