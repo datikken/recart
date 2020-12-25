@@ -27,8 +27,22 @@
             Breadcrumbs,
             Fragment
         },
+        methods: {
+            separeteCategories(prop) {
+                let that = this;
+
+                prop.forEach(arr => {
+                    that.posts.push(arr)
+                })
+            }
+        },
         mounted() {
-            this.posts = this.$page.information_posts;
+            let prop = this.$page.information_posts;
+            let array = Object.values(prop);
+
+            if (prop.length > 1) {
+                this.separeteCategories(array)
+            }
         }
     }
 </script>

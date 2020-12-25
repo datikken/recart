@@ -14,7 +14,6 @@
     &-wrap {
       display: flex;
       align-items: center;
-      justify-content: center;
       margin: 0 0 20px 0;
 
       @include breakpoint($phone) {
@@ -95,11 +94,12 @@
 
         &-icon {
           @include bg(contain, center);
-          //margin-bottom: 20px;
+          max-width: 37px;
+          max-height: 30px;
 
           img {
-            min-height: 40px;
-            min-width: 40px;
+            min-height: 30px;
+            min-width: 37px;
           }
         }
         &-heading {

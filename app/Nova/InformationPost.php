@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use GeneaLabs\NovaFileUploadField\FileUpload;
+use Laravel\Nova\Fields\Select;
 
 class InformationPost extends Resource
 {
@@ -54,7 +55,10 @@ class InformationPost extends Resource
             Text::make('name'),
             Text::make('heading'),
             Text::make('description'),
-            Text::make('user_face')
+            Select::make('user_face')->options([
+                 'Физическим лицам' => 'Физическим лицам',
+                 'Юридическим лицам' => 'Юридическим лицам'
+            ])
         ];
     }
 

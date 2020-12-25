@@ -1,37 +1,28 @@
 <template>
 
-    <div class="info_content-item" :id="inf.id">
-        <div class="info_content-item_inner">
+    <div class="info_content-item" >
+        <div class="info_content-item_inner" v-for="(key, item) in inf" :class="{'invisible': item > 0}" data-imgBlock>
             <div class="info_content-item_inner-icon payment">
-                <img src=""/>
+                <img :src="`/storage/${key.icon_path}`"/>
             </div>
-            <div class="info_content-item_inner-heading"> {{ inf.category }} </div>
+            <div class="info_content-item_inner-heading">
+                {{ key.name }}
+            </div>
         </div>
 
         <div class="info_menu">
             <div class="info_menu-wrap">
-                <div class="info_menu-wrap_item" data-type="fizik">
-                    <span class="info_menu-wrap_item-text">Физическим лицам</span>
-                </div>
-                <div class="info_menu-wrap_item info_active" data-type="urik">
-                    <span class="info_menu-wrap_item-text">Юридическим лицам</span>
+                <div class="info_menu-wrap_item"  v-for="(key, item) in inf" :class="{'info_active': item > 0}" @click="switchType" data-faceBlock>
+                    <span class="info_menu-wrap_item-text">{{ key.user_face }}</span>
                 </div>
             </div>
         </div>
 
-        <div class="info_content-item_inner concrete_content urik_content">
-            <div class="info_content-item_inner-desc">{{ inf.urik_title }}</div>
+        <div class="info_content-item_inner concrete_content fizik_content" v-for="(key, item) in inf" :class="{'invisible': item === 0}" data-textBlock>
+            <div class="info_content-item_inner-desc">{{ key.heading }}</div>
 
             <div class="info_content-item_inner-text">
-                <span>{{ inf.urik_text }}</span>
-            </div>
-        </div>
-
-        <div class="info_content-item_inner concrete_content fizik_content invisible">
-            <div class="info_content-item_inner-desc">{{ inf.fizik_title }}</div>
-
-            <div class="info_content-item_inner-text">
-                <span>{{ inf.fizik_text }}</span>
+                <span>{{ key.description }}</span>
             </div>
         </div>
     </div>
@@ -42,8 +33,25 @@
     export default {
         name: "InformationItem",
         props: ['inf'],
-        mounted() {
-            console.warn(this.$props)
+        methods: {
+            switchClass(arr, className) {
+                arr.forEach(m => {
+                    if(m.classList.contains(className)) {
+                        m.classList.remove(className)
+                    } else {
+                        m.classList.add(className)
+                    }
+                })
+            },
+            switchType() {
+                let images = this.$el.querySelectorAll('[data-imgBlock]');
+                let faces = this.$el.querySelectorAll('[data-faceBlock]');
+                let texts = this.$el.querySelectorAll('[data-textBlock]');
+
+                this.switchClass(images, 'invisible');
+                this.switchClass(faces, 'info_active');
+                this.switchClass(texts, 'invisible');
+            }
         }
     }
 </script>

@@ -11,7 +11,6 @@ namespace App\Helpers;
 
 class Converter
 {
-
     function translit($s)
     {
         $s = (string)$s;
