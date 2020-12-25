@@ -43,6 +43,8 @@
             if (prop.length > 1) {
                 this.separeteCategories(array)
             }
+
+            console.warn(this.$page)
         }
     }
 </script>
