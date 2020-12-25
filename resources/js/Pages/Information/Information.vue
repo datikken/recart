@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index', 'information']"/>
 
         <div class="info">
             <div class="info_content">

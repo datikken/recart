@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index', 'catalog']"/>
 
         <div class="catalog">
             <div class="columns catalog_columns">
