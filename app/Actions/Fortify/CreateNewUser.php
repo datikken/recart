@@ -42,6 +42,7 @@ class CreateNewUser
             ]);
 
             return Inertia::render('Dashboard');
+
         } else {
             return response()->json('this form got errors');
         }

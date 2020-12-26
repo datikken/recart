@@ -16,6 +16,9 @@ class UserEventSubscriber
         $this->seSmanager = $seSmanager;
     }
 
+    public function handleRegister($event) {
+
+    }
     /**
      * Handle user login events.
      */
@@ -36,6 +39,10 @@ class UserEventSubscriber
      */
     public function subscribe($events)
     {
+        $events->listen(
+            'Illuminate\Auth\Events\Registered',
+            [UserEventSubscriber::class, 'handleRegister']
+        );
         $events->listen(
             'Illuminate\Auth\Events\Login',
             [UserEventSubscriber::class, 'handleUserLogin']
