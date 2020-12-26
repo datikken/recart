@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -23,7 +22,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    use SoftDeletes, Authenticatable, Authorizable;
+    use Authenticatable, Authorizable;
 
     /**
      * The attributes that are mass assignable.
