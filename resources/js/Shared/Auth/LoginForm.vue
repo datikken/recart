@@ -63,13 +63,15 @@
                                         Запомнить меня
                                     </label>
                                 </div>
-                                <a class="btn-link" href="" data-forgotPassword uk-toggle="target: #passReset">
+                                <a class="btn-link" href="#passReset" uk-toggle>
                                     Забыли пароль?
                                 </a>
                             </div>
                         </div>
 
                         <TextBtn text="Войти" className="yellow_btn" @click.native="login"/>
+
+                            <ResetPassword />
 
                     </div>
                 </div>
@@ -85,13 +87,15 @@
     import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
     import {passwordLength} from "@/vanilla/functions/validation/passwordLength";
     import {validateEmail} from "@/vanilla/functions/validation/validateEmail";
+    import ResetPassword from '@/Shared/Modal/ResetPassword';
 
     export default {
         name: "LoginForm",
         components: {
             InputError,
             TextBtn,
-            SimpleCheckbox
+            SimpleCheckbox,
+            ResetPassword
         },
         data() {
             return {
