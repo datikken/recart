@@ -30,9 +30,9 @@ function getAllInformationPosts(state) {
                 return result;
             }
 
-            if (array.length > 1) {
-                state.informationPosts = separeteCategories(array)
-            }
+            state.informationPosts = separeteCategories(array)
+
+            console.warn('state in getALlPosts', state.informationPosts)
         })
         .catch((err) => {
             console.log('information posts err', err);
