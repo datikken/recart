@@ -11,7 +11,7 @@
                     </p>
 
                     <p class="card-greet_text" v-show="emailError" :class="{error: !sieg}">
-                       {{ emailError }}
+                        {{ emailError }}
                     </p>
 
                     <p class="card-greet_text" v-show="!sieg" :class="{error: !sieg}">
@@ -63,15 +63,15 @@
                                         Запомнить меня
                                     </label>
                                 </div>
-                                <a class="btn-link" href="#passReset" uk-toggle>
+                                <inertia-link class="btn-link" href="#passReset" uk-toggle>
                                     Забыли пароль?
-                                </a>
+                                </inertia-link>
                             </div>
                         </div>
 
                         <TextBtn text="Войти" className="yellow_btn" @click.native="login"/>
 
-                            <ResetPassword />
+                        <!--<ResetPassword/>-->
 
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                 let emailStat = validateEmail(this.form.email);
                 let passStat = passwordLength(this.form.password);
 
-                if(typeof emailStat === 'string') {
+                if (typeof emailStat === 'string') {
                     this.sieg = false
                     this.emailError = emailStat;
                 } else {

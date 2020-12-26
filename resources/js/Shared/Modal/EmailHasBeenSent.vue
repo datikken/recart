@@ -22,7 +22,7 @@
 <script>
     import TextBtn from '@/Shared/Btns/TextBtn'
     export default {
-        name: "ShouldBeLoggedIn",
+        name: "EmailHasBeenSent",
         components: {
             TextBtn
         }

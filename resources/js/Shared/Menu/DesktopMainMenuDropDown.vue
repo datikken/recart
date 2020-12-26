@@ -17,10 +17,10 @@
                     class="menu_wrapper-item-main_menu-item-text_secondary secondaryBottom"
                     data-informationMenuDropdown>
 
-                    <li class="menu_wrapper-item-main_menu-item-text_secondary-text" v-for="post in informationPosts"
-                        :key="post.id">
+                    <li class="menu_wrapper-item-main_menu-item-text_secondary-text" v-for="post in informationLinks"
+                        :key="post">
                         <inertia-link :href="route('information')">
-                            <span>{{ post.category }}</span>
+                            <span>{{ post }}</span>
                         </inertia-link>
                     </li>
                 </ul>
@@ -91,13 +91,10 @@
         },
         computed: {
             ...mapGetters([
-                'informationPosts'
+                'informationLinks'
             ])
         },
         methods: {
-            ...mapActions([
-                'GET_ALL_INFORMATION_POSTS'
-            ]),
             hideAllDropDowns() {
                 let informationMenu = this.$el.querySelector('[data-informationMenuDropdown]');
                 let desMenu = this.$el.querySelector('[data-desktopMenuBlock]');

@@ -20,7 +20,7 @@
                                 :key="linkName"
                                 :href="route('information')"
                                 class="header_wrapper-item_menu-item-secondary_item"
-                                v-for="linkName in informationLinks"
+                                v-for="linkName in allLinks"
                             >
                                 <li
                                     class="header_wrapper-item_menu-item-secondary_item_link">
@@ -63,7 +63,7 @@
     export default {
         name: "Header",
         data: () => ({
-            informationLinks: []
+            allLinks: []
         }),
         methods: {
             ...mapActions([
@@ -72,27 +72,12 @@
         },
         computed: {
             ...mapGetters([
-                'informationPosts',
+                'informationLinks',
             ])
         },
         watch: {
-            informationPosts(oldVal, newVal) {
-                let linksArr = [];
-                let arr = Object.values(newVal);
-
-                oldVal.forEach(el => {
-                    let category = Object.values(el);
-
-                    category.forEach(cat => {
-                        let linkName = cat.name;
-
-                        if(!linksArr.includes(linkName)) {
-                            linksArr.push(linkName)
-                        }
-                    })
-                })
-
-                this.informationLinks = linksArr;
+            informationLinks(newVal, oldVal) {
+                this.allLinks = newVal;
             }
         },
         created() {

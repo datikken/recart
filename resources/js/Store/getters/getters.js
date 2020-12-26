@@ -15,6 +15,7 @@ let getters = {
     catalogPerPage: state => state.catalogPerPage,
     cart: state => state.cart,
     informationPosts: state => state.informationPosts,
+    informationLinks: state => state.informationLinks,
     customerIndex: state => state.customerIndex,
     stockDeliveryPickup: state => state.stockDeliveryPickup,
     lastDeliveryAdress: state => state.lastDeliveryAdress,

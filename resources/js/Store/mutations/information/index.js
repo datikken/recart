@@ -31,6 +31,23 @@ function getAllInformationPosts(state) {
             }
 
             state.informationPosts = separeteCategories(array)
+
+            let linksArr = [];
+            let arr = Object.values(state.informationPosts);
+
+            arr.forEach(el => {
+                let category = Object.values(el);
+
+                category.forEach(cat => {
+                    let linkName = cat.name;
+
+                    if(!linksArr.includes(linkName)) {
+                        linksArr.push(linkName)
+                    }
+                })
+            })
+
+            state.informationLinks = linksArr;
         })
         .catch((err) => {
             console.log('information posts err', err);

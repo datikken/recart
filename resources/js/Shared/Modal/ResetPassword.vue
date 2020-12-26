@@ -1,48 +1,61 @@
 <template>
+    <Fragment>
+        <div id="passReset" class="uk-flex-top" uk-modal>
+            <div class="passReset uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <div class="passReset_close uk-modal-close-default" uk-close></div>
+                <div class="passReset_inner">
 
-<div id="passReset" class="uk-flex-top" uk-modal>
-    <div class="passReset uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-        <div class="passReset_close uk-modal-close-default" uk-close></div>
-        <div class="passReset_inner">
+                    <div class="passReset_span">
+                        <span>Для подтверждения вашего аккаунта, введите свою почту</span>
+                    </div>
 
-            <div class="passReset_span">
-                <span>Для подтверждения вашего аккаунта, введите свою почту</span>
+                    <form class="passReset_form">
+                        <div class="form_group">
+                            <label for="email" class="form_group_label">Введите почту</label>
+
+                            <input class="form_group_input" type="text" name="email" v-model="email">
+
+                            <label for="required" class="form_group_message">Поле обязательно к заполнению</label>
+                        </div>
+
+
+                        <div class="form_group">
+                            <TextBtn className="mauto action_btn yellow_btn" text="Отправить"
+                                     @click.native="submitPassReset"/>
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
-
-            <form class="passReset_form">
-                <div class="form_group">
-                    <label for="email" class="form_group_label">Введите почту</label>
-
-                    <input class="form_group_input" type="text" name="email" v-model="email">
-
-                    <label for="required" class="form_group_message">Поле обязательно к заполнению</label>
-                </div>
-
-
-                <div class="form_group">
-                    <TextBtn className="mauto action_btn yellow_btn" text="Отправить" @click.native="submitPassReset" />
-                </div>
-
-            </form>
-
         </div>
-    </div>
-</div>
+        <EmailHasBeenSent/>
+    </Fragment>
+
 
 </template>
 
 
 <script>
     import TextBtn from '@/Shared/Btns/TextBtn'
+    import {Fragment} from 'vue-fragment';
+    import EmailHasBeenSent from '@/Shared/Modal/EmailHasBeenSent'
+
     export default {
         name: "ResetPassword",
         data: () => ({
             email: ''
         }),
         components: {
-            TextBtn
+            TextBtn,
+            EmailHasBeenSent,
+            Fragment
         },
         methods: {
+            showThanx() {
+                let element = this.$el.querySelector('#emailHasBeenSent');
+                // UIkit.modal(element).show();
+            },
             submitPassReset() {
                 let email = this.email;
 

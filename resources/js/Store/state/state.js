@@ -9,6 +9,7 @@ let state = {
     gridCatalog: false,
     lastTwoYearsInfo: false,
     informationPosts: false,
+    informationLinks: false,
     productsLoaded: false,
     closeListener: false,
     customerIndex: false,
