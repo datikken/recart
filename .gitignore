@@ -4,6 +4,7 @@
 /public/css/app.css
 /public/storage
 /public/product_images
+public/slider_images
 /vendor
 /.env
 /public
