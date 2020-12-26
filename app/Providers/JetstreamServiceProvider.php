@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Route;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class JetstreamServiceProvider extends ServiceProvider
     public function boot(Request $request)
     {
         $this->configurePermissions();
+        $this->configureRoutes();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
@@ -59,5 +61,18 @@ class JetstreamServiceProvider extends ServiceProvider
             'update',
             'delete',
         ]);
+    }
+
+    protected function configureRoutes()
+    {
+        if (Jetstream::$registersRoutes) {
+            Route::group([
+                'namespace' => 'Laravel\Jetstream\Http\Controllers',
+                'domain' => config('jetstream.domain', null),
+                'prefix' => config('jetstream.prefix', config('jetstream.path')),
+            ], function () {
+                $this->loadRoutesFrom(__DIR__.'/../routes/'.config('jetstream.stack').'.php');
+            });
+        }
     }
 }
