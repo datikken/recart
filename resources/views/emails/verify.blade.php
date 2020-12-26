@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
     <meta charset="UTF-8">
     <style>
         body {
@@ -227,25 +228,25 @@
                             <!--/ TEXT -->
                         </table>
                         <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;" class="second_block">
-                            <div style="width: 100%;height: 150px; background-color: #292930;">
-                                <div class="colors">
+                            <table style="width: 100%;height: 150px; background-color: #292930;">
+                                <table class="colors">
                                     <span class="colors_a"></span>
                                     <span class="colors_b"></span>
                                     <span class="colors_c"></span>
                                     <span class="colors_d"></span>
                                     <span class="colors_e"></span>
-                                </div>
-                                <div class="yellow_logo" style="float:right;width: 50px; padding-right: 56px; cursor: pointer;">
+                                </table>
+                                <table class="yellow_logo" style="float:right;width: 50px; padding-right: 56px; cursor: pointer;">
                                     <img src="{{URL::to('/')}}/images/emails/colors_logo.png" alt="logo">
-                                </div>
-                            </div>
-                            <div style="background-image: url({{ URL::to('/')}}/images/emails/email_bg2.png);height: 111px;background-position: center;background-size: contain;background-repeat: no-repeat;text-align: center;" alt="">
-                                <div class="socials" style="padding-top: 45px;">
+                                </table>
+                            </table>
+                            <table style="background-image: url({{ URL::to('/')}}/images/emails/email_bg2.png);height: 111px;background-position: center;background-size: contain;background-repeat: no-repeat;text-align: center;" alt="">
+                                <table class="socials" style="padding-top: 45px;">
                                     <img src="{{URL::to('/')}}/images/emails/social_facebook.png" style="margin-right: 35px;cursor: pointer">
                                     <img src="{{URL::to('/')}}/images/emails/social_instagram.png" style="margin-right: 35px;">
                                     <img src="{{URL::to('/')}}/images/emails/social_emails.png">
-                                </div>
-                            </div>
+                                </table>
+                            </table>
                         </table>
                     </td>
                 </tr>
@@ -255,31 +256,31 @@
                 <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;max-width: 600px;min-height: 500px;background-repeat: no-repeat;min-width: 300px;color: #fff;background-image: url({{URL::to('/')}}/images/emails/footer_iphone.png)">
                     <tr>
                         <td class="footer_item" style="display: block;padding: 25px 50px 0 50px;">
-                            <div class="footer_item_left" style="height: 65px;float:left;">
+                            <table class="footer_item_left" style="height: 65px;float:left;">
                                 <img src="{{URL::to('/')}}/images/emails/footer_location.png" alt="phone" style="float: left;padding-right: 10px;"/>
-                            </div>
-                            <div class="footer_item_right" style="float:left; display: contents;">
+                            </table>
+                            <table class="footer_item_right" style="float:left; display: contents;">
                                 <span style="padding-bottom: 10px; display: block;">АДРЕС:</span>
                                 <span>115230 Россия, Москва, Варшавское шоссе, дом, 36, строение 8, 2-й подъезд, этаж 2, офис 1578</span>
-                            </div>
+                            </table>
                         </td>
                         <td class="footer_item" style="display: block;padding: 0;padding: 10px 50px;">
-                            <div class="footer_item_left" style="height: 65px;float:left;">
+                            <table class="footer_item_left" style="height: 65px;float:left;">
                                 <img src="{{URL::to('/')}}/images/emails/footer_phone.png" alt="phone" style="float: left;padding-right: 10px;">
-                            </div>
-                            <div class="footer_item_right" style="float:left; display: contents;">
+                            </table>
+                            <table class="footer_item_right" style="float:left; display: contents;">
                                 <span style="padding-bottom: 5px; display: block;">КОНТАКТЫ:</span>
-                                <div class="footer_item_contacts">
-                                    <div class="footer_item_contacts_left" style="float:left;">
+                                <table class="footer_item_contacts">
+                                    <table class="footer_item_contacts_left" style="float:left;">
                                         <img src="{{URL::to('/')}}/images/emails/footer_tel.png" alt="" style="float:left;padding-top: 1px;">
                                         <a href="tel:74957755053" style="padding-left: 18px;padding-bottom: 5px;color: white; text-decoration: none;">+7 (495) 775-50-53</a>
-                                    </div>
-                                    <div class="footer_item_contacts_right" style="float:left;padding-left: 40px;">
+                                    </table>
+                                    <table class="footer_item_contacts_right" style="float:left;padding-left: 40px;">
                                         <img src="{{URL::to('/')}}/images/emails/footer_mail.png" alt="" style="float:left;padding-top: 5px;">
                                         <span  style="padding-left: 18px;padding-bottom: 5px;color: white;text-decoration: none;" class="footer_link">kakayto_pochta@brenddomen.com</span>
-                                    </div>
-                                </div>
-                            </div>
+                                    </table>
+                                </table>
+                            </table>
                         </td>
 
                         <td style="float: left; width: 100%;padding: 31px 0 14px 135px;">
@@ -299,4 +300,5 @@
             </table>
 </table>
 </body>
+</html>
 <html>
