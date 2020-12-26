@@ -4,4 +4,4 @@ cd ..
 pwd
 ssh localhost -p 222 node -v
 ssh localhost -p 222 npm -v
-ssh localhost -p 222 npm run prod
+ssh localhost -p 222 cd recart.me ; npm run prod
