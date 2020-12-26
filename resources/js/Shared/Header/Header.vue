@@ -100,9 +100,3 @@
         }
     }
 </script>
-
-<style>
-    .header_wrapper-item_menu-item-secondary_item_link {
-        color: black;
-    }
-</style>
