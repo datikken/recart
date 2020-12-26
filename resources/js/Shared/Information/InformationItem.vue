@@ -34,7 +34,7 @@
         name: "InformationItem",
         props: ['inf'],
         mounted() {
-            console.warn(this.$props.inf, 'inf items 3')
+            console.warn(this.$props.inf, 'inf items 5')
         },
         methods: {
             switchClass(arr, className) {
