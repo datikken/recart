@@ -4,5 +4,4 @@ cd ..
 pwd
 ssh localhost -p 222 node -v
 ssh localhost -p 222 npm -v
-ssh localhost -p 222 npm run $1
-echo $1
+ssh localhost -p 222 npm run prod
