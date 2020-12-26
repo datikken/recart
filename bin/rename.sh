@@ -9,3 +9,4 @@ ssh localhost -p 222
 cd recart.me
 pwd
 npm run prod
+pwd
