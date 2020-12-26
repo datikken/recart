@@ -15,7 +15,7 @@
     import InformationItem from '@/Shared/Information/InformationItem'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: "Information",
@@ -29,7 +29,7 @@
             Fragment
         },
         computed: {
-            ...mapState([
+            ...mapGetters([
                 'informationPosts'
             ])
         },
