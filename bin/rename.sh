@@ -8,5 +8,5 @@ ssh localhost -p 222 npm -v
 ssh localhost -p 222
 cd recart.me
 pwd
-npm run prod
+ssh localhost -p 222 npm run prod
 pwd
