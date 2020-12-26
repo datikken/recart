@@ -36,8 +36,12 @@
         watch: {
             informationPosts(oldVal, newVal) {
                 this.posts = newVal;
-                console.log('watch', newVal)
+
+                console.log('watch2', newVal)
             }
+        },
+        created() {
+            console.log('created inf', this.$store.state.informationPosts)
         }
     }
 </script>
