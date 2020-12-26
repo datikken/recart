@@ -17,14 +17,14 @@
                         <inertia-link preserve-scroll :href="route('information')" class="header_wrapper-item_menu-item_link">Информация</inertia-link>
                         <ul class="header_wrapper-item_menu-item-secondary">
                             <inertia-link
-                                :key="link"
+                                :key="linkName"
                                 :href="route('information')"
                                 class="header_wrapper-item_menu-item-secondary_item"
-                                v-for="link in informationLinks"
+                                v-for="linkName in informationLinks"
                             >
                                 <li
                                     class="header_wrapper-item_menu-item-secondary_item_link">
-                                    {{ link }}
+                                    {{ linkName }}
                                 </li>
                             </inertia-link>
                         </ul>

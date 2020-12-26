@@ -29,6 +29,8 @@
         },
         mounted() {
             this.posts = this.$store.state.informationPosts;
+
+            console.warn('inf page props', this.$page.props)
         }
     }
 </script>

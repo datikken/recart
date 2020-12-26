@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index','dashboard']"/>
 
         <div class="dash">
             <div class="dash_left">

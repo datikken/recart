@@ -87,6 +87,15 @@
                     )
                 }
 
+                if(link === 'dashboard') {
+                    that.allLinks.push(
+                        {
+                            'link': 'dashboard',
+                            'name': 'Профиль'
+                        }
+                    )
+                }
+
             })
         }
     }
