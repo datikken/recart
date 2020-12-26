@@ -15,7 +15,7 @@
     import InformationItem from '@/Shared/Information/InformationItem'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
-    import {mapState} from 'vueX'
+    import {mapState} from 'vuex'
 
     export default {
         name: "Information",
