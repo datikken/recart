@@ -15,6 +15,7 @@
     import InformationItem from '@/Shared/Information/InformationItem'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
+    import {mapState} from 'vueX'
 
     export default {
         name: "Information",
@@ -27,12 +28,16 @@
             Breadcrumbs,
             Fragment
         },
-        mounted() {
-            this.posts = this.$store.state.informationPosts;
-
-            console.warn('inf page state', this.$store.state)
-
-            console.warn('inf page props', this.posts)
+        computed: {
+            ...mapState([
+                'informationPosts'
+            ])
+        },
+        watch: {
+            informationPosts(oldVal, newVal) {
+                this.posts = newVal;
+                console.log('watch', newVal)
+            }
         }
     }
 </script>
