@@ -15,7 +15,7 @@
     import InformationItem from '@/Shared/Information/InformationItem'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
-    import {mapGetters} from 'vuex'
+    import {mapState} from 'vuex'
 
     export default {
         name: "Information",
@@ -29,15 +29,15 @@
             Fragment
         },
         computed: {
-            ...mapGetters([
+            ...mapState([
                 'informationPosts'
             ])
         },
         watch: {
-            informationPosts(oldVal, newVal) {
+            informationPosts(newVal, oldVal) {
                 this.posts = newVal;
 
-                console.log('watch2', newVal)
+                console.log('watch2', newVal, oldVal)
             }
         },
         created() {

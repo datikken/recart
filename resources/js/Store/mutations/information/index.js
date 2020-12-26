@@ -31,8 +31,6 @@ function getAllInformationPosts(state) {
             }
 
             state.informationPosts = separeteCategories(array)
-
-            console.warn('state in getALlPosts', state.informationPosts)
         })
         .catch((err) => {
             console.log('information posts err', err);
