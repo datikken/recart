@@ -186,7 +186,7 @@ let filterProductsByPrinterType = function (state, query) {
 
     state.products.forEach((prdt) => {
         let param = prdt.params;
-        if (param.printertype.indexOf(query.printertype) >= 0) {
+        if (param.tip_printera.indexOf(query.tip_printera) >= 0) {
             newProducts.push(prdt)
         }
     });
@@ -237,18 +237,11 @@ let getProductModelBrandFilters = function (state) {
     let allProductModels = [];
 
     state.filteredProducts.map((prdct) => {
-        let cape = JSON.parse(prdct.cape);
+        let brand = prdct.cape.brand
+        let model = prdct.cape.model
 
-        console.log(cape);
-
-        return;
-
-        let models = Object.values(cape);
-
-        // console.warn(prdct)
-
-        brands.forEach(brand => allProductBrands.push(brand));
-        models.forEach(model => allProductModels.push(model));
+        allProductBrands.push(brand)
+        allProductModels.push(model)
     })
 
     state.brandFilters = [...new Set(allProductBrands)];

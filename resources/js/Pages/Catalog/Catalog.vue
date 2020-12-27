@@ -144,8 +144,11 @@
             ]),
             products() {
                 this.loading = false;
+                let allProducts = this.$store.state.filteredProducts;
 
-                return this.$store.state.filteredProducts;
+                console.warn(allProducts,'catalog')
+
+                return allProducts;
             },
         },
         methods: {
