@@ -16,12 +16,10 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $prdCts = Product::all();
         $ten = $this->prdCtrl->getTenProductsWithImages();
 
         return Inertia::render('Catalog/Catalog',[
-            'tenProducts' => $ten,
-            'products' => $prdCts
+            'tenProducts' => $ten
         ]);
     }
 

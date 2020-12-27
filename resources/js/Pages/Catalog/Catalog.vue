@@ -113,7 +113,6 @@
             return {
                 userFace: null,
                 loading: false,
-                products: false,
                 page: 0
             }
         },
@@ -143,6 +142,11 @@
                 'gridCatalog',
                 'catalogPerPage'
             ]),
+            products() {
+                this.loading = false;
+
+                return this.$store.state.filteredProducts;
+            },
         },
         methods: {
             ...mapActions([
@@ -157,9 +161,11 @@
                 this.CATALOG_LOAD_MORE();
             }
         },
+        created() {
+            this.GET_ALL_PRODUCTS();
+        },
         mounted() {
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
-            this.products = this.$page.products;
         }
     }
 </script>

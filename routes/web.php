@@ -81,9 +81,12 @@ Route::post('/order.update', [OrderController::class, 'update'])
     ->name('order.update');
 Route::post('/order.delete', [OrderController::class, 'delete'])
     ->name('order.delete');
+
 /*
  * Products
  */
+Route::get('/getAllProducts', [ProductController::class, 'getAllProducts'])
+    ->name('getAllProducts');
 Route::get('/getTenProductsWithImages', [ProductController::class, 'getTenProductsWithImages'])
     ->name('getTenProductsWithImages');
 /*

@@ -25,7 +25,7 @@ function getAllInformationPosts(state) {
                     result.push(arr)
                 })
 
-                console.log('separate inf arr', result)
+                // console.log('separate inf arr', result)
 
                 return result;
             }

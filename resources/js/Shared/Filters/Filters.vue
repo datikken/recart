@@ -35,6 +35,7 @@
             types() {
                 let newFil = [];
                 let types = this.$store.state.typeFilters;
+
                 let newFilters = types.map(el => {
                     let arr = el.split(' ');
                         newFil.push(arr[1]);

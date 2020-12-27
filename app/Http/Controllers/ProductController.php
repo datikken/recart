@@ -19,6 +19,13 @@ class ProductController extends Controller
         return $prdcts;
     }
 
+    public function getAllProducts()
+    {
+        $prdCts = Product::all();
+
+        return response()->json($prdCts);
+    }
+
     public static function getTenProductsWithImages()
     {
         $result = array();

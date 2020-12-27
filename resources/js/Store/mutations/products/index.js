@@ -1,3 +1,53 @@
+let getAllProducts = function(state) {
+    let that = this;
+
+    console.log('getallproducts executed')
+
+        fetch('/getAllProducts', {
+            method: "get",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': window.token
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer'
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then(resp => {
+                resp.forEach((el) => {
+                    let params = JSON.parse(el.params);
+                    let cape = JSON.parse(el.cape);
+                    let newCape = {};
+
+                    cape && cape.map((obj) => {
+                        Object.keys(obj).forEach(function (key) {
+                            let str = obj[key];
+                            newCape[key] = str.trim();
+                        });
+                    })
+
+                    el.price = Math.ceil(el.price);
+                    el.params = params;
+                    el.cape = newCape;
+                });
+
+                state.products = resp;
+                state.filteredProducts = state.products;
+            })
+            .then(() => {
+                that.dispatch('COLLECT_FILTERS');
+                that.dispatch('SWITCH_PRODUCTS_LOADER');
+            })
+            .catch((err) => {
+                console.log('search err', err);
+            })
+
+    return state.products;
+}
+
 let getFilteredProducts = function (state, payload) {
     state.searchProducts = [];
 
@@ -179,7 +229,7 @@ let filterProductByQuery = function (state, query) {
 }
 
 let getProductTypeFilters = function (state) {
-    state.typeFilters = [...new Set(state.products.map(item => item.params.printertype))];
+    state.typeFilters = [...new Set(state.products.map(item => item.params.tip_printera))];
 }
 
 let getProductModelBrandFilters = function (state) {
@@ -187,9 +237,15 @@ let getProductModelBrandFilters = function (state) {
     let allProductModels = [];
 
     state.filteredProducts.map((prdct) => {
-        let cape = prdct.cape;
-        let brands = Object.keys(cape);
+        let cape = JSON.parse(prdct.cape);
+
+        console.log(cape);
+
+        return;
+
         let models = Object.values(cape);
+
+        // console.warn(prdct)
 
         brands.forEach(brand => allProductBrands.push(brand));
         models.forEach(model => allProductModels.push(model));
@@ -275,6 +331,7 @@ export {
     filterProductsByBrand,
     setProductsLoaded,
     getViewedProducts,
+    getAllProducts,
     setProductViewed,
     deleteProductFromCart
 }

@@ -1,7 +1,4 @@
 import _ from "lodash";
-import axios from "axios";
-
-// import router from "@/router/router";
 
 import {
     showNotification,
@@ -25,6 +22,7 @@ import {
     filterProductsByBrand,
     setProductsLoaded,
     getViewedProducts,
+    getAllProducts,
     setProductViewed
 } from './products/index'
 
@@ -53,6 +51,7 @@ let mutations = {
     filterProductsByBrand,
     setProductsLoaded,
     setProductViewed,
+    getAllProducts,
     //analytics
     sendGoogleAnalytics,
 

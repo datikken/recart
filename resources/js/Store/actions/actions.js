@@ -53,6 +53,9 @@ let actions = {
     CREATE_SIGNATURE_HASH(context, obj) {
         context.commit('createSignatureHash', obj);
     },
+    GET_ALL_PRODUCTS(context) {
+        context.commit('getAllProducts');
+    },
     GET_VIEWED_PRODUCTS(context) {
         context.commit('getViewedProducts');
     },
@@ -161,6 +164,8 @@ let actions = {
     COLLECT_FILTERS(context) {
         context.commit('getProductTypeFilters');
         context.commit('getProductModelBrandFilters');
+
+        console.log('COLLECT_FILTERS executed')
     },
     GET_MODEL_BRAND_FILTERS(context) {
         context.commit('getProductModelBrandFilters');

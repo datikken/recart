@@ -66,7 +66,7 @@
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),
             loadProductModal(id) {
-                let prd = this.$page.products.filter((el) => el.id === id);
+                let prd = this.$store.state.products.filter((el) => el.id === id);
 
                 this.$store.dispatch('GET_PRODUCT_BY_ID', prd);
 
@@ -81,7 +81,7 @@
             }
         },
         created() {
-            this.params = JSON.parse(this.$props.data.params)
+            // this.params = JSON.parse(this.$props.data.params)
             this.price = parseInt(this.$props.data.price);
         }
     }
