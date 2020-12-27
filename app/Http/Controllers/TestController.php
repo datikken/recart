@@ -76,7 +76,9 @@ class TestController extends Controller
         $prdct = Product::where('id', 2519)->get();
         $result = $this->converter->uniqueObjectKeysCvsValues($prdct[0]->cape);
 
-        dump($result);
+        $visits = \Redis::incr('visits');
+
+        dump($visits);
     }
 
     public function all()

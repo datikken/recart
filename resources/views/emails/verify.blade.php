@@ -12,7 +12,7 @@
             font-family: 'Montserrat', sans-serif;
             font-style: normal;
             font-weight: 400;
-            src: url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
+            /*src: url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);*/
         }
         .email_header {
             display: block;

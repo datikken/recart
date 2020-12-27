@@ -12,14 +12,18 @@
         defer>
     </script>
 
+    {{--Fonts--}}
+    <link rel="preload" href="/fonts/Montserrat-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Montserrat-semibold.ttf" as="font" type="font/ttf" crossorigin>
+    {{--Favicon--}}
     <link href="/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-
+    {{--VendorStyles--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/css/uikit.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/js/uikit.min.js"></script>
-
     <link rel="stylesheet" href="{{ asset('css/vendors/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/pagination.min.css') }}">
-
+    {{--MainStyles--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
