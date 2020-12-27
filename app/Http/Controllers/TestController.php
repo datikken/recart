@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Helpers\Converter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
@@ -73,10 +74,7 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-        $prdct = Product::where('id', 2519)->get();
-        $result = $this->converter->uniqueObjectKeysCvsValues($prdct[0]->cape);
-
-        $visits = \Redis::incr('visits');
+        $visits = Redis::incr('visits');
 
         dump($visits);
     }
