@@ -19,27 +19,27 @@
                         <div class="prdet_wrap-item-head">
                             <span class="prdet_wrap-item-head-item"
                                   v-if="product">
-                                {{ product.name }}
+                                {{ name }}
                             </span>
                         </div>
                         <div class="prdet_wrap-item-desc">
-                            <span class="prdet_wrap-item-desc-item" v-if="product">{{ product.params.cvet }} тонер-картридж {{ product.artikul }} для принтеров и МФУ:</span>
+                            <span class="prdet_wrap-item-desc-item" v-if="product">{{ params.cvet }} тонер-картридж {{ product.artikul }} для принтеров и МФУ:</span>
                         </div>
 
                         <div class="prdet_wrap-item-icons">
                             <div
-                                v-if="product && product.params.cvet === 'Черный'"
+                                v-if="product && params.cvet === 'Черный'"
                                 class="prdet_wrap-item-icons-item"
                                 style="background-image: url('/images/product/drip.svg')"
                             ></div>
                             <div
-                                v-if="product &&  product.params.cvet === 'Трехцветный'"
+                                v-if="product &&  params.cvet === 'Трехцветный'"
                                 class="prdet_wrap-item-icons-item"
                                 style="background-image: url('/images/product/drip_gradient.svg')"
                             ></div>
 
                             <div
-                                v-if="product && product.params.cvet === 'Желтый'"
+                                v-if="product && params.cvet === 'Желтый'"
                                 class="prdet_wrap-item-icons-item"
                             >
                                 <svg
@@ -63,7 +63,7 @@
                                 </svg>
                             </div>
                             <div
-                                v-if="product && product.params.cvet === 'Пурпурный'"
+                                v-if="product && params.cvet === 'Пурпурный'"
                                 class="prdet_wrap-item-icons-item">
                                 <svg class="details_wrap-info_item-icons_icon" width="50" height="50"
                                      viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@
                                 </svg>
                             </div>
                             <div
-                                v-if="product && product.params.cvet === 'Голубой'"
+                                v-if="product && params.cvet === 'Голубой'"
                                 class="prdet_wrap-item-icons-item">
                                 <svg class="details_wrap-info_item-icons_icon" width="50" height="50"
                                      viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@
                                 </svg>
                             </div>
                             <div
-                                v-if="product && product.params.cvet === 'Серый'"
+                                v-if="product && params.cvet === 'Серый'"
                                 class="prdet_wrap-item-icons-item">
                                 <svg class="details_wrap-info_item-icons_icon" width="50" height="50"
                                      viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,17 +106,17 @@
                             </div>
 
                             <div
-                                v-if="product && product.params.chip"
+                                v-if="product && params.chip"
                                 class="prdet_wrap-item-icons-item"
                                 style="background-image: url('/images/product/chip.svg')"
                             ></div>
                             <div
-                                v-if="product && product.params.new"
+                                v-if="product && params.new"
                                 class="prdet_wrap-item-icons-item"
                                 style="background-image: url('/images/product/new.svg')"
                             ></div>
                             <div
-                                v-if="product && product.params.STMC"
+                                v-if="product && params.STMC"
                                 class="prdet_wrap-item-icons-item"
                                 style="background-image: url('/images/product/stmc.svg')"
                             ></div>
@@ -181,12 +181,12 @@
 
                             <div class="prdet_table_item"
                                  v-if="cape"
-                                 v-for="index in cape">
+                                 v-for="(index, key) in cape">
                                 <div class="prdet_table_item_inner">
-                                    <span>{{ index.brand }}</span>
+                                    <span>{{ key }}</span>
                                 </div>
                                 <div class="prdet_table_item_inner">
-                                    <span v-for="md in index.data">{{ md.model }}</span>
+                                    <span v-for="model in index">{{ model }}</span>
                                 </div>
                             </div>
 
@@ -216,6 +216,8 @@
         props: ['prd'],
         data: () => ({
             product: null,
+            name: '',
+            params: '',
             photo: '',
             cape: null
         }),
@@ -227,14 +229,18 @@
         watch: {
             singleProduct(val, oldVal) {
                 this.product = val ? val[0] : oldVal[0];
-                let tmpPhoto = JSON.parse(this.product.photo) ? JSON.parse(this.product.photo) : this.product.photo;
+                this.params = JSON.parse(this.product.params)
+                let path;
 
-                this.photo = tmpPhoto.small ? tmpPhoto.small : tmpPhoto.big;
+                try {
+                    path = JSON.parse(this.product.photo);
+                    this.photo = path.small ? path.small : path.big;
+                } catch(err) {
+                    console.warn('failed to find image in modal vue');
+                }
 
-                let paramObj = this.product.params;
-
-                this.product.params = paramObj;
                 this.cape = this.product.cape;
+                this.name = this.product.name_ecom;
             }
         }
     };

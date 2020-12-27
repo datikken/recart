@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Product;
 use App\Helpers\Converter;
 use Illuminate\Http\Request;
-use App\Facades\Cart;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
+    public function __construct(Converter $converter)
+    {
+        $this->converter = $converter;
+    }
+
     public function parse()
     {
 
@@ -21,7 +22,6 @@ class TestController extends Controller
 
         return $json;
     }
-
     /*
      *  for each product cape returns array of objects: { brand: **, model: **}
      */
@@ -68,22 +68,15 @@ class TestController extends Controller
                 }
             }
 
-//            if(count($newDto) >= 16) {
-//                dd($newDto);
-//            }
-
         Product::updateOrCreate($newDto);
-    }
-
-    public function __construct(CartController $controller)
-    {
-        $this->cart = $controller;
     }
 
     public function index(Request $request)
     {
+        $prdct = Product::where('id', 2519)->get();
+        $result = $this->converter->uniqueObjectKeysCvsValues($prdct[0]->cape);
 
-
+        dump($result);
     }
 
     public function all()

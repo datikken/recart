@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Helpers\Converter;
 
 class ProductController extends Controller
 {
+    public function __construct(Converter $converter)
+    {
+        $this->converter = $converter;
+    }
+
     public function getPaginatedProducts(Request $request)
     {
         $request->validate([
@@ -24,6 +30,17 @@ class ProductController extends Controller
         $prdCts = Product::all();
 
         return response()->json($prdCts);
+    }
+
+    public function getProductById(Request $request)
+    {
+        $id = $request->id;
+        $prdct = Product::where('id', $id)->get();
+
+        $result = $this->converter->uniqueObjectKeysCvsValues($prdct[0]->cape);
+        $prdct[0]->cape = $result;
+
+        return response()->json($prdct);
     }
 
     public static function getTenProductsWithImages()

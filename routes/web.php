@@ -89,6 +89,8 @@ Route::get('/getAllProducts', [ProductController::class, 'getAllProducts'])
     ->name('getAllProducts');
 Route::get('/getTenProductsWithImages', [ProductController::class, 'getTenProductsWithImages'])
     ->name('getTenProductsWithImages');
+Route::post('/getProductById', [ProductController::class, 'getProductById'])
+    ->name('getProductById');
 /*
  * end API
  */

@@ -156,9 +156,24 @@ let addProductToCart = function (state, {id, amount}) {
 
 
 let getProductById = function (state, id) {
-    let prd = state.filteredProducts.filter((el) => el.id === id);
-
-    state.singleProduct = prd;
+    fetch('/getProductById', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            id
+        })
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            state.singleProduct = data;
+        })
 
     return state.singleProduct;
 }

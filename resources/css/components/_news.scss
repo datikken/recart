@@ -24,7 +24,7 @@
       @include breakpoint($phone) {
         display: block;
         background-color: $light_gray;
-        width: 2px;
+        width: 1px;
       }
     }
 
@@ -83,7 +83,7 @@
           display: block;
         }
         background-color: $gray;
-        width: 2px;
+        width: 1px;
       }
       &::-webkit-scrollbar-thumb {
         background: $purple;
