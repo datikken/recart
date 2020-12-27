@@ -67,7 +67,7 @@
             TextBtn
         },
         mounted() {
-            console.warn('item', this.$props.post);
+            // console.warn('item', this.$props.post);
             this.createPostCover()
         },
         methods: {
@@ -82,7 +82,7 @@
                 let dest = this.$el.querySelector('.postList_cover');
                     dest.appendChild(img);
 
-                console.warn(postCont, img)
+                // console.warn(postCont, img)
             }
         }
     }

@@ -128,7 +128,7 @@
                 'GET_SINGLE_ORDER_INFO'
             ]),
             repeatOrder(id) {
-                console.warn('order repeat', id);
+                // console.warn('order repeat', id);
             },
             viewDetails(id) {
                 this.GET_SINGLE_ORDER_INFO(id);

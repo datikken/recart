@@ -33,8 +33,7 @@
             showHide(e) {
                 let list = this.$el.querySelector('[data-mobFilter-list]');
                     list.classList.toggle('as-none');
-
-                    console.warn('show hide executed');
+                    // console.warn('show hide executed');
             },
         },
         computed: {

@@ -23,7 +23,7 @@
         created() {
             this.posts = this.$page.posts;
 
-            console.warn('blog posts list bla', this.$page)
+            // console.warn('blog posts list bla', this.$page)
         }
     }
 </script>

@@ -159,8 +159,6 @@ let mutations = {
                 state.deliveryType = 'post';
                 state.deliveryAllowed = 'post';
 
-                console.warn(data);
-
                 if (data.suggestedOffice[0]) {
                     state.deliveryAdress = data.suggestedOffice[0].unrestricted_value + `, ${data.suggestedOffice[0].value}`;
 

@@ -1,6 +1,5 @@
 let getAllProducts = function(state) {
     let that = this;
-
         fetch('/getAllProducts', {
             method: "get",
             headers: {
@@ -33,7 +32,7 @@ let getAllProducts = function(state) {
                 });
 
                 state.products = resp;
-                state.filteredProducts = state.products;
+                state.filteredProducts = resp;
             })
             .then(() => {
                 that.dispatch('COLLECT_FILTERS');
@@ -43,7 +42,7 @@ let getAllProducts = function(state) {
                 console.log('search err', err);
             })
 
-    return state.products;
+    return state.filteredProducts;
 }
 
 let getFilteredProducts = function (state, payload) {
@@ -184,7 +183,7 @@ let filterProductsByBrand = function (state, query) {
     let newProducts = [];
 
     state.products.forEach((prdt) => {
-        let cape = JSON.stringify(Object.keys(prdt.cape));
+        let cape = JSON.stringify(Object.values(prdt.cape));
 
         if (cape.indexOf(query.brand) >= 0) {
             newProducts.push(prdt)
@@ -199,7 +198,7 @@ let filterProductsByBrand = function (state, query) {
 let filterProductsByPrinterType = function (state, query) {
     let newProducts = [];
 
-    state.products.forEach((prdt) => {
+    state.filteredProducts.forEach((prdt) => {
         let param = prdt.params;
         if (param.tip_printera.indexOf(query.tip_printera) >= 0) {
             newProducts.push(prdt)
@@ -213,9 +212,8 @@ let filterProductsByPrinterType = function (state, query) {
 let filterProductsByModel = function (state, query) {
     let newProducts = [];
 
-    state.products.forEach((prdt) => {
+    state.filteredProducts.forEach((prdt) => {
         let cape = JSON.stringify(Object.values(prdt.cape));
-
         if (cape.indexOf(query.model) >= 0) {
             newProducts.push(prdt)
         }

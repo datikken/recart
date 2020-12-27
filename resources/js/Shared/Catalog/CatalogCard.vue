@@ -115,8 +115,6 @@
             this.prId = this.$props.data.id;
             this.prParams = params;
             this.prPrice = price ? price : 0;
-
-            console.warn(this.$props.data,'catalog price')
         }
     }
 </script>

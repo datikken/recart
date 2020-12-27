@@ -9,7 +9,6 @@
                             <img
                                 v-if="product"
                                 class="prdet_wrap-item_img_inner"
-                                onerror="this.src = '/images/unnecessary/owl-swiper.svg'"
                                 :src="photo"
                                 alt="image"
                             />
@@ -137,7 +136,7 @@
                             <div class="prdet_wrap-icons_ctas-amount">
                                 <PriceBtn
                                     v-if="product"
-                                    :price="product.price ? product.price : 0"/>
+                                    :price="product.price ? Math.ceil(product.price) : 0"/>
                             </div>
                             <div class="prdet_wrap-icons_ctas-increase">
                                 <span class="prdet_wrap-icons_ctas-increase-text">Количество (шт)</span>
@@ -236,9 +235,7 @@
                     path = JSON.parse(this.product.photo);
                     this.photo = path.small ? path.small : path.big;
                 } catch(err) {
-                    this.photo = null;
-
-                    console.warn('failed to find image in modal vue');
+                    this.photo = '/images/unnecessary/owl-swiper.svg';
                 }
 
                 this.cape = this.product.cape;

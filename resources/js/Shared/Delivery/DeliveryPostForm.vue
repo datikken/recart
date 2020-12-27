@@ -88,9 +88,7 @@
             ...mapActions(['APPLY_DELIVERY_ADRESS']),
             syncForms(adr) {
                 if(this.deliveryAdress && adr) {
-
-
-                    console.warn(this.deliveryAdress)
+                    // console.warn(this.deliveryAdress)
 
                     let splitValues = adr.split(',');
 
