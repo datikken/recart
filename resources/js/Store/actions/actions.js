@@ -164,8 +164,7 @@ let actions = {
     COLLECT_FILTERS(context) {
         context.commit('getProductTypeFilters');
         context.commit('getProductModelBrandFilters');
-
-        console.log('COLLECT_FILTERS executed')
+        // console.log('COLLECT_FILTERS executed')
     },
     GET_MODEL_BRAND_FILTERS(context) {
         context.commit('getProductModelBrandFilters');

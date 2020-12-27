@@ -155,7 +155,9 @@ let addProductToCart = function (state, {id, amount}) {
 }
 
 
-let getProductById = function (state, prd) {
+let getProductById = function (state, id) {
+    let prd = state.filteredProducts.filter((el) => el.id === id);
+
     state.singleProduct = prd;
 
     return state.singleProduct;
@@ -211,7 +213,7 @@ let filterProductsByModel = function (state, query) {
 }
 
 let filterProductByQuery = function (state, query) {
-    if (query.printertype) {
+    if (query.tip_printera) {
         this.dispatch('FILTER_PRODUCTS_BY_PRINTERTYPE', query);
     }
     if (query.brand) {

@@ -7,7 +7,7 @@
 
                 <Dropdown />
 
-            <FiltersItem name="Тип принтера" :filters="types" type="printertype" />
+            <FiltersItem name="Тип принтера" :filters="types" type="tip_printera" />
             <FiltersItem name="Бренд" :filters="brands" type="brand" />
             <FiltersItem name="Модель" :filters="models" type="model" />
 

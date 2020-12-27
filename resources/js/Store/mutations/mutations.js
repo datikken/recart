@@ -66,7 +66,7 @@ let mutations = {
         state.readyToGo = null;
         state.readyToGo = val;
 
-        console.log('setReadyToGo', val)
+        // console.log('setReadyToGo', val)
 
         if (state.readyToGo) {
             state.blockDeliveryHelper = true;

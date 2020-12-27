@@ -137,7 +137,7 @@
                             <div class="prdet_wrap-icons_ctas-amount">
                                 <PriceBtn
                                     v-if="product"
-                                    :price="parseInt(product.price)"/>
+                                    :price="product.price ? product.price : 0"/>
                             </div>
                             <div class="prdet_wrap-icons_ctas-increase">
                                 <span class="prdet_wrap-icons_ctas-increase-text">Количество (шт)</span>
@@ -223,26 +223,18 @@
                 'singleProduct'
             ])
         },
-        created() {
-            console.log(this.product);
-        },
         watch: {
             singleProduct(val, oldVal) {
                 this.product = val ? val[0] : oldVal[0];
 
-                let paramObj = JSON.parse(this.product.params);
-                let capeObj = JSON.parse(this.product.cape);
+                console.warn(this.product)
 
-                let result = Object.values(capeObj.reduce((a,{brand, ...props})=>{
-                    if(!a[brand])
-                        a[brand] = Object.assign([], {brand, data : [props]});
-                    else
-                        a[brand].data.push(props);
-                    return a;
-                },{}));
+                let paramObj = this.product.params;
 
                 this.product.params = paramObj;
-                this.cape = result;
+                this.cape = this.product.cape;
+
+                console.warn(this.cape)
             }
         }
     };

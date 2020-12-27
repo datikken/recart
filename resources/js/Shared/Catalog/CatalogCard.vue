@@ -66,9 +66,7 @@
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),
             loadProductModal(id) {
-                let prd = this.$store.state.products.filter((el) => el.id === id);
-
-                this.$store.dispatch('GET_PRODUCT_BY_ID', prd);
+                this.$store.dispatch('GET_PRODUCT_BY_ID', id);
 
                 let gObj = {
                     category: 'catalog modal',
@@ -81,8 +79,9 @@
             }
         },
         created() {
-            // this.params = JSON.parse(this.$props.data.params)
-            this.price = parseInt(this.$props.data.price);
+            let price = this.$props.data.price;
+            this.params = this.$props.data.params;
+            this.price = price ? price : 0;
         }
     }
 </script>

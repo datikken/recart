@@ -73,7 +73,6 @@
                     this.SEND_GOOGLE_ANALYTICS(gObj);
 
                     this.FILTER_PRODUCTS(data);
-
             },
             clearFilters() {
                 let allOptions = this.$el.querySelectorAll('.filters_wrapper-item_list-text');
@@ -101,8 +100,6 @@
                 this.collectAplliedFilters();
             },
             openFilter() {
-
-
                 let img = this.$el.querySelector('img');
                 let label = this.$el.querySelector('.filters_wrapper-item_label');
                     label.classList.toggle('pb16');
