@@ -10,7 +10,7 @@
                                 v-if="product"
                                 class="prdet_wrap-item_img_inner"
                                 onerror="this.src = '/images/unnecessary/owl-swiper.svg'"
-                                :src="`/product_images/${product.params.brend}/SMALL/${product.photo}.png`"
+                                :src="photo"
                                 alt="image"
                             />
                         </div>
@@ -216,6 +216,7 @@
         props: ['prd'],
         data: () => ({
             product: null,
+            photo: '',
             cape: null
         }),
         computed: {
@@ -226,15 +227,14 @@
         watch: {
             singleProduct(val, oldVal) {
                 this.product = val ? val[0] : oldVal[0];
+                let tmpPhoto = JSON.parse(this.product.photo) ? JSON.parse(this.product.photo) : this.product.photo;
 
-                console.warn(this.product)
+                this.photo = tmpPhoto.small ? tmpPhoto.small : tmpPhoto.big;
 
                 let paramObj = this.product.params;
 
                 this.product.params = paramObj;
                 this.cape = this.product.cape;
-
-                console.warn(this.cape)
             }
         }
     };

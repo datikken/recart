@@ -111,6 +111,7 @@
                 this.prPhoto = '/images/unnecessary/owl-swiper.svg';
             }
 
+            this.prId = this.$props.data.id;
             this.prParams = params;
             this.prPrice = price ? price : 0;
         }
