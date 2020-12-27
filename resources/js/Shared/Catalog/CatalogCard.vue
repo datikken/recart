@@ -105,7 +105,7 @@
             let path;
 
             try {
-                path = JSON.parse(this.$props.data.prPhoto);
+                path = JSON.parse(this.$props.data.photo);
                 this.prPhoto = path.small ? path.small : path.big
             } catch(err) {
                 this.prPhoto = '/images/unnecessary/owl-swiper.svg';
