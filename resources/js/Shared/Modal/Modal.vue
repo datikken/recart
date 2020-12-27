@@ -236,6 +236,8 @@
                     path = JSON.parse(this.product.photo);
                     this.photo = path.small ? path.small : path.big;
                 } catch(err) {
+                    this.photo = null;
+
                     console.warn('failed to find image in modal vue');
                 }
 

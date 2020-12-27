@@ -85,7 +85,7 @@
               let photoPath = newVal ? newVal.photo : oldVal.photo;
 
               this.prId = newVal ? newVal.id : oldVal.id
-              this.prName = newVal ? newVal.name : oldVal.name
+              this.prName = newVal ? newVal.artikul : oldVal.artikul
               this.prPrice = tmpPrice ? tmpPrice : 0;
 
               let path;
@@ -111,9 +111,12 @@
                 this.prPhoto = '/images/unnecessary/owl-swiper.svg';
             }
 
+            this.prName = this.$props.data.artikul;
             this.prId = this.$props.data.id;
             this.prParams = params;
             this.prPrice = price ? price : 0;
+
+            console.warn(this.$props.data,'catalog price')
         }
     }
 </script>
