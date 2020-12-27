@@ -7,7 +7,7 @@
                 </div>
                 <div class="product_wrapper-item_heading">
                     <span class="product_wrapper-item_heading-item">
-                        {{ data.name }}
+                        {{ prName }}
                     </span>
                 </div>
 
@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="product_wrapper-item product_wrapper-itemContent">
-                <inertia-link class="product_wrapper-item_image product_link" :href="route('catalog.view', data.id)">
-                    <img :src="photo" alt="image">
+                <inertia-link class="product_wrapper-item_image product_link" :href="route('catalog.view', prId)">
+                    <img :src="prPhoto" alt="image">
                 </inertia-link>
-                <a class="product_wrapper-item_overlay" href="#modal-1" uk-toggle="target: #modal-1" :data-id="data.id" @click="loadProductModal(data.id)">
+                <a class="product_wrapper-item_overlay" href="#modal-1" uk-toggle="target: #modal-1" :data-id="prId" @click="loadProductModal(prId)">
                     <div class="product_wrapper-item_overlay_wrapper">
                         <div class="product_wrapper-item_overlay_wrapper-item">
                             <span class="product_wrapper-item_overlay_wrapper-item_text">быстрый просмотр</span>
@@ -34,11 +34,11 @@
                     <span class="product_wrapper-item_head-item">IC-HLOR70A</span>
                 </div>
                 <div class="product_wrapper-item_price">
-                    <span class="product_wrapper-item_price-item">{{ price }}</span>
+                    <span class="product_wrapper-item_price-item">{{ prPrice }}</span>
                     <img src="/images/icons/rub.svg" alt="cur"/>
                 </div>
 
-                <BuyBtn :id="data.id" className="animated_btn round_btn" />
+                <BuyBtn :id="prId" className="animated_btn round_btn" />
 
             </div>
         </div>
@@ -59,15 +59,13 @@
             TextBtn
         },
         data: () => ({
-            params: {},
-            price: '',
-            photo: ''
+            prId: '',
+            prName: '',
+            prPrice: '',
+            prPhoto: '',
         }),
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),
-            findSmallOrBigImage() {
-
-            },
             loadProductModal(id) {
                 this.$store.dispatch('GET_PRODUCT_BY_ID', id);
 
@@ -81,18 +79,40 @@
                 this.SEND_GOOGLE_ANALYTICS(gObj);
             }
         },
+        watch: {
+          data(newVal, oldVal) {
+              let tmpPrice = newVal ? newVal.price : oldVal.price;
+              let photoPath = newVal ? newVal.photo : oldVal.photo;
+
+              this.prId = newVal ? newVal.id : oldVal.id
+              this.prName = newVal ? newVal.name : oldVal.name
+              this.prPrice = tmpPrice ? tmpPrice : 0;
+
+              let path;
+
+              try {
+                  path = JSON.parse(photoPath);
+                  this.prPhoto = path.small ? path.small : path.big
+              } catch(err) {
+                  this.prPhoto = '/images/unnecessary/owl-swiper.svg';
+              }
+
+          }
+        },
         created() {
             let price = this.$props.data.price;
-            this.params = this.$props.data.params;
-            this.price = price ? price : 0;
+            let params = this.$props.data.params;
             let path;
 
             try {
-                path = JSON.parse(this.$props.data.photo);
-                this.photo = path.small ? path.small : path.big
+                path = JSON.parse(this.$props.data.prPhoto);
+                this.prPhoto = path.small ? path.small : path.big
             } catch(err) {
-                this.photo = '/images/unnecessary/owl-swiper.svg';
+                this.prPhoto = '/images/unnecessary/owl-swiper.svg';
             }
+
+            this.prParams = params;
+            this.prPrice = price ? price : 0;
         }
     }
 </script>

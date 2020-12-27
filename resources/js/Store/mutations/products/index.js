@@ -194,6 +194,7 @@ let filterProductsByPrinterType = function (state, query) {
     });
 
     state.filteredProducts = newProducts;
+    // state.filteredProducts = [];
 }
 
 let filterProductsByModel = function (state, query) {
@@ -313,20 +314,20 @@ let setProductViewed = function (state, {pid}) {
 }
 
 export {
-    getFilteredProducts,
     updateProductInCart,
     addProductToCart,
-    getProductModelFilters,
-    getProductTypeFilters,
-    filterProductsByModel,
-    filterProductByQuery,
-    getProductById,
-    getProductModelBrandFilters,
     filterProductsByPrinterType,
     filterProductsByBrand,
+    filterProductsByModel,
+    filterProductByQuery,
     setProductsLoaded,
+    setProductViewed,
+    getFilteredProducts,
     getViewedProducts,
     getAllProducts,
-    setProductViewed,
+    getProductModelFilters,
+    getProductTypeFilters,
+    getProductById,
+    getProductModelBrandFilters,
     deleteProductFromCart
 }

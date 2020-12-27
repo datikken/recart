@@ -17,14 +17,14 @@
 
                     <CatalogSwitch />
 
-                    <NothingFound v-if="products.length === 0" />
+                    <NothingFound v-if="allProducts.length === 0" />
 
-                    <Loader v-if="products.length === 0" />
+                    <Loader v-if="allProducts.length === 0" />
 
                     <div class="products_grid">
-                        <div v-if="products.length > 1">
+                        <div v-if="allProducts.length > 1">
                             <vue-ads-pagination
-                                :total-items="products.length"
+                                :total-items="allProducts.length"
                                 :max-visible-pages="5"
                                 :page="page"
                                 :items-per-page="this.catalogPerPage"
@@ -37,13 +37,13 @@
                                     <CatalogCard
                                         v-if="!gridCatalog"
                                         :data="item"
-                                        v-for="item in products.slice(props.start, props.end)"
+                                        v-for="item in allProducts.slice(props.start, props.end)"
                                         :key="item.name"/>
 
                                     <CatalogCardList
                                         v-if="gridCatalog"
                                         :data="item"
-                                        v-for="item in products.slice(props.start, props.end)"
+                                        v-for="item in allProducts.slice(props.start, props.end)"
                                         :key="item.name"/>
 
                                 </template>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div v-else class="products_wrapper">
-                            <CatalogCard :data="item" v-for="item in products"
+                            <CatalogCard :data="item" v-for="item in allProducts"
                                          :key="item.name"/>
                         </div>
 
@@ -113,6 +113,7 @@
             return {
                 userFace: null,
                 loading: false,
+                allProducts: [],
                 page: 0
             }
         },
@@ -140,13 +141,14 @@
             ...mapGetters([
                 'orders',
                 'gridCatalog',
-                'catalogPerPage'
-            ]),
-            products() {
-                this.loading = false;
-                let allProducts = this.$store.state.filteredProducts;
-                return allProducts;
-            },
+                'catalogPerPage',
+                'filteredProducts'
+            ])
+        },
+        watch: {
+            filteredProducts(newVal, oldVal) {
+                this.allProducts = newVal;
+            }
         },
         methods: {
             ...mapActions([
