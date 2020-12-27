@@ -55,6 +55,10 @@ class GetProducts extends Action
             if($key === 'cape') {
                 $newDto['cape'] = $this->reorganizeProductCape($val);
             }
+
+            if($key === 'price') {
+                $newDto['price'] = str_replace( ',','.', $val);
+            }
         }
 
         $withImages = $this->findProductImage($newDto);

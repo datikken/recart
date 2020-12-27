@@ -74,9 +74,13 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-        $visits = Redis::incr('visits');
+//        $visits = Redis::incr('visits');
 
-        dump($visits);
+//        dump($visits);
+
+        $prdcts = Product::all();
+
+        return response()->json($prdcts);
     }
 
     public function all()

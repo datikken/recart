@@ -1,8 +1,6 @@
 let getAllProducts = function(state) {
     let that = this;
 
-    console.log('getallproducts executed')
-
         fetch('/getAllProducts', {
             method: "get",
             headers: {
