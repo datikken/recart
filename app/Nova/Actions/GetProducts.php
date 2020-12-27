@@ -57,7 +57,37 @@ class GetProducts extends Action
             }
         }
 
-        Product::updateOrCreate($newDto);
+        $withImages = $this->findProductImage($newDto);
+
+        Product::updateOrCreate($withImages);
+    }
+
+    public function findProductImage($params) {
+        $jsonParams = json_decode($params['params']);
+
+        $photo = '/' . $params['photo'];
+        $cat = '/' . $jsonParams->brend;
+
+        $smallPath = 'product_images' . $cat . '/SMALL' . $photo . '.png';
+        $bigPath = 'product_images' . $cat . '/BIG' . $photo . '.png';
+
+        $smallFiles = file_exists($smallPath);
+        $bigFiles = file_exists($smallPath);
+
+        if($smallFiles || $bigFiles) {
+            $photosFile = new \stdClass();
+            $photosFile->small = $smallPath;
+
+            if($bigPath) {
+                $photosFile->big = $bigPath;
+            }
+        }
+
+        if($smallFiles || $bigFiles) {
+            $params['photo'] = strval(json_encode($photosFile));
+        }
+
+        return $params;
     }
 
     /*

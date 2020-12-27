@@ -18,8 +18,7 @@
             </div>
             <div class="product_wrapper-item product_wrapper-itemContent">
                 <inertia-link class="product_wrapper-item_image product_link" :href="route('catalog.view', data.id)">
-                    <img onerror="this.src = '/images/unnecessary/owl-swiper.svg';"
-                    :src="`/product_images/${this.params.brend}/SMALL/${data.photo}.png`" alt="">
+                    <img :src="photo" alt="image">
                 </inertia-link>
                 <a class="product_wrapper-item_overlay" href="#modal-1" uk-toggle="target: #modal-1" :data-id="data.id" @click="loadProductModal(data.id)">
                     <div class="product_wrapper-item_overlay_wrapper">
@@ -61,10 +60,14 @@
         },
         data: () => ({
             params: {},
-            price: ''
+            price: '',
+            photo: ''
         }),
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),
+            findSmallOrBigImage() {
+
+            },
             loadProductModal(id) {
                 this.$store.dispatch('GET_PRODUCT_BY_ID', id);
 
@@ -82,6 +85,14 @@
             let price = this.$props.data.price;
             this.params = this.$props.data.params;
             this.price = price ? price : 0;
+            let path;
+
+            try {
+                path = JSON.parse(this.$props.data.photo);
+                this.photo = path.small ? path.small : path.big
+            } catch(err) {
+                this.photo = '/images/unnecessary/owl-swiper.svg';
+            }
         }
     }
 </script>
