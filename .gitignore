@@ -4,10 +4,10 @@
 /public/css/app.css
 /public/storage
 /public/product_images
-public/slider_images
+/public/slider_images
+/public/js
 /vendor
 /.env
-/public
 /storage
 /public_html
 .env.backup
