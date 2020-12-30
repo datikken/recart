@@ -126,7 +126,7 @@
                 return this.$store.state.paymentProvider
             },
             orders() {
-                console.warn(this.$store.state.cart,'orders list');
+                // console.warn(this.$store.state.cart,'orders list');
 
                 if (this.$store.state.cart) {
                     return this.$store.state.cart
