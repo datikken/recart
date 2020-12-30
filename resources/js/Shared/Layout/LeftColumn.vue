@@ -15,11 +15,10 @@
         name: "LeftColumn",
         components: {
             Filters,
-            Viewed
+            Viewed,
+        },
+        mounted() {
+            this.createSticky();
         }
     }
 </script>
-
-<style>
-
-</style>

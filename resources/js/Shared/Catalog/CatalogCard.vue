@@ -18,7 +18,7 @@
             </div>
             <div class="product_wrapper-item product_wrapper-itemContent">
                 <inertia-link class="product_wrapper-item_image product_link" :href="route('catalog.view', prId)">
-                    <img :src="prPhoto" alt="image">
+                    <img :src="prPhoto" :alt="prName">
                 </inertia-link>
                 <a class="product_wrapper-item_overlay" href="#modal-1" uk-toggle="target: #modal-1" :data-id="prId" @click="loadProductModal(prId)">
                     <div class="product_wrapper-item_overlay_wrapper">
@@ -63,6 +63,7 @@
             prName: '',
             prPrice: '',
             prPhoto: '',
+            prArtikul: ''
         }),
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),

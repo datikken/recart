@@ -180,6 +180,7 @@ let setProductsLoaded = function (state) {
 }
 
 let filterProductsByBrand = function (state, query) {
+    state.filteredProducts = state.products;
     let newProducts = [];
 
     state.products.forEach((prdt) => {
@@ -196,6 +197,7 @@ let filterProductsByBrand = function (state, query) {
 }
 
 let filterProductsByPrinterType = function (state, query) {
+    state.filteredProducts = state.products;
     let newProducts = [];
 
     state.filteredProducts.forEach((prdt) => {
@@ -254,8 +256,8 @@ let getProductModelBrandFilters = function (state) {
         let brand = prdct.cape.brand
         let model = prdct.cape.model
 
-        allProductBrands.push(brand)
-        allProductModels.push(model)
+        if(brand != undefined) allProductBrands.push(brand)
+        if(model != undefined) allProductModels.push(model)
     })
 
     state.brandFilters = [...new Set(allProductBrands)];

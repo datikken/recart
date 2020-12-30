@@ -7,10 +7,10 @@
 
     <title>{{ config('app.name', 'Recart.me') }}</title>
 
-    <script
-        src="https://polyfill.io/v3/polyfill.min.js?features=smoothscroll,NodeList.prototype.forEach,Promise,Object.values,Object.assign"
-        defer>
-    </script>
+    {{--<script--}}
+        {{--src="https://polyfill.io/v3/polyfill.min.js?features=smoothscroll,NodeList.prototype.forEach,Promise,Object.values,Object.assign"--}}
+        {{--defer>--}}
+    {{--</script>--}}
 
     {{--Fonts--}}
     <link rel="preload" href="/fonts/Montserrat-Medium.ttf" as="font" type="font/ttf" crossorigin>
@@ -21,7 +21,7 @@
     {{--VendorStyles--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/css/uikit.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/js/uikit.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/vendors/fontawesome.min.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('css/vendors/fontawesome.min.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('css/vendors/pagination.min.css') }}">
     {{--MainStyles--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

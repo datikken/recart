@@ -73,6 +73,8 @@
                     this.SEND_GOOGLE_ANALYTICS(gObj);
 
                     this.FILTER_PRODUCTS(data);
+
+                    console.warn(data, 'FILTER_PRODUCTS')
             },
             clearFilters() {
                 let allOptions = this.$el.querySelectorAll('.filters_wrapper-item_list-text');

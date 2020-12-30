@@ -5,11 +5,11 @@
         <div class="catalog">
             <div class="columns catalog_columns">
 
-                <div class="mobile-hide">
+                <div class="mobile-hide" data-sticky-block>
                     <LeftColumn />
                 </div>
 
-                <div class="right_column">
+                <div class="right_column" data-sticky-wrap>
 
                     <div class="desktop-hide">
                         <MobileFilters />
@@ -105,7 +105,8 @@
     import {Fragment} from 'vue-fragment'
     import Modal from '@/Shared/Modal/Modal'
     import TextBtn from '@/Shared/Btns/TextBtn'
-    import VueAdsPagination, {VueAdsPageButton} from 'vue-ads-pagination';
+    import VueAdsPagination, {VueAdsPageButton} from 'vue-ads-pagination'
+    import StickyBlock from '@/vanilla/classes/StickyBlock'
 
     export default {
         name: "Checkout",
@@ -135,7 +136,8 @@
             VueAdsPagination,
             VueAdsPageButton,
             TextBtn,
-            Modal
+            Modal,
+            StickyBlock
         },
         computed: {
             ...mapGetters([
@@ -168,6 +170,17 @@
         },
         mounted() {
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
+
+
+            window.onload = function() {
+                let block = document.querySelector('[data-sticky-block]')
+                let sticky = new StickyBlock(block);
+
+                console.warn(sticky, 'catalog mounted')
+                console.warn(block, 'catalog mounted')
+            }
+
+
         }
     }
 </script>
