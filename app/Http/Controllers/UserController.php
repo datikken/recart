@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Stevebauman\Location\Facades\Location;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -65,5 +68,10 @@ class UserController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+    public function exportUsersExcel()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

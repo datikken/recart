@@ -55,6 +55,9 @@ Route::post('/createNewUser', [CreateNewUser::class, 'create'])
     ->name('CreateNewUser');
 Route::post('/login', [Login::class, 'login'])
     ->name('login');
+Route::get('/exportUsersExcel', [UserController::class, 'exportUsersExcel'])
+    ->name('exportUsersExcel');
+
 
 
 Route::get('/getUserAddress', [UserController::class, 'getUserAddress'])
