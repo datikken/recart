@@ -79,7 +79,6 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import TextBtn from '@/Shared/Btns/TextBtn'
-    // import router from '../../router/router'
 
     export default {
         name: "OrdersList",
@@ -131,11 +130,11 @@
                 return this.$store.state.paymentProvider
             },
             orders() {
-                if (this.$store.state.cart) {
-                    return this.$store.state.cart
-                } else {
-                    return {}
-                }
+               let cart = this.$store.state.cart;
+
+               console.warn('list ', cart);
+
+               return cart;
             }
         },
         created() {

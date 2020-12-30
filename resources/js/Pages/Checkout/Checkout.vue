@@ -1,13 +1,12 @@
 <template>
     <Fragment>
-        <Breadcrumbs/>
-        <div class="cart_check-wrapper">
+        <CartNav/>
 
+        <div class="cart_check-wrapper">
             <Fizik v-if="this.userFace === 'fizik' "/>
             <Urik v-if="this.userFace === 'urik' "/>
 
             <OrderList v-if="this.userFace" />
-
         </div>
     </Fragment>
 </template>
@@ -19,8 +18,8 @@
     import OrderList from '@/Shared/Orders/OrdersList'
     import {mapGetters, mapActions} from 'vuex'
     import MainLayout from '@/Layouts/MainLayout'
-    import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
+    import CartNav from '@/Shared/Cart/CartNav'
 
     export default {
         name: "Checkout",
@@ -35,8 +34,8 @@
             Urik,
             Loader,
             OrderList,
-            Breadcrumbs,
-            Fragment
+            Fragment,
+            CartNav
         },
         methods: {
             ...mapActions([
@@ -44,7 +43,7 @@
             ]),
         },
         mounted() {
-            // this.CHANGE_PROGRESS_STEP(1);
+            this.CHANGE_PROGRESS_STEP(1);
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
 
             if(this.$page.user === null) {

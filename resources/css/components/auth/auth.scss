@@ -44,6 +44,11 @@
     position: relative;
     width: 100%;
 
+    &_content {
+        max-width: $layoutw;
+        margin: 0 auto;
+    }
+
     @include breakpoint($medium) {
         max-width: 970px;
         width: 970px;

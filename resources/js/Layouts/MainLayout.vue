@@ -4,7 +4,7 @@
         <Header />
         <Menu/>
 
-        <main>
+        <main class="main_content">
             <slot></slot>
         </main>
 

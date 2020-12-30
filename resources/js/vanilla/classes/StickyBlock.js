@@ -271,7 +271,7 @@ class StickyBlock {
         window.addEventListener('resize', this.resizeHandler, false);
 
         //XXX Redo Maybe
-        setInterval(this._checkState.bind(this), 10);
+        this._checkState.bind(this);
     }
 }
 
