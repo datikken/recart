@@ -22,6 +22,9 @@
         mounted() {
             let all = this.$props.links;
             let that = this;
+            //
+            // console.warn(all)
+            // return;
 
             all.forEach(link => {
                 if (link === 'index') {

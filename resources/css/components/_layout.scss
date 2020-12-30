@@ -43,7 +43,7 @@
         position: relative;
 
         @include breakpoint($medium) {
-            min-width: 900px;
+            max-width: 870px;
         }
     }
 }

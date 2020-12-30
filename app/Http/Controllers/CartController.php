@@ -112,12 +112,4 @@ class CartController extends Controller
     {
         $this->seSmanager->forget('cart');
     }
-
-
-    public function checkCartState()
-    {
-        $cart = $this->seSmanager->get('cart');
-
-        return response()->json($cart);
-    }
 }
