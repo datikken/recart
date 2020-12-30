@@ -16,9 +16,6 @@
         components: {
             Filters,
             Viewed,
-        },
-        mounted() {
-            this.createSticky();
         }
     }
 </script>

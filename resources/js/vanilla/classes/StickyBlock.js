@@ -235,10 +235,6 @@ class StickyBlock {
     }
 
     activate(element) {
-        // if (utils.isTouch()) {
-        //     return;
-        // }
-
         console.warn('activate', element)
 
         this.fixedTopThreshold = 50; // tmp
