@@ -57,6 +57,8 @@ Route::post('/login', [Login::class, 'login'])
     ->name('login');
 
 
+Route::get('/getUserAddress', [UserController::class, 'getUserAddress'])
+    ->name('getUserAddress');
 Route::post('/setName', [UserController::class, 'setName'])
     ->name('setName');
 Route::post('/setLastName', [UserController::class, 'setLastName'])
@@ -135,6 +137,9 @@ Route::get('/sendEmailVerification', [UserController::class, 'index'])
  * Checkout
  *
  */
+Route::get('/checkCartState', [CartController::class, 'checkCartState'])
+    ->name('checkCartState');
+
 Route::get('/checkout', [CheckoutController::class, 'get'])
     ->name('checkout');
 

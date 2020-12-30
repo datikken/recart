@@ -38,7 +38,6 @@
             let that = this;
 
             let btns = this.$el.querySelectorAll('.magic_btn')
-                // btns.forEach(btn => that.CREATE_MAGIC_BTN(btn))
         },
         methods: {
             ...mapActions([

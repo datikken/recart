@@ -109,10 +109,6 @@
             },
             finalStep() {
                 this.active = true;
-                setTimeout(this.createMagic, 50)
-            },
-            createMagic() {
-                let btn = document.querySelector('#final_btn');
             }
         },
         watch: {
@@ -130,11 +126,13 @@
                 return this.$store.state.paymentProvider
             },
             orders() {
-               let cart = this.$store.state.cart;
+                console.warn(this.$store.state.cart,'orders list');
 
-               console.warn('list ', cart);
-
-               return cart;
+                if (this.$store.state.cart) {
+                    return this.$store.state.cart
+                } else {
+                    return {}
+                }
             }
         },
         created() {

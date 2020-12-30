@@ -14,10 +14,16 @@
 <script>
     export default {
         name: "SimpleCheckbox",
-        props: ['name'],
+        props: ['name','chProp'],
         data: function() {
             return {
                 checked: false
+            }
+        },
+        created() {
+            let chProp = this.$props.chProp;
+            if(chProp) {
+                this.checked = chProp;
             }
         },
         methods: {

@@ -159,8 +159,6 @@
             },
             createMagicBtn() {
                 let btn = this.$el.querySelector('#proceedToPayments');
-
-                // this.CREATE_MAGIC_BTN(btn);
             },
             callPostForm() {
                 let status = this.$refs.postRef.handleValidatePostForm();

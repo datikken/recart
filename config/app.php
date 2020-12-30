@@ -168,6 +168,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -239,7 +240,9 @@ return [
         'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
-        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'Location'      => Stevebauman\Location\Facades\Location::class
+
     ],
 
 ];

@@ -38,7 +38,7 @@
             <div class="cart_check-wrap_item cart_save_data">
                 <div class="cart_check-wrap_item-group form_group">
                     <div class="cart_check-wrap_item-group_inner">
-                        <SimpleCheckbox name="save" @click.native="saveDataToStorage" />
+                        <SimpleCheckbox name="save" @click.native="saveDataToStorage" chProp="true" />
                         <label for="save">Сохранить данные</label>
                     </div>
                 </div>
@@ -77,8 +77,6 @@
            this.fillInputsData();
            this.clearInputsOnFocus();
            this.CHANGE_PROGRESS_STEP(1);
-
-           // new MagicButton(this.$el.querySelector('.magic_btn'));
         },
         computed: {
             ...mapGetters(['user','ofertaPolicy'])
@@ -98,9 +96,7 @@
 
                 inputs.forEach((el) => {
                     let name = el.getAttribute('name');
-                    let val = el.value;
-
-                    obj[name] = val;
+                    obj[name] = el.value;
                 })
 
                 return obj;
@@ -122,21 +118,20 @@
                 // try {
                    // window.app.validator.formValidate([], $(this.$el));
                 // } catch(err) {
-                    this.setFormError();
+                //     this.setFormError();
                     // console.error(err)
-                    return;
+                    // return;
                 // }
-
-                this.validForm = true;
-
-                if(this.validForm && data.save) {
-                        localStorage.setItem('checkoutProductsData', JSON.stringify(data));
-                    let phone = this.trimPhoneNumber(data.tel)
-                        delete data.save;
-                        data.tel = phone;
-
-                        this.REFRESH_CUTOMER_DATA(data);
-                }
+                //
+                //
+                // if(data.save) {
+                //         localStorage.setItem('checkoutProductsData', JSON.stringify(data));
+                //     let phone = this.trimPhoneNumber(data.tel)
+                //         delete data.save;
+                //         data.tel = phone;
+                //
+                //         this.REFRESH_CUTOMER_DATA(data);
+                // }
             },
             fillInputsData() {
                 let locUser = this.$page.user;
@@ -144,7 +139,7 @@
                 let lastName = this.$el.querySelector('[name="lastname"]');
 
                     name.value = locUser ? locUser.name : '';
-                    lastName.value = locUser ? locUser.lastname : '';
+                    lastName.value = locUser ? locUser.last_name : '';
 
                     this.phone = locUser ? locUser.tel : '';
             },
