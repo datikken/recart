@@ -86,6 +86,8 @@ Route::post('/order.update', [OrderController::class, 'update'])
     ->name('order.update');
 Route::post('/order.delete', [OrderController::class, 'delete'])
     ->name('order.delete');
+Route::get('/exportOrdersExcel', [OrderController::class, 'exportOrdersExcel'])
+    ->name('exportOrdersExcel');
 
 /*
  * Products
@@ -96,6 +98,9 @@ Route::get('/getTenProductsWithImages', [ProductController::class, 'getTenProduc
     ->name('getTenProductsWithImages');
 Route::post('/getProductById', [ProductController::class, 'getProductById'])
     ->name('getProductById');
+Route::get('/exportProductsExcel', [ProductController::class, 'exportProductsExcel'])
+    ->name('exportProductsExcel');
+
 /*
  * end API
  */

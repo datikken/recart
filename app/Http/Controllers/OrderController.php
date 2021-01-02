@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCreated;
+use App\Exports\OrdersExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Facades\Cart;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -76,5 +78,10 @@ class OrderController extends Controller
 
     public function destroy()
     {
+    }
+
+    public function exportOrdersExcel()
+    {
+        return Excel::download(new OrdersExport, 'orders.xlsx');
     }
 }

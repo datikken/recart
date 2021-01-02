@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductsExport;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Helpers\Converter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -60,5 +62,13 @@ class ProductController extends Controller
         }
 
         return response()->json($result);
+    }
+
+    /*
+     * php artisan make:export ProductsExport --model=Product
+     */
+    public function exportProductsExcel()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 }
