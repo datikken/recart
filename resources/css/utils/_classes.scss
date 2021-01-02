@@ -45,7 +45,7 @@ a:hover {
   position: relative;
   color: black !important;
   &:after {
-    background-image: url("/img/icons/arrow_right_black.svg") !important;
+    background-image: url("/images/icons/arrow_right_black.svg") !important;
   }
 
   @include breakpoint($phone) {

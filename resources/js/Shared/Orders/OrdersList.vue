@@ -21,22 +21,22 @@
                     </div>
                 </div>
 
-                <div class="order_list-wrap_inner-row" v-for="order in orders.items">
+                <div class="order_list-wrap_inner-row" v-for="item in cart.content">
                     <div class="order_list-wrap_inner-row_item">
                         <span class="order_list-wrap_inner-row_item-text">
-                            {{ order.data.photo }}
+                            {{ item.name }}
                         </span>
                     </div>
 
                     <div class="order_list-wrap_inner-row_item">
                         <span class="order_list-wrap_inner-row_item-text">
-                            {{ order.quantity }}
+                            {{ item.qty }}
                         </span>
                     </div>
 
                     <div class="order_list-wrap_inner-row_item">
                         <span class="order_list-wrap_inner-row_item-text">
-                            {{ Math.floor(order.data.price) }} руб.
+                            {{ item.price }} руб.
                         </span>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="order_list-wrap_footer-row_item">
                         <span id="totalQuantity">
-                          {{ orders.totalPrice }} руб.
+                          {{ cart.total }} руб.
                         </span>
                     </div>
                 </div>
@@ -118,25 +118,14 @@
         },
         computed: {
             ...mapGetters([
+                'cart',
                 'deliveryType',
                 'orderPaid',
                 'paymentProvider'
             ]),
             paymentProvider() {
                 return this.$store.state.paymentProvider
-            },
-            orders() {
-                // console.warn(this.$store.state.cart,'orders list');
-
-                if (this.$store.state.cart) {
-                    return this.$store.state.cart
-                } else {
-                    return {}
-                }
             }
-        },
-        created() {
-            this.CHECK_CART_STATE();
         },
         mounted() {
             if (this.$store.state.paymentProvider && this.$store.state.cartStep >= 3) {

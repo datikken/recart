@@ -29,8 +29,10 @@ class CartController extends Controller
     public function show()
     {
         $cartContent = Cart::content();
-        $cartTotal = Cart::total();
         $qnt = Cart::count();
+        $cartTotal = Cart::total();
+
+        $newphrase = str_replace(',', '.', $cartTotal);
 
         $newCartItems = array();
 
@@ -49,7 +51,7 @@ class CartController extends Controller
         return response()->json([
             'content' => $newCartItems,
             'qnt' => $qnt,
-            'total' => $cartTotal
+            'total' => floatval($newphrase)
         ]);
     }
 

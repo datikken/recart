@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Stevebauman\Location\Facades\Location;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {

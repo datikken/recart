@@ -47,7 +47,8 @@
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
 
             if(this.$page.user === null) {
-                // this.$inertia.visit('login')
+                localStorage.setItem('redirectedFromCheckout', true);
+                this.$inertia.visit('login');
             }
         }
     }

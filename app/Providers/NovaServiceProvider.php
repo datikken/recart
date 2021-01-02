@@ -80,7 +80,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \Bolechen\NovaActivitylog\NovaActivitylog(),
             new \Infinety\Filemanager\FilemanagerTool(),
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make()
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            (new \vmitchell85\NovaLinks\Links())
         ];
     }
 

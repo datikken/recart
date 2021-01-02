@@ -598,7 +598,7 @@ let mutations = {
                 state.cart = data;
             });
 
-        return state.cart;
+        return state.cart.content;
     },
     refreshCutomerData(state, data) {
         fetch('/home/collectProfileData', {
