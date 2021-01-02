@@ -4,17 +4,17 @@
             <div class="dfill_wrap-heading">
                 <span>Для дальнейшего удобства заказа, рекомендуем вам заполнить аккаунт. Эти данные потребуются при формировании корзины.</span>
             </div>
-
             <div class="dfill_wrap-form_top">
                 <div class="dfill_wrap-form_top-left">
 
-                    <form action="/home/userAvatar" method="post" class="invisible" enctype="multipart/form-data">
+                    <DashboardProfile />
 
-                        <input type="file" class="upload_file" name="img" id="img">
-                        <button type="submit">send</button>
-                    </form>
+                    <!--<div class="invisible">-->
+                        <!--<input type="file" class="upload_file" name="img" id="img">-->
+                        <!--<button type="submit">send</button>-->
+                    <!--</div>-->
 
-                    <div class="dfill_wrap-form_top-left_inner" style=""></div>
+                    <!--<div class="dfill_wrap-form_top-left_inner" style=""></div>-->
 
                 </div>
                 <div class="dfill_wrap-form_top-right">
@@ -116,6 +116,7 @@
 
 <script>
     import MagicBtn from '@/Shared/Btns/MagicBtn'
+    import DashboardProfile from '@/Shared/Dashboard/DashboardProfile'
 
     export default {
         name: "DashboardForms",
@@ -187,6 +188,7 @@
             }
         },
         components: {
+            DashboardProfile,
             MagicBtn
         }
     }

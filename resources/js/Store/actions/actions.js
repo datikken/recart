@@ -1,4 +1,7 @@
 let actions = {
+    UPDATE_USER_PHOTO(context, formData) {
+        context.commit('updateUserPhoto', formData);
+    },
     SET_OFERTA_POLICY_STATE(context, val) {
         context.commit('setOfertaPolicyState', val);
     },

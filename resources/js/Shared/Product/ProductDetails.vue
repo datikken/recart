@@ -41,14 +41,12 @@
                         <div class="swiper-button-prev gallery-thumbs-prev"></div>
                     </div>
                 </swiper>
-
             </div>
-
 
             <div class="details_wrap-info">
                 <div class="details_wrap-info_item">
                     <div class="details_wrap-info_item-head">
-                        <h1>{{ product.name_buh }}</h1>
+                        <h1>{{ product.name_ecom }}</h1>
                     </div>
                 </div>
 
@@ -247,6 +245,8 @@
             newProduct.params = JSON.parse(old.params);
 
             this.product = newProduct;
+
+            console.warn(this.$page)
         },
         computed: {
             swiper() {

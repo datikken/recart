@@ -57,6 +57,8 @@ Route::post('/login', [Login::class, 'login'])
     ->name('login');
 Route::get('/exportUsersExcel', [UserController::class, 'exportUsersExcel'])
     ->name('exportUsersExcel');
+Route::get('/setProfilePhoto', [UserController::class, 'setProfilePhoto'])
+    ->name('setProfilePhoto');
 
 
 

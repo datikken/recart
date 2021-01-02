@@ -73,4 +73,14 @@ class UserController extends Controller
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
+
+    public function setProfilePhoto(Request $request)
+    {
+        $file = $request->get('file');
+
+        $usr = Auth::user();
+        $status = $usr->updateProfilePhoto($file);
+
+        return response()->json($status);
+    }
 }

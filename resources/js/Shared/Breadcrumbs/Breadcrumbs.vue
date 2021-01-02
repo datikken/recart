@@ -1,7 +1,12 @@
 <template>
     <div class="breadcrumb">
         <div class="breadcrumb_wrap">
-            <inertia-link :href="route(link.link)" class="breadcrumb_item" v-for="link in allLinks" :key="link.name">
+            <inertia-link
+                class="breadcrumb_item"
+                v-for="(link, index) in allLinks"
+                :href="route(link.link, link.id)"
+                :key="link.name"
+            >
                 <span class="breadcrumb_item_inner">{{ link.name }}</span>
                 <span class="breadcrumb_arrow"></span>
             </inertia-link>
@@ -21,12 +26,21 @@
         },
         mounted() {
             let all = this.$props.links;
+            let name = this.$page.product.name_ecom
             let that = this;
-            //
-            // console.warn(all)
+
+            // console.warn(this.$page.product)
             // return;
 
             all.forEach(link => {
+                if(typeof link === 'number') {
+                    that.allLinks.push({
+                        link: 'catalog.view',
+                        id: link,
+                        name
+                    })
+                }
+
                 if (link === 'index') {
                     that.allLinks.push(
                         {
@@ -98,7 +112,6 @@
                         }
                     )
                 }
-
             })
         }
     }

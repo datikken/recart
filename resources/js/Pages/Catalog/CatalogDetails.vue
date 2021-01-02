@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index','catalog', this.$page.product.id]"/>
         <ProductDetails />
 
     </Fragment>
@@ -19,9 +19,6 @@
             Breadcrumbs,
             Fragment,
             ProductDetails
-        },
-        created() {
-            console.log(this.$page.product)
         }
     }
 </script>
