@@ -8,34 +8,20 @@
 
                 <swiper ref="mySwiper" :options="swiperOptions" class="gallery-top">
                     <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
+                        <img class="swiper-slide details_slide"
+                             :src="this.big"/>
                     </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/image.svg')"></div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
-                    </swiper-slide>
+
                     <div class="swiper-pagination" slot="pagination"></div>
                 </swiper>
 
 
                 <swiper :options="thumbsOtions" class="gallery-thumbs">
                     <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
+                        <img class="swiper-slide details_slide"
+                             :src="this.big"/>
                     </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/image.svg')"></div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
-                    </swiper-slide>
+
                     <div class="swiper-pagination" slot="pagination">
                         <div class="swiper-button-next gallery-thumbs-next"></div>
                         <div class="swiper-button-prev gallery-thumbs-prev"></div>
@@ -52,7 +38,7 @@
 
                 <div class="details_wrap-info_item">
                     <div class="details_wrap-info_item-desc">
-                        <p>{{ product.params.cvet }} тонер-картридж TC-H85A для принтеров и МФУ:</p>
+                        <p>{{ product.params.cvet }} тонер-картридж {{ product.artikul }} для принтеров и МФУ:</p>
                     </div>
                 </div>
 
@@ -149,7 +135,7 @@
 
                 <div class="details_wrap-info_item">
                     <div class="details_wrap-info_item-field">
-                        <span>ОЕМ-номер: CE285A.</span>
+                        <span>ОЕМ-номер:&nbsp;{{ this.oem }}.</span>
                     </div>
                 </div>
 
@@ -162,7 +148,7 @@
                         </div>
                         <div class="details_wrap-info_item-price_item">
                         <span
-                            class="details_wrap-info_item-price_item-price">{{ product.price }}</span>
+                            class="details_wrap-info_item-price_item-price">{{ this.price }}</span>
                             <img class="details_wrap-info_item-price_item-rub" src="/images/menu/rub.svg" alt="rub"/>
                         </div>
                     </div>
@@ -174,7 +160,7 @@
                         </div>
                         <div class="details_wrap-info_item-price_item">
                             <span class="details_wrap-info_item-price_item-price">
-                                {{ product.price }}
+                                {{ this.price }}
                                 <img class="details_wrap-info_item-price_item-rubMini" src="/images/menu/rub.svg"
                                      alt="rub"/>
                             </span>
@@ -187,12 +173,10 @@
                         <div class="cart_wrap-item_inner-table_row-col col_amount">
                             <span>Количество (шт)</span>
                         </div>
-                        <AmountBtn text="" :id="product.id"/>
+                        <AmountBtn :id="product.id"/>
                     </div>
                     <div class="details_wrap-info_item-right">
-                        <a href="#" class="" data-url="">
-                            <TextBtn text="в корзину" className="magic_btn"/>
-                        </a>
+                        <BuyBtn text="в корзину" className="yellow_btn animated_btn" :id="product.id" />
                     </div>
                 </div>
 
@@ -203,14 +187,14 @@
 </template>
 
 <script>
-    import TextBtn from '@/Shared/Btns/TextBtn'
+    import BuyBtn from '@/Shared/Btns/BuyBtn'
     import AmountBtn from '@/Shared/Btns/AmountBtn'
     import {Swiper, SwiperSlide, directive} from 'vue-awesome-swiper'
 
     export default {
         name: "ProductDetails",
         components: {
-            TextBtn,
+            BuyBtn,
             AmountBtn,
             Swiper,
             SwiperSlide
@@ -232,21 +216,36 @@
                 touchRatio: 0.2,
                 slideToClickedSlide: true,
                 loop: true,
+                loopedSlides: 4,
                 navigation: {
                     nextEl: '.gallery-thumbs-next',
                     prevEl: '.gallery-thumbs-prev',
-                },
-                loopedSlides: 4
+                }
             }
         }),
+        methods: {
+            createSwiperImages(photos) {
+                let big = photos.big;
+                let small = photos.small;
+
+                this.big = '/' + big;
+                this.small = '/' + small;
+            }
+        },
         created() {
             let old = this.$page.product;
             let newProduct = old;
-            newProduct.params = JSON.parse(old.params);
+                newProduct.params = JSON.parse(old.params);
 
             this.product = newProduct;
+            this.price = Math.ceil(newProduct.price);
 
-            console.warn(this.$page)
+            //XXX
+            this.oem = Object.values(JSON.parse(newProduct.oem)[1])[0];
+
+            let photosJson = JSON.parse(newProduct.photo);
+
+            this.createSwiperImages(photosJson);
         },
         computed: {
             swiper() {

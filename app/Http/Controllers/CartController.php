@@ -34,22 +34,8 @@ class CartController extends Controller
 
         $newphrase = str_replace(',', '.', $cartTotal);
 
-        $newCartItems = array();
-
-        foreach ($cartContent as $k => $cnt) {
-            $photo = $cnt->model->findProductImage();
-            $name = $cnt->model->artikul;
-
-            $cnt->photo = $photo;
-            $cnt->name = $name;
-
-            $cartContent[$k] = $cnt;
-
-            array_push($newCartItems, $cartContent[$k]);
-        }
-
         return response()->json([
-            'content' => $newCartItems,
+            'content' => $cartContent,
             'qnt' => $qnt,
             'total' => floatval($newphrase)
         ]);

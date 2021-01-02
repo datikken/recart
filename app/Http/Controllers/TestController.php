@@ -78,7 +78,7 @@ class TestController extends Controller
 
 //        dump($visits);
 
-        $prdcts = Product::all();
+        $prdcts = Product::where('id', '5035')->get();
 
         return response()->json($prdcts);
     }
