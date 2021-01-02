@@ -26,7 +26,11 @@
         },
         mounted() {
             let all = this.$props.links;
-            let name = this.$page.product.name_ecom
+            let product = this.$page.product;
+            let name;
+
+            name = product ? product.name_ecom : ''
+
             let that = this;
 
             // console.warn(this.$page.product)
