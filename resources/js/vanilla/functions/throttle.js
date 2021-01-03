@@ -1,19 +1,14 @@
-function throttle(callback, limit, ctx = null, last = false) {
-    let wait = false;
-    return function () {
-        if (!wait) {
-            if (!last) {
-                callback.apply(ctx, arguments);
-            }
-            wait = true;
-            setTimeout(function () {
-                wait = false;
-                if (last) {
-                    callback.apply(ctx, arguments);
-                }
-            }, limit);
-        }
-    }
+function throttle (type, callback, obj) {
+    obj = obj || window;
+    let running = false;
+    let func = function() {
+        if (running) { return; }
+        running = true;
+        requestAnimationFrame(function() {
+            callback();
+            running = false;
+        });
+    };
+    obj.addEventListener(type, func);
 }
-
-export {throttle}
+export {throttle};

@@ -58,6 +58,22 @@
         name: "ProductDetailsMenu",
         components: {
             Fragment
+        },
+        data: () => ({
+            productCape: null
+        }),
+        methods: {
+            getProductCape() {
+                let cape = this.$page.product.cape;
+
+                this.productCape = JSON.parse(cape);
+
+                console.warn(cape);
+            }
+        },
+        created() {
+
+            this.getProductCape();
         }
     }
 </script>

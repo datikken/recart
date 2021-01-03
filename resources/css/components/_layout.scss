@@ -4,11 +4,13 @@
     }
 }
 .columns {
+
   @include breakpoint($phone) {
     width: 100%;
     max-width: $layoutw;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 300px 1fr;
   }
   .left_column, .main_column {
     width: 100%;

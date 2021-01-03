@@ -1,3 +1,5 @@
+import CircularJSON from 'circular-json';
+
 let getAllProducts = function(state) {
     let that = this;
         fetch('/getAllProducts', {
@@ -15,8 +17,8 @@ let getAllProducts = function(state) {
             })
             .then(resp => {
                 resp.forEach((el) => {
-                    let params = JSON.parse(el.params);
-                    let cape = JSON.parse(el.cape);
+                    let params = CircularJSON.parse(el.params);
+                    let cape = CircularJSON.parse(el.cape);
                     let newCape = {};
 
                     cape && cape.map((obj) => {
@@ -57,7 +59,7 @@ let getFilteredProducts = function (state, payload) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             payload
         })
     })
@@ -84,7 +86,7 @@ let deleteProductFromCart = function (state, {id}) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             id
         })
     })
@@ -106,7 +108,7 @@ let updateProductInCart = function (state, {rowId, amount}) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             rowId, amount
         })
     })
@@ -129,7 +131,7 @@ let addProductToCart = function (state, {id, amount}) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             id, amount
         })
     })
@@ -161,7 +163,7 @@ let getProductById = function (state, id) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             id
         })
     })
@@ -184,7 +186,7 @@ let filterProductsByBrand = function (state, query) {
     let newProducts = [];
 
     state.products.forEach((prdt) => {
-        let cape = JSON.stringify(Object.values(prdt.cape));
+        let cape = CircularJSON.stringify(Object.values(prdt.cape));
 
         if (cape.indexOf(query.brand) >= 0) {
             newProducts.push(prdt)
@@ -197,7 +199,7 @@ let filterProductsByBrand = function (state, query) {
 }
 
 let filterProductsByPrinterType = function (state, query) {
-    state.filteredProducts = state.products;
+    // state.filteredProducts = state.products;
     let newProducts = [];
 
     state.filteredProducts.forEach((prdt) => {
@@ -215,7 +217,7 @@ let filterProductsByModel = function (state, query) {
     let newProducts = [];
 
     state.filteredProducts.forEach((prdt) => {
-        let cape = JSON.stringify(Object.values(prdt.cape));
+        let cape = CircularJSON.stringify(Object.values(prdt.cape));
         if (cape.indexOf(query.model) >= 0) {
             newProducts.push(prdt)
         }
@@ -308,7 +310,7 @@ let setProductViewed = function (state, {pid}) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
+        body: CircularJSON.stringify({
             id: pid
         })
     })

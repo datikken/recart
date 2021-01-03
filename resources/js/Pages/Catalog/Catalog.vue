@@ -3,13 +3,13 @@
         <Breadcrumbs :links="['index', 'catalog']"/>
 
         <div class="catalog">
-            <div class="columns catalog_columns">
+            <div class="columns catalog_columns" data-sticky-container>
 
-                <div class="mobile-hide" data-sticky-block>
+                <div class="mobile-hide">
                     <LeftColumn />
                 </div>
 
-                <div class="right_column" data-sticky-wrap>
+                <div class="right_column">
 
                     <div class="desktop-hide">
                         <MobileFilters />
@@ -106,7 +106,6 @@
     import Modal from '@/Shared/Modal/Modal'
     import TextBtn from '@/Shared/Btns/TextBtn'
     import VueAdsPagination, {VueAdsPageButton} from 'vue-ads-pagination'
-    import StickyBlock from '@/vanilla/classes/StickyBlock'
 
     export default {
         name: "Checkout",
@@ -136,8 +135,7 @@
             VueAdsPagination,
             VueAdsPageButton,
             TextBtn,
-            Modal,
-            StickyBlock
+            Modal
         },
         computed: {
             ...mapGetters([
@@ -156,7 +154,8 @@
             ...mapActions([
                 'GET_ALL_PRODUCTS',
                 'CATALOG_LOAD_MORE',
-                'SEND_GOOGLE_ANALYTICS'
+                'SEND_GOOGLE_ANALYTICS',
+                'CREATE_STICKY_COLUMN'
             ]),
             pageChange(page) {
                 this.page = page;
@@ -171,16 +170,7 @@
         mounted() {
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
 
-
-            window.onload = function() {
-                let block = document.querySelector('[data-sticky-block]')
-                let sticky = new StickyBlock(block);
-
-                console.warn(sticky, 'catalog mounted')
-                console.warn(block, 'catalog mounted')
-            }
-
-
+            this.CREATE_STICKY_COLUMN();
         }
     }
 </script>

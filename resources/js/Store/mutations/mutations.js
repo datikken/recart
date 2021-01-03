@@ -1,4 +1,6 @@
 import _ from "lodash";
+import Sticky from '@/vanilla/classes/StickyBlock';
+import CircularJSON from 'circular-json';
 
 import {
     showNotification,
@@ -54,7 +56,10 @@ let mutations = {
     getAllProducts,
     //analytics
     sendGoogleAnalytics,
-
+    createStickyColumn(state) {
+        state.sticky = null;
+        state.sticky = new Sticky('.left_column');
+    },
     setOfertaPolicyState(state, val) {
         state.ofertaPolicy = val;
     },

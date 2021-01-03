@@ -1,4 +1,7 @@
 let actions = {
+    CREATE_STICKY_COLUMN(context) {
+        context.commit('createStickyColumn');
+    },
     UPDATE_USER_PHOTO(context, formData) {
         context.commit('updateUserPhoto', formData);
     },
@@ -130,6 +133,8 @@ let actions = {
     },
     CHECK_CART_STATE(context) {
         context.commit('checkCartState');
+
+        console.warn('checkcart state')
     },
     CHANGE_PROGRESS_STEP(context, text) {
         context.commit('changeProgressStep', text);
