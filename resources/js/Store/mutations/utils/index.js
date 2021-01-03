@@ -29,6 +29,8 @@ let updateStickyRect = function(state) {
 
 let createStickyColumn = function(state) {
     state.sticky = new Sticky('.left_column');
+
+    console.log('sticky creted')
 }
 
 export {
