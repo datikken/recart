@@ -1,6 +1,6 @@
 <template>
 
-    <div class="left_column">
+    <div class="left_column" data-sticky data-margin-top="80">
         <Filters />
         <Viewed />
     </div>

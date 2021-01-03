@@ -4,7 +4,6 @@ import state from './state/state';
 import getters from './getters/getters';
 import actions from './actions/actions';
 import mutations from './mutations/mutations'
-import createPersistedState from "vuex-persistedstate";
 
 window.token = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -14,8 +13,7 @@ const store = new Vuex.Store({
     state,
     getters,
     actions,
-    mutations,
-    plugins: [createPersistedState()]
+    mutations
 })
 
 export default store

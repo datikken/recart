@@ -44,8 +44,6 @@
             let locState = this.informationPosts;
 
            this.posts = this.informationPosts;
-
-           console.warn(locState,'locSate')
         }
     }
 </script>

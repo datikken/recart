@@ -47,7 +47,8 @@ let state = {
     pickUpPoint: false,
 
     //misc
-    ofertaPolicy: null
+    ofertaPolicy: null,
+    sticky: false
 }
 
 export default state;

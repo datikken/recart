@@ -2,7 +2,9 @@ import _ from "lodash";
 
 import {
     showNotification,
-    blockFormInputs
+    blockFormInputs,
+    createStickyColumn,
+    updateStickyRect
 } from './utils/index'
 import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
@@ -33,7 +35,8 @@ let mutations = {
     showNotification,
     blockFormInputs,
     changeProgressStep,
-
+    createStickyColumn,
+    updateStickyRect,
     //cart
     addProductToCart,
     updateProductInCart,

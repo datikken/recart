@@ -1,6 +1,7 @@
 require('./bootstrap');
 require('moment');
 require('./ExternalLibs/owl.carousel.min');
+require('@/vanilla/inertia_callbacks/inertia_callback');
 
 import vueDebounce from 'vue-debounce'
 import Vue from 'vue';
@@ -13,7 +14,6 @@ import {InertiaApp} from '@inertiajs/inertia-vue';
 import {InertiaForm} from 'laravel-jetstream';
 import store from './Store/store';
 import moment from 'moment';
-
 const app = document.getElementById('app');
 
 new Vue({

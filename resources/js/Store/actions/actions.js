@@ -1,4 +1,10 @@
 let actions = {
+    UPDATE_STICKY_RECT(context) {
+        context.commit('updateStickyRect');
+    },
+    CREATE_STICKY_COLUMN(context) {
+        context.commit('createStickyColumn')
+    },
     UPDATE_USER_PHOTO(context, formData) {
         context.commit('updateUserPhoto', formData);
     },
@@ -42,7 +48,7 @@ let actions = {
         context.commit('showDeliveryTypeHelper');
     },
     SEND_GOOGLE_ANALYTICS(context, obj) {
-        context.commit('sendGoogleAnalytics', obj);
+        // context.commit('sendGoogleAnalytics', obj);
     },
     CATALOG_LOAD_MORE(context) {
         context.commit('catalogLoadMore');

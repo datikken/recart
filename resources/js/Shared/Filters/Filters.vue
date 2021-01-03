@@ -19,6 +19,7 @@
 <script>
     import FiltersItem from './FiltersItem'
     import Dropdown from './Dropdown'
+    import {mapActions} from 'vuex'
 
     export default {
         name: "Filters",

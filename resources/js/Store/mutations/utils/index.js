@@ -1,4 +1,5 @@
 import Notification from '@/vanilla/classes/Notification';
+import Sticky from '@/vanilla/classes/Sticky'
 
 let showNotification = function (state, {msg, type}) {
     let notParams = {
@@ -22,7 +23,17 @@ let blockFormInputs = function (state, el) {
     })
 }
 
+let updateStickyRect = function(state) {
+    state.sticky.update();
+}
+
+let createStickyColumn = function(state) {
+    state.sticky = new Sticky('.left_column');
+}
+
 export {
     showNotification,
-    blockFormInputs
+    blockFormInputs,
+    createStickyColumn,
+    updateStickyRect
 };

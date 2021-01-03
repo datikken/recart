@@ -43,7 +43,9 @@
         methods: {
             ...mapActions([
                 'FILTER_PRODUCTS',
-                'SEND_GOOGLE_ANALYTICS'
+                'CREATE_STICKY_COLUMN',
+                'SEND_GOOGLE_ANALYTICS',
+                'UPDATE_STICKY_RECT'
             ]),
             collectAplliedFilters() {
                 let filterBlocks = document.querySelectorAll('.filters_wrapper-item');
@@ -126,7 +128,7 @@
                 };
 
                 this.SEND_GOOGLE_ANALYTICS(gObj);
-
+                this.UPDATE_STICKY_RECT();
             }
         }
     }
