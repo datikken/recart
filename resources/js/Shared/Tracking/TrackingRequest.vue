@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index','tracking']"/>
 
         <div class="treq">
             <div class="treq_wrap">

@@ -116,6 +116,15 @@
                         }
                     )
                 }
+
+                if(link === 'tracking') {
+                    that.allLinks.push(
+                        {
+                            'link': 'tracking',
+                            'name': 'Отслеживание заказа'
+                        }
+                    )
+                }
             })
         }
     }
