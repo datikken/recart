@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Helpers\Converter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+use App\Http\Controllers\CartController;
 
 class TestController extends Controller
 {
-    public function __construct(Converter $converter)
+    public function __construct(CartController $cart)
     {
-        $this->converter = $converter;
+        $this->cart = $cart;
     }
 
     public function parse()
@@ -74,13 +74,14 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
+
 //        $visits = Redis::incr('visits');
 
 //        dump($visits);
 
-        $prdcts = Product::where('id', '5035')->get();
+//        $prdcts = Product::where('id', '5035')->get();
 
-        return response()->json($prdcts);
+        return $this->cart->show();
     }
 
     public function all()

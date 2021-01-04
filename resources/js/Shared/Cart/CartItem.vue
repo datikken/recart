@@ -99,6 +99,8 @@
             let imgjsn = JSON.parse(this.$props.data.photo);
             this.image = imgjsn ? imgjsn.small : '';
             this.total = this.$props.data.price * this.$props.data.qty;
+
+            console.warn(this.$props.data)
         }
     }
 </script>

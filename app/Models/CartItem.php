@@ -44,6 +44,12 @@ class CartItem implements Arrayable, Jsonable
     public $price;
 
     /**
+     * The photo JSON string of the cart item.
+     *
+     * @var string
+     */
+    public $photo;
+    /**
      * The options for this cart item.
      *
      * @var array
@@ -72,7 +78,7 @@ class CartItem implements Arrayable, Jsonable
      * @param float      $price
      * @param array      $options
      */
-    public function __construct($id, $name, $price, array $options = [])
+    public function __construct($id, $name, $price, $photo, array $options = [])
     {
         if(empty($id)) {
             throw new \InvalidArgumentException('Please supply a valid identifier.');
@@ -87,6 +93,7 @@ class CartItem implements Arrayable, Jsonable
         $this->id       = $id;
         $this->name     = $name;
         $this->price    = floatval($price);
+        $this->photo    = $photo;
         $this->options  = new CartItemOptions($options);
         $this->rowId = $this->generateRowId($id, $options);
     }
@@ -315,9 +322,9 @@ class CartItem implements Arrayable, Jsonable
      * @param array      $options
      * @return \App\CartItem
      */
-    public static function fromAttributes($id, $name, $price, array $options = [])
+    public static function fromAttributes($id, $name, $price, $photo, array $options = [])
     {
-        return new self($id, $name, $price, $options);
+        return new self($id, $name, $price, $photo, $options);
     }
 
     /**
@@ -347,6 +354,7 @@ class CartItem implements Arrayable, Jsonable
             'name'     => $this->name,
             'qty'      => $this->qty,
             'price'    => $this->price,
+            'photo'    => $this->photo,
             'options'  => $this->options->toArray(),
             'tax'      => $this->tax,
             'subtotal' => $this->subtotal

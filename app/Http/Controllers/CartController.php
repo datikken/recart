@@ -31,6 +31,7 @@ class CartController extends Controller
         $cartContent = Cart::content();
         $qnt = Cart::count();
         $cartTotal = Cart::total();
+        $concreteProducts = array();
 
         $newphrase = str_replace(',', '.', $cartTotal);
 
@@ -68,10 +69,11 @@ class CartController extends Controller
 
         $prd = Product::find($id);
 
-        $name = $prd->name_buh;
+        $name = $prd->artikul;
         $price = intval($prd->price);
+        $photo = $prd->photo;
 
-        Cart::add($id, $name, $amount, $price);
+        Cart::add($id, $name, $amount, $price, $photo)->associate('Product');
 
         return response()->json(['status' => 200, 'message' => 'success']);
     }
