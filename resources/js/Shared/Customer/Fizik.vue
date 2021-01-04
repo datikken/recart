@@ -181,16 +181,17 @@
             checkFormStepsBeforeProceed() {
                 let obj = this.collectInputData();
 
-                // try {
-                    // window.app.validator.formValidate([], $(this.$el));
+                try {
+                    window.app.validator.formValidate([], $(this.$el));
                     this.validateNumberLength(obj.tel);
                     this.validateAgreement();
-                // } catch (err) {
-                //     this.setFormError();
-                // }
+                } catch (err) {
+                    this.setFormError();
+                }
 
                 if(this.validForm) {
                     this.SET_CUSTOMER_FIO(obj);
+                    this.$inertia.visit('checkouDelivery');
                     // router.push('/vueDeliveryForm');
                     this.SCROLL_TO_TOP();
                 }

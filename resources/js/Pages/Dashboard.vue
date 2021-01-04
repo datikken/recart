@@ -57,7 +57,6 @@
     import DashboardForms from '@/Shared/Dashboard/DashboardForms'
     import {Fragment} from 'vue-fragment'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
-    // import TextBtn from '@/Shared/Btns/TextBtn'
 
     export default {
         name: "Dashboard",
@@ -67,10 +66,25 @@
             Fragment,
             Breadcrumbs
         },
+        data: () => ({
+            redirectedFromCheckout: false
+        }),
         methods: {
+            checkIfRedirectedFromCheckout() {
+                let state = localStorage.getItem('redirectedFromCheckout');
+
+                if(state) {
+                    this.redirectedFromCheckout = true;
+                    localStorage.removeItem('redirectedFromCheckout');
+                    this.$inertia.visit('checkout');
+                }
+            },
             logout() {
                 this.$inertia.post('logout');
             }
+        },
+        mounted() {
+            this.checkIfRedirectedFromCheckout();
         }
     }
 </script>

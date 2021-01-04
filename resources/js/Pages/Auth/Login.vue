@@ -28,17 +28,6 @@
             RegisterForm,
             LoginForm
         },
-        methods: {
-            checkIfRedirectedFromCheckout() {
-                let state = localStorage.getItem('redirectedFromCheckout');
-
-                if(state) {
-                    alert('bird');
-                }
-            }
-        },
-        mounted() {
-            this.checkIfRedirectedFromCheckout();
-        }
+        methods: {}
     }
 </script>
