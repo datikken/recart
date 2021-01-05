@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Address extends Resource
 {
@@ -29,7 +28,6 @@ class Address extends Resource
      */
     public static $search = [
         'id',
-        'user_id',
         'city',
         'street',
         'home',
@@ -40,6 +38,14 @@ class Address extends Resource
         'floor',
         'flat',
         'comment'
+    ];
+
+    public static $searchRelations = [
+        'user' => ['name', 'email'],
+    ];
+
+    public static $globalSearchRelations = [
+        'user' => ['name', 'email'],
     ];
 
     /**

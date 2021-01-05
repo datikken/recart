@@ -3,9 +3,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Naif\WorldClock\WorldClock;
+use NovaCards\SystemInformationCard\SystemInformationCard;
+use Techouse\TotalRecords\TotalRecords;
+use App\Models\Order;
+use App\Models\User;
+use App\Models\Product;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -56,7 +61,18 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+//            new Help,
+            new TotalRecords(Order::class, __('Всего заказов'), now()->addHour()), // cached for 1 hour
+            new TotalRecords(User::class, __('Всего пользователей'), now()->addHour()), // cached for 1 hour
+            new TotalRecords(Product::class, __('Всего продуктов'), now()->addHour()), // cached for 1 hour
+//            new SystemInformationCard(),
+            (new WorldClock())
+                ->timezones([
+                    'Europe/Moscow',
+                    'Asia/Tokyo',
+                    'Asia/Dubai'
+                ])
+                ->timeFormat('h:i') //Optional time format default is: 'h:i:s'
         ];
     }
 

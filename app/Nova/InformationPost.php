@@ -31,6 +31,12 @@ class InformationPost extends Resource
      */
     public static $search = [
         'id',
+        'name',
+        'heading',
+        'description',
+        'user_face',
+        'created_at',
+        'updated_at'
     ];
 
     /**

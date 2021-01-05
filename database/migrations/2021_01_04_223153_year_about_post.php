@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OrderUser extends Migration
+class YearAboutPost extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class OrderUser extends Migration
      */
     public function up()
     {
-        Schema::create('order_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('order_id');
+        Schema::create('year_about_post', function (Blueprint $table) {
+            $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('about_post_id');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('year_id')->references('id')->on('years')->onDelete('cascade');
+            $table->foreign('about_post_id')->references('id')->on('about_posts')->onDelete('cascade');
         });
+
+
     }
 
     /**
@@ -31,6 +33,6 @@ class OrderUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_user');
+        //
     }
 }

@@ -26,6 +26,5 @@ class UsersTableAddTelLastName extends Migration
      */
     public function down()
     {
-        //
     }
 }

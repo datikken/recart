@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 
 use App\Listeners\UserEventSubscriber;
 use App\Listeners\OrderEventSubscriber;
+use App\Listeners\FileUploadedSubscriber;
 
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

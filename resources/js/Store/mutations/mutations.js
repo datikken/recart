@@ -85,27 +85,27 @@ let mutations = {
         state.prevDelAdrAccepted = true;
     },
     getLastDeliveryAdress(state) {
-        if (!state.lastDeliveryAdress) {
-            $.ajax({
-                method: "GET",
-                url: '/getLastDeliveryAdress',
-                success: function (data) {
-                    if (data != '') {
-                        let orderInfoAddr = JSON.parse(data.order_info);
-
-                        if (orderInfoAddr) {
-                            state.lastDeliveryAdress = orderInfoAddr;
-                        }
-
-                    } else {
-                        state.lastDeliveryAdress = null;
-                    }
-                },
-                error: function (error) {
-                    console.warn(error);
-                }
-            });
-        }
+        // if (!state.lastDeliveryAdress) {
+        //     $.ajax({
+        //         method: "GET",
+        //         url: '/getLastDeliveryAdress',
+        //         success: function (data) {
+        //             if (data != '') {
+        //                 let orderInfoAddr = JSON.parse(data.order_info);
+        //
+        //                 if (orderInfoAddr) {
+        //                     state.lastDeliveryAdress = orderInfoAddr;
+        //                 }
+        //
+        //             } else {
+        //                 state.lastDeliveryAdress = null;
+        //             }
+        //         },
+        //         error: function (error) {
+        //             console.warn(error);
+        //         }
+        //     });
+        // }
     },
     checkDeliveryAdress(state, {city, street, house, body, building}) {
         let that = this;
@@ -180,18 +180,18 @@ let mutations = {
     },
     applyDeliveryAdress(state, data) {
         state.deliveryAdress = null;
-
-        $.ajax({
-            method: "POST",
-            url: '/setAdress',
-            data,
-            success: function (data) {
-                state.deliveryAdress = data;
-            },
-            error: function (error) {
-                console.warn(error);
-            }
-        });
+        //
+        // $.ajax({
+        //     method: "POST",
+        //     url: '/setAdress',
+        //     data,
+        //     success: function (data) {
+        //         state.deliveryAdress = data;
+        //     },
+        //     error: function (error) {
+        //         console.warn(error);
+        //     }
+        // });
     },
     checkDeliveryPickups(state, {name, adr}) {
         state.stockDeliveryPickup = null;
@@ -332,38 +332,38 @@ let mutations = {
     ,
     getOrdersInfo(state) {
         if (state.orders) {
-            $.ajax({
-                method: "GET",
-                url: '/getOrdersInfo',
-                success: function (data) {
-                    if (typeof data === 'object') {
-                        state.orders = data;
-                    } else {
-                        state.orders = false;
-                    }
-                },
-                error: function (error) {
-                    console.warn(error);
-                }
-            });
+            // $.ajax({
+            //     method: "GET",
+            //     url: '/getOrdersInfo',
+            //     success: function (data) {
+            //         if (typeof data === 'object') {
+            //             state.orders = data;
+            //         } else {
+            //             state.orders = false;
+            //         }
+            //     },
+            //     error: function (error) {
+            //         console.warn(error);
+            //     }
+            // });
         }
     },
     getSingleOrderInfo(state, id) {
-        $.ajax({
-            method: "GET",
-            url: `/getSingleOrderInfo/${id}`,
-            success: function (data) {
-                state.orders.last_order = data.order;
-                state.orders.last_order.id = id;
-                state.orders.last_order.total = data.total;
-
-                //XXX
-                document.querySelector('.order_totalPrice').innerText = data.total;
-            },
-            error: function (error) {
-                console.warn(error);
-            }
-        });
+        // $.ajax({
+        //     method: "GET",
+        //     url: `/getSingleOrderInfo/${id}`,
+        //     success: function (data) {
+        //         state.orders.last_order = data.order;
+        //         state.orders.last_order.id = id;
+        //         state.orders.last_order.total = data.total;
+        //
+        //         //XXX
+        //         document.querySelector('.order_totalPrice').innerText = data.total;
+        //     },
+        //     error: function (error) {
+        //         console.warn(error);
+        //     }
+        // });
 
         return state.orders.last_order
     }
@@ -495,35 +495,35 @@ let mutations = {
             state.cardPayment = false
             process(nal)
         }
-
-        $.ajax({
-            method: "GET",
-            url: '/setPaymentProvider',
-            data: {
-                provider
-            },
-            success: function (data) {
-                // console.warn(data);
-            },
-            error: function (error) {
-                console.warn(error);
-            }
-        });
+        //
+        // $.ajax({
+        //     method: "GET",
+        //     url: '/setPaymentProvider',
+        //     data: {
+        //         provider
+        //     },
+        //     success: function (data) {
+        //         // console.warn(data);
+        //     },
+        //     error: function (error) {
+        //         console.warn(error);
+        //     }
+        // });
 
         return state.paymentProvider;
     }
     ,
     createOrder(state) {
-        $.ajax({
-            method: "GET",
-            url: '/createOrder',
-            success: function (data) {
-                state.order = data;
-            },
-            error: function (error) {
-                console.warn(error);
-            }
-        });
+        // $.ajax({
+        //     method: "GET",
+        //     url: '/createOrder',
+        //     success: function (data) {
+        //         state.order = data;
+        //     },
+        //     error: function (error) {
+        //         console.warn(error);
+        //     }
+        // });
     }
     ,
     saveUriksData(state, obj) {
@@ -621,33 +621,33 @@ let mutations = {
     ,
     setUriksInfo(state, obj) {
         if (!state.usersInfo) {
-            $.ajax({
-                method: "get",
-                url: '/setUrikInfo',
-                data: obj,
-                success: function (data) {
-                    state.usersInfo = data
-                },
-                error: function (error) {
-                    console.warn(error);
-                }
-            });
+            // $.ajax({
+            //     method: "get",
+            //     url: '/setUrikInfo',
+            //     data: obj,
+            //     success: function (data) {
+            //         state.usersInfo = data
+            //     },
+            //     error: function (error) {
+            //         console.warn(error);
+            //     }
+            // });
         }
     },
     setCustomerFio(state, {firstname, lastname, tel, save}) {
-        $.ajax({
-            method: "get",
-            url: '/setCustomerFio',
-            data: {
-                firstname, lastname, tel, save
-            },
-            success: function (data) {
-                state.usersInfo = data
-            },
-            error: function (error) {
-                console.warn(error);
-            }
-        });
+        // $.ajax({
+        //     method: "get",
+        //     url: '/setCustomerFio',
+        //     data: {
+        //         firstname, lastname, tel, save
+        //     },
+        //     success: function (data) {
+        //         state.usersInfo = data
+        //     },
+        //     error: function (error) {
+        //         console.warn(error);
+        //     }
+        // });
     },
     setCloseListener(state, payload) {
         state.closeListener = payload;

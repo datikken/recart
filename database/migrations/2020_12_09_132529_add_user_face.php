@@ -16,6 +16,7 @@ class AddUserFace extends Migration
         //
         Schema::table('users', function (Blueprint $table) {
             $table->text('face')->nullable();
+            $table->text('sort_order')->nullable();
         });
     }
 

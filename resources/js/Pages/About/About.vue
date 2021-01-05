@@ -3,7 +3,9 @@
 </template>
 
 <script>
+    import MainLayout from '@/Layouts/MainLayout'
     export default {
-        name: "About"
+        name: "About",
+        layout: MainLayout
     }
 </script>

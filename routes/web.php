@@ -30,7 +30,10 @@ Route::group(['middleware' => 'ajax'], function () {
 /*
  * API
  */
-
+Route::middleware('optimizeImages')->group(function () {
+    // all images will be optimized automatically
+    Route::post('upload-images', 'UploadController@index');
+});
 /*
  * Cart
  */

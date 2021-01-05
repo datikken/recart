@@ -30,8 +30,7 @@ class AddressTable extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('user_id')->nullable();
+            $table->id();
             $table->string('city')->nullable();
             $table->string('street')->nullable();
             $table->string('home')->nullable();
@@ -54,6 +53,6 @@ class AddressTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('addresses');
     }
 }

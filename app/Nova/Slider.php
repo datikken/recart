@@ -33,7 +33,7 @@ class Slider extends Resource
         'id',
         'title',
         'description',
-        'image',
+        'path',
         'link'
     ];
 

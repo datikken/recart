@@ -34,6 +34,15 @@ class Post extends Resource
      */
     public static $search = [
         'id',
+        'category',
+        'heading',
+        'description',
+        'user_id',
+        'content',
+        'created_at',
+        'updated_at',
+        'shares',
+        'comments'
     ];
 
     /**

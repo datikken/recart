@@ -29,6 +29,15 @@ class Comment extends Resource
      */
     public static $search = [
         'id',
+        'user_id',
+        'post_id',
+        'content',
+        'parent_id',
+        'likes',
+        'dislikes',
+        'shares',
+        'created_at',
+        'updated_at'
     ];
 
     /**

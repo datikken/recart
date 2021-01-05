@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Ofcold\NovaSortable\SortableTrait;
 
 class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
 {
@@ -21,6 +22,8 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use SortableTrait;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -66,5 +69,10 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    public function addresses()
+    {
+        return $this->belongsToMany(Address::class);
     }
 }

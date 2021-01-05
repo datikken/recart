@@ -10,7 +10,6 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'city',
         'street',
         'home',
@@ -24,4 +23,10 @@ class Address extends Model
         'created_at',
         'updated_at'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

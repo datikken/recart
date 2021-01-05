@@ -36,13 +36,10 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->renderable(function (Throwable $e) {
-
             //404
             if ($e instanceof NotFoundHttpException) {
                 return Inertia::render('Errors/404');
             }
-
-            return response('exception');
         });
     }
 }
