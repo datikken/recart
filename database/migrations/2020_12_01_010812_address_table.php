@@ -3,23 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-//
-//
-//'user_id',
-//        'city',
-//        'street',
-//        'home',
-//        'wing',
-//        'building',
-//        'porch',
-//        'intercom',
-//        'floor',
-//        'flat',
-//        'comment',
-//        'created_at',
-//        'updated_at'
-//
-//
+
 class AddressTable extends Migration
 {
     /**
@@ -54,6 +38,6 @@ class AddressTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('addresses');
     }
 }

@@ -81,7 +81,6 @@ class Product extends Resource
             DateTime::make('updated_at')->hideFromIndex()
         ];
     }
-
     /**
      * Get the cards available for the request.
      *

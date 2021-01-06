@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\NewOrdersPerDay;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use App\Nova\Metrics\NewOrders;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -56,7 +57,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+//            new Help,
+            new NewOrders,
+            new NewOrdersPerDay
         ];
     }
 
@@ -78,7 +81,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new \Bolechen\NovaActivitylog\NovaActivitylog(),
             new \Infinety\Filemanager\FilemanagerTool(),
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
             (new \vmitchell85\NovaLinks\Links())

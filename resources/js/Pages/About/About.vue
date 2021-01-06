@@ -1,9 +1,11 @@
 <template>
-    <h1>Test</h1>
 </template>
 
 <script>
-    export default {
-        name: "About"
-    }
+import MainLayout from '@/Layouts/MainLayout'
+
+export default {
+    name: "About",
+    layout: MainLayout,
+}
 </script>

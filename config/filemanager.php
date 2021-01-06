@@ -113,5 +113,5 @@ return [
     | of the keys used in filters in lowercase. If you have a key called Documents,
     | use 'documents' as your default filter.
      */
-    'jobs'      => [],
+    'jobs'      => []
 ];

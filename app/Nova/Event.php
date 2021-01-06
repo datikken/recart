@@ -3,26 +3,28 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use GeneaLabs\NovaFileUploadField\FileUpload;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Trix;
 
-class Slider extends Resource
+class Event extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Slider::class;
+    public static $model = \App\Models\Event::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'event';
 
     /**
      * The columns that should be searched.
@@ -31,10 +33,8 @@ class Slider extends Resource
      */
     public static $search = [
         'id',
-        'title',
-        'description',
-        'path',
-        'link'
+        'heading',
+        'description'
     ];
 
     /**
@@ -46,22 +46,11 @@ class Slider extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()
-                ->sortable(),
-            Text::make("Title", "title")
-                ->sortable()
-                ->rules("required", "max:255"),
-            Textarea::make("Description"),
-
-            FileUpload::make("Image", "path")
-                ->thumbnail(function ($image) {
-                    return $image
-                        ? asset('storage/' . $image)
-                        : '';
-                })
-                ->disk("local")
-                ->path("slider_images")
-                ->prunable()
+            ID::make(__('ID'), 'id')->sortable(),
+            Text::make('heading'),
+            Trix::make('description'),
+            Image::make('icon'),
+            BelongsTo::make('Year', 'year', Year::class)
         ];
     }
 

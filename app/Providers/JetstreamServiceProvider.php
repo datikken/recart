@@ -58,7 +58,7 @@ class JetstreamServiceProvider extends ServiceProvider
             'create',
             'read',
             'update',
-            'delete',
+            'delete'
         ]);
     }
 }

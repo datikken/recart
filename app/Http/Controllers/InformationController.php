@@ -11,7 +11,7 @@ class InformationController extends Controller
 
     public function __construct()
     {
-        $posts = DB::table('information_posts')
+        $posts = DB::table('information')
             ->orderBy('name')
             ->orderBy('user_face')
             ->get();

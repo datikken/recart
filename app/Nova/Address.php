@@ -29,7 +29,6 @@ class Address extends Resource
      */
     public static $search = [
         'id',
-        'user_id',
         'city',
         'street',
         'home',

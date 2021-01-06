@@ -13,7 +13,7 @@ class CreateInfromationPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('information_posts', function (Blueprint $table) {
+        Schema::create('information', function (Blueprint $table) {
             $table->id();
             $table->text('icon_path');
             $table->text('name');
@@ -32,6 +32,6 @@ class CreateInfromationPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information_posts');
+        Schema::dropIfExists('information');
     }
 }
