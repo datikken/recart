@@ -47,8 +47,8 @@
     }
 </script>
 
-<style>
-    .uk-modal-body {
-        padding: 0;
-    }
-</style>
+<!--<style>-->
+<!--    .uk-modal-body {-->
+<!--        padding: 0;-->
+<!--    }-->
+<!--</style>-->

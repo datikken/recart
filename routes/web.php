@@ -19,6 +19,7 @@ use App\Http\Controllers\OrderController;
 use App\Actions\Fortify\Login;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\SubscriptionController;
 /*
  * Search
  */
@@ -31,6 +32,11 @@ Route::group(['middleware' => 'ajax'], function () {
  * API
  */
 
+/*
+ * Subscriptions
+ */
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
+    ->name('subscribe');
 /*
  * Cart
  */
@@ -47,6 +53,11 @@ Route::post('/cart.update', [CartController::class, 'update'])
  */
 Route::get('/getInformationPosts', [InformationController::class, 'get_all_posts'])
     ->name('getInformationPosts');
+/*
+ * About page
+ */
+Route::get('/getAllYears', [AboutController::class, 'getAllYears'])
+    ->name('getAllYears');
 
 /*
  * Users

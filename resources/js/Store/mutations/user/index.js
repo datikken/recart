@@ -1,5 +1,18 @@
-let updateUserPhoto = function(state, formData) {
+import {fetch_call} from "@/vanilla/functions/fetch_call";
+import store from '@/Store/store'
 
+let subscribeEmail = function (state, email) {
+    if(email === '') return;
+
+    let subscriber = fetch_call('/subscribe','POST', {email});
+        subscriber.then(man => {
+            state.subscriber = man;
+        })
+
+    return state.subscriber;
+}
+
+let updateUserPhoto = function(state, formData) {
     fetch(`/setProfilePhoto`, {
         method: "POST",
         headers: {
@@ -18,6 +31,6 @@ let updateUserPhoto = function(state, formData) {
         .then((data) => {
             console.warn(data)
         })
+    }
 
-
-export {updateUserPhoto}
+export {updateUserPhoto, subscribeEmail}

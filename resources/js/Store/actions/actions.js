@@ -1,4 +1,7 @@
 let actions = {
+    SUBSCRIBE_EMAIL(context, email) {
+        context.commit('subscribeEmail', email)
+    },
     UPDATE_STICKY_RECT(context) {
         context.commit('updateStickyRect');
     },
@@ -71,8 +74,8 @@ let actions = {
     SET_PRODUCT_VIEWED(context, id) {
         context.commit('setProductViewed', id);
     },
-    GET_TWO_YEARS_INFO_BY_SELECT(context, year) {
-        context.commit('getTwoYearsInfoBySelect', year);
+    GET_ALL_YEARS(context, year) {
+        context.commit('getAllYears', year);
     },
     GET_ABOUTS_YEARS(context) {
         context.commit('getAboutYears');

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Helpers\Converter;
+use App\Nova\Year;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 
 class TestController extends Controller
 {
-    public function __construct(CartController $cart)
+    public function __construct(AboutController $about)
     {
-        $this->cart = $cart;
+        $this->about = $about;
     }
 
     public function parse()
@@ -74,6 +75,7 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
+        $years = $this->about->getAllYears();
 
 //        $visits = Redis::incr('visits');
 
@@ -81,7 +83,7 @@ class TestController extends Controller
 
 //        $prdcts = Product::where('id', '5035')->get();
 
-        return $this->cart->show();
+        return response()->json($years);
     }
 
     public function all()

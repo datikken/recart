@@ -9,6 +9,7 @@ import {
 import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
 import {getAllInformationPosts} from './information/index'
+import {subscribeEmail,updateUserPhoto} from './user/index'
 import {
     getFilteredProducts,
     addProductToCart,
@@ -27,8 +28,9 @@ import {
     getAllProducts,
     setProductViewed
 } from './products/index'
-
+import {fetch_call} from '@/vanilla/functions/fetch_call'
 let mutations = {
+    subscribeEmail,
     //information
     getAllInformationPosts,
     //ui
@@ -297,25 +299,12 @@ let mutations = {
                 console.log(err);
             })
     },
-    getTwoYearsInfoBySelect(state, year) {
-        fetch('/getTwoYearsInfoBySelect', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': window.token
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-            body: JSON.stringify({
-                year
-            })
+    getAllYears(state, year) {
+        let years = fetch_call('/getAllYears', 'GET');
+
+        years.then((data) => {
+            state.years = data;
         })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                state.lastTwoYearsInfo = data;
-            });
     }
     ,
     getAboutYears(state) {

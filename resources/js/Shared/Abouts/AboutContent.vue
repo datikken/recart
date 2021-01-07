@@ -2,7 +2,7 @@
     <div class="aboutc">
 
         <div class="aboutc_wrap">
-            <AboutContentItem v-for="item in this.lastTwoYearsInfo" :data="item" :key="item.year.id" />
+<!--            <AboutContentItem v-for="item in this.lastTwoYearsInfo" :data="item" :key="item.year.id" />-->
         </div>
 
     </div>
@@ -18,13 +18,13 @@
             AboutContentItem
         },
         computed: {
-            ...mapGetters(['lastTwoYearsInfo'])
+            // ...mapGetters(['getAllYears'])
         },
         methods: {
-            ...mapActions(['GET_TWO_YEARS_INFO_BY_SELECT'])
+            ...mapActions(['GET_ALL_YEARS'])
         },
         created() {
-            this.GET_TWO_YEARS_INFO_BY_SELECT('2020');
+            this.GET_ALL_YEARS();
         }
     }
 </script>

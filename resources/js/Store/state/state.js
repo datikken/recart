@@ -7,7 +7,7 @@ let state = {
     paymentProvider: false,
     signatureHash: false,
     gridCatalog: false,
-    lastTwoYearsInfo: false,
+    allYears: false,
     informationPosts: false,
     informationLinks: false,
     productsLoaded: false,
@@ -34,6 +34,8 @@ let state = {
     order: {},
     usersFIO: '',
     catalogPerPage: 16,
+    //Subscriptions
+    subscriber: false,
 
     //Delivery
     selfDelivery: null,
