@@ -32,6 +32,7 @@ export default {
       this.SUBSCRIBE_EMAIL(this.email);
       this.SHOW_NOTIFICATION({msg: 'Успех', type: 'success'});
       this.email = ''
+      console.log('yay')
     }
   }
 }
