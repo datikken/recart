@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\InformationPost;
+use App\Models\Information;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InfromationPostFactory extends Factory
@@ -12,7 +12,7 @@ class InfromationPostFactory extends Factory
      *
      * @var string
      */
-    protected $model = InformationPost::class;
+    protected $model = Information::class;
 
     /**
      * Define the model's default state.

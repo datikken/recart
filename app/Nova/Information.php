@@ -8,14 +8,14 @@ use Laravel\Nova\Fields\Text;
 use GeneaLabs\NovaFileUploadField\FileUpload;
 use Laravel\Nova\Fields\Select;
 
-class InformationPost extends Resource
+class Information extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\InformationPost::class;
+    public static $model = \App\Models\Information::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
