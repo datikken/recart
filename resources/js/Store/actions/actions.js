@@ -74,8 +74,8 @@ let actions = {
     SET_PRODUCT_VIEWED(context, id) {
         context.commit('setProductViewed', id);
     },
-    GET_ALL_YEARS(context, year) {
-        context.commit('getAllYears', year);
+    GET_ALL_YEARS_AND_EVENTS(context, year) {
+        context.commit('getAllYearsAndEvents', year);
     },
     GET_ABOUTS_YEARS(context) {
         context.commit('getAboutYears');

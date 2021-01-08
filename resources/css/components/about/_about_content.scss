@@ -1,6 +1,19 @@
 .aboutc {
     padding: 0 30px;
     max-height: 400px;
+    position: relative;
+
+    &_wrap_item {
+        margin-bottom: 70px;
+    }
+
+    &_delimeter {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 104%;
+    }
 
     &_prgf {
         &:hover {
@@ -37,6 +50,7 @@
         margin: 0 auto;
         display: grid;
         grid-template-rows: 1fr 1fr;
+        height: 40px;
 
         @include breakpoint($medium) {
             grid-template-columns: 1fr 1fr;
@@ -75,10 +89,8 @@
         grid-gap: 25px;
         max-width: 465px;
         cursor: pointer;
-        margin-bottom: 20px;
 
         @include breakpoint($medium) {
-            margin-bottom: 30px;
             grid-template-columns: .01fr 1fr;
         }
     }

@@ -2,10 +2,9 @@
   position: relative;
   max-width: $layoutw;
   margin: 0 auto;
-  padding-bottom: 100px;
 
   &_wrap {
-    margin: 25px 0 35px 30px;
+    margin: 35px 0;
 
     @include breakpoint($medium) {
       margin: 25px 0 35px 0;

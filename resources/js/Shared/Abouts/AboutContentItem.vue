@@ -1,55 +1,48 @@
 <template>
-    <div>
-        <div class="aboutc_wrap_head" v-if="">
-            <div class="aboutc_year">
-                {{ data[0].year }}
-            </div>
-            <div class="aboutc_line"></div>
-        </div>
+  <div v-if="data.events" class="aboutc_wrap_item">
+    <div class="aboutc_wrap_head">
+      <div class="aboutc_year">
+        {{ data.year }}
+      </div>
+      <div class="aboutc_line"></div>
+    </div>
 
-        <div class="aboutc_cols">
+    <div class="aboutc_cols" v-for="(cont, ind) in data.events">
 
-            <div class="aboutc_row" v-for="(cont, ind) in data.year" :class="{'right_row': ''}">
-                <i class="aboutc_search" v-if="(ind % 2 === 0)"></i>
+      <div class="aboutc_row" v-if="ind % 2 != 0" :class="{'right_row': ind % 2 === 0}"></div>
 
-                <a class="aboutc_prgf" uk-toggle="target: #modal-close-default" @click="getSelectedYearInfo">{{ cont.heading }}</a>
+      <div class="aboutc_row" :class="{'right_row': ind % 2 != 0}">
+        <i class="aboutc_search" v-if="(ind % 2 === 0)"></i>
 
-                <i class="aboutc_search" v-if="(ind % 2 != 0)"></i>
-            </div>
+        <a class="aboutc_prgf" uk-toggle="target: #modal-close-default" @click="getSelectedYearInfo">
+          {{ cont.heading }}
+        </a>
 
-        </div>
+        <i class="aboutc_search" v-if="(ind % 2 != 0)"></i>
+      </div>
 
-        <AboutModal />
+      <div class="aboutc_row" v-if="ind % 2 === 0" :class="{'right_row': ind % 2 != 0}"></div>
 
     </div>
+  </div>
 </template>
 
 <script>
-    import AboutModal from './AboutModal.vue'
-    import {mapState} from 'vuex'
+import AboutModal from './AboutModal.vue'
 
-    export default {
-        name: "AboutContentItem",
-        props: ['data'],
-        data: () => ({
-
-        }),
-        computed: mapState([
-            'years',
-            'events'
-        ]),
-        components: {
-            AboutModal
-        },
-        mounted() {
-          console.log(this.$props.data,'props')
-          console.warn(this.years)
-          console.warn(this.events,'events')
-        },
-        methods: {}
+export default {
+  name: "AboutContentItem",
+  props: ['data'],
+  data: () => ({}),
+  components: {
+    AboutModal
+  },
+  mounted() {
+    console.log(this.$props.data, 'props')
+  },
+  methods: {
+    getSelectedYearInfo() {
     }
+  }
+}
 </script>
-
-<style>
-
-</style>

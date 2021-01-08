@@ -1,9 +1,9 @@
 <template>
-  <Fragment>
+  <div class="about">
     <div class="about_hero">
       <div class="about_hero_wrap">
         <div class="about_hero_wrap_item">
-          <img src="/images/about/about_banner.png" alt="about_hero_wrap_ite_img">
+          <img src="/images/about/about_banner.png" class="about_hero_wrap_item_img" alt="hero">
           <div class="about_hero_wrap_item-top">
             <p class="about_hero_wrap_item-top_text">
               C 2009 года мы производим картриджи, фотобумагу и плёнку для принтеров,
@@ -20,7 +20,6 @@
             </p>
           </div>
         </div>
-        <AboutContent/>
       </div>
     </div>
     <div class="navigator">
@@ -30,14 +29,18 @@
             <div class="descline_item"></div>
           </div>
           <div class="navigator_wrap_line_items">
-              <div class="navigator_wrap_line_items_item"
-                   @click="(evnt) => recountLine(evnt)"
-                   v-for="year in this.years">{{ year.year }}</div>
+            <div class="navigator_wrap_line_items_item"
+                 @click="(evnt) => recountLine(evnt)"
+                 v-for="year in this.years">{{ year.year }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </Fragment>
+
+    <AboutContent/>
+
+  </div>
 </template>
 
 <script>

@@ -299,7 +299,7 @@ let mutations = {
                 console.log(err);
             })
     },
-    getAllYears(state, year) {
+    getAllYearsAndEvents(state, year) {
         let years = fetch_call('/getAllYears', 'GET');
 
         years.then((data) => {
