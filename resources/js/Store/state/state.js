@@ -3,11 +3,11 @@ let state = {
     productImages: '',
     //cart
     cartStep: 1,
-
     paymentProvider: false,
     signatureHash: false,
     gridCatalog: false,
-    allYears: false,
+    years: false,
+    events: false,
     informationPosts: false,
     informationLinks: false,
     productsLoaded: false,

@@ -3,12 +3,11 @@
   @include breakpoint($medium) {
     display: block;
   }
-  &-wrap {
+  &_wrap {
     position: relative;
 
     &_item {
-
-      &-img {
+      &_img {
         width: 100%;
         object-fit: cover;
         object-position: center;
@@ -32,12 +31,13 @@
           text-align: center;
           letter-spacing: 0.02em;
           color: $dblack;
+          max-width: 513px;
         }
       }
       &-bottom {
         position: absolute;
-        bottom: -.2rem;
-        max-width: 450px;
+        bottom: 0;
+        max-width: 520px;
         left: 50%;
         transform: translate(-50%, 0);
 

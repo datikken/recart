@@ -303,7 +303,8 @@ let mutations = {
         let years = fetch_call('/getAllYears', 'GET');
 
         years.then((data) => {
-            state.years = data;
+            state.years = data.years;
+            state.events = data.events;
         })
     }
     ,

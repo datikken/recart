@@ -55,8 +55,8 @@
 <script>
     import MainLayout from '@/Layouts/MainLayout'
     import DashboardForms from '@/Shared/Dashboard/DashboardForms'
-    import {Fragment} from 'vue-fragment'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
+    import {Fragment} from 'vue-fragment'
 
     export default {
         name: "Dashboard",
