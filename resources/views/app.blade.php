@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="{{ asset('css/vendors/pagination.min.css') }}">
     {{--MainStyles--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+    {{--YandexWebmaster--}}
+    <meta name="yandex-verification" content="c48d46d8c2ace029" />
 </head>
 <body class="font-sans antialiased">
 
