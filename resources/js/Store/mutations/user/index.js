@@ -1,7 +1,7 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
 function resendEmailVerify() {
-    let status = fetch('/verification.send', {
+    let status = fetch('/emai/verification-notification', {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
