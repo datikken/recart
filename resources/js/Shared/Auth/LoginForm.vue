@@ -70,8 +70,6 @@
 
             <TextBtn text="Войти" className="yellow_btn" @click.native="login"/>
 
-            <ResetPassword/>
-
           </div>
         </div>
       </div>
@@ -84,17 +82,14 @@
 import InputError from '@/Jetstream/InputError'
 import TextBtn from '@/Shared/Btns/TextBtn'
 import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
-import {passwordLength} from "@/vanilla/functions/validation/passwordLength";
 import {validateEmail} from "@/vanilla/functions/validation/validateEmail";
-import ResetPassword from '@/Shared/Modal/ResetPassword';
 
 export default {
   name: "LoginForm",
   components: {
     InputError,
     TextBtn,
-    SimpleCheckbox,
-    ResetPassword
+    SimpleCheckbox
   },
   data() {
     return {
@@ -115,7 +110,7 @@ export default {
     }
   },
   methods: {
-    togglePass(evnt) {
+    togglePass() {
       let passField = this.$el.querySelector('[name="password"]');
       this.passShown = !this.passShown;
 
@@ -127,7 +122,6 @@ export default {
     },
     validate() {
       let emailStat = validateEmail(this.form.email);
-      let passStat = passwordLength(this.form.password);
 
       if (typeof emailStat === 'string') {
         this.sieg = false

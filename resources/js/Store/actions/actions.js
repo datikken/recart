@@ -1,4 +1,7 @@
 let actions = {
+    RESEND_VERIFY_EMAIL(context) {
+        context.commit('resendEmailVerify');
+    },
     SUBSCRIBE_EMAIL(context, email) {
         context.commit('subscribeEmail', email)
     },

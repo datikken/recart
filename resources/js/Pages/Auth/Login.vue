@@ -14,8 +14,8 @@
 
 
     <EmailIsNotVerified/>
-    <PassResetForm/>
-    <ResetPassword/>
+<!--    <PassResetForm/>-->
+<!--    <ResetPassword/>-->
     <EmailHasBeenSent/>
 
   </div>
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     open_verify_popup() {
-      let emailIsNotVerified = this.$el.querySelector('#emailIsNotVerified');
+      let emailIsNotVerified = document.querySelector('#emailIsNotVerified');
 
       UIkit.modal(emailIsNotVerified).show();
     },

@@ -9,7 +9,7 @@ import {
 import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
 import {getAllInformationPosts} from './information/index'
-import {subscribeEmail,updateUserPhoto} from './user/index'
+import {subscribeEmail, resendEmailVerify} from './user/index'
 import {
     getFilteredProducts,
     addProductToCart,
@@ -29,7 +29,9 @@ import {
     setProductViewed
 } from './products/index'
 import {fetch_call} from '@/vanilla/functions/fetch_call'
+
 let mutations = {
+    resendEmailVerify,
     subscribeEmail,
     //information
     getAllInformationPosts,
@@ -70,8 +72,6 @@ let mutations = {
     setReadyToGo(state, val) {
         state.readyToGo = null;
         state.readyToGo = val;
-
-        // console.log('setReadyToGo', val)
 
         if (state.readyToGo) {
             state.blockDeliveryHelper = true;
@@ -440,8 +440,7 @@ let mutations = {
 
             if (result.success) {
                 state.orderPaid = true;
-            }
-            else {
+            } else {
                 for (var msgName in result.messages) {
                     alert(result.messages[msgName]);
                 }

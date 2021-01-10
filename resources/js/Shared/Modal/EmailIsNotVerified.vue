@@ -15,12 +15,8 @@
           <span>Для входа в личный кабинет необходимо подтвердить указанную почту</span>
         </div>
 
-
         <TextBtn className="yellow_btn" text="Не получили письмо?" @click.native="resendEmailVerify"/>
         <TextBtn className="flat_btn uk-modal-close" text="Закрыть"/>
-        <!--@include('components.btn.text_btn', ['attr' => 'data-passResetLinkResend', 'class' => 'flat_btn', 'text' => 'Не получили письмо?'])-->
-        <!--@include('components.btn.text_btn', [ 'class' => 'action_btn animated_btn uk-modal-close', 'text' => 'закрыть'])-->
-
 
       </div>
     </div>
@@ -29,6 +25,7 @@
 
 <script>
 import TextBtn from '@/Shared/Btns/TextBtn'
+import {mapActions} from 'vuex'
 
 export default {
   name: "EmailsNotVerified",
@@ -36,12 +33,24 @@ export default {
     TextBtn
   },
   methods: {
-    resendEmailVerify() {
+    ...mapActions([
+      'RESEND_VERIFY_EMAIL'
+    ]),
+    hideEmailIsNotVerified() {
+      let emailIsNotVerified = document.querySelector('#emailIsNotVerified');
       let emailsent = document.querySelector('#emailHasBeenSent');
-      let emailIsNotVerified = this.$el.querySelector('#emailIsNotVerified');
 
       UIkit.modal(emailIsNotVerified).hide();
       UIkit.modal(emailsent).show();
+    },
+    resendEmailVerify() {
+      let status = this.RESEND_VERIFY_EMAIL();
+      let that = this;
+
+      status
+          .then(() => {
+            that.hideEmailIsNotVerified();
+          })
     }
   }
 }

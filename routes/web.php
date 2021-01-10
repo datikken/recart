@@ -110,7 +110,6 @@ Route::post('/getProductById', [ProductController::class, 'getProductById'])
     ->name('getProductById');
 Route::get('/exportProductsExcel', [ProductController::class, 'exportProductsExcel'])
     ->name('exportProductsExcel');
-
 /*
  * end API
  */
@@ -148,18 +147,18 @@ Route::get('/cart', [CartController::class, 'index'])
 /*
  * Emails
  */
-Route::get('/sendEmailVerification', [UserController::class, 'index'])
-    ->name('sendEmailVerification');
+//verification.send
+
 
 /*
  * Checkout
- *
  */
 Route::get('/checkCartState', [CartController::class, 'show'])
     ->name('checkCartState');
 
 Route::get('/checkout', [CheckoutController::class, 'get'])
     ->name('checkout');
+
 
 /*
  * Test routes

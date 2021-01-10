@@ -1,18 +1,31 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
-import store from '@/Store/store'
 
-let subscribeEmail = function (state, email) {
-    if(email === '') return;
+function resendEmailVerify() {
+    let status = fetch('/verification.send', {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer'
+    })
 
-    let subscriber = fetch_call('/subscribe','POST', {email});
-        subscriber.then(man => {
-            state.subscriber = man;
-        })
+    return status;
+}
+
+let subscribeEmail = (state, email) => {
+    if (email === '') return;
+
+    let subscriber = fetch_call('/subscribe', 'POST', {email});
+    subscriber.then(man => {
+        state.subscriber = man;
+    })
 
     return state.subscriber;
 }
 
-let updateUserPhoto = function(state, formData) {
+let updateUserPhoto = (state, formData) => {
     fetch(`/setProfilePhoto`, {
         method: "POST",
         headers: {
@@ -31,6 +44,6 @@ let updateUserPhoto = function(state, formData) {
         .then((data) => {
             console.warn(data)
         })
-    }
+}
 
-export {updateUserPhoto, subscribeEmail}
+export {updateUserPhoto, subscribeEmail, resendEmailVerify}
