@@ -77,8 +77,10 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
         return 'email';
     }
 
-    public function sendEmailVerificationNotification($token)
+    public function sendEmailVerificationNotification()
     {
+        $token = $this->currentAccessToken();
+
         $this->notify(new EmailVerificationNotification($token));
     }
 }
