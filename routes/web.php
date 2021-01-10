@@ -70,9 +70,6 @@ Route::get('/exportUsersExcel', [UserController::class, 'exportUsersExcel'])
     ->name('exportUsersExcel');
 Route::get('/setProfilePhoto', [UserController::class, 'setProfilePhoto'])
     ->name('setProfilePhoto');
-
-
-
 Route::get('/getUserAddress', [UserController::class, 'getUserAddress'])
     ->name('getUserAddress');
 Route::post('/setName', [UserController::class, 'setName'])

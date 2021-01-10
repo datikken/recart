@@ -41,7 +41,9 @@ class JetstreamServiceProvider extends ServiceProvider
         });
 
         Fortify::verifyEmailView(function () {
-            return inertia('Auth/EmailVerify');
+            return inertia('Auth/Login', [
+                'email_verify' => true
+            ]);
         });
     }
 
