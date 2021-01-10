@@ -1,8 +1,8 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
 function resendEmailVerify() {
-    let status = fetch('/emai/verification-notification', {
-        method: "GET",
+    let status = fetch('/email/verification-notification', {
+        method: "POST",
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': window.token
