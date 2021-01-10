@@ -41,7 +41,7 @@ class EmailVerificationNotification extends Notification
         return (new MailMessage)
                     ->view('auth.verify-email')
                     ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/') . $this->token);
+                    ->action('Notification Action', url('/'));
     }
 
     /**
