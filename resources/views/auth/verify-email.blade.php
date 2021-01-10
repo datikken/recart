@@ -202,7 +202,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="300" style="margin: 0 auto;">
                                         <tr>
                                             <td align="center" style="display: block;padding-bottom: 20px;">
-                                                <a href="{{ $url }}" class="main_btn" style="color: black;">
+                                                <a href="{{ $actionUrl }}" class="main_btn" style="color: black;">
                                                     Подтвердить
                                                 </a>
                                             </td>
@@ -217,8 +217,8 @@
                                     <span class="main_desc">
                                         Если кнопка не работает, то скопируйте ссылку и откройте через адресную строку браузера.
                                         <br/>
-                                        <a href="" target="_blank" data-saferedirecturl="">
-
+                                        <a href="{{ $actionUrl }}" target="_blank" data-saferedirecturl="">
+                                            {{ $actionUrl }}
                                         </a>
                                         <br/>
                                         <span style="padding-top: 10px;">Если вы не регистрировались на нашем сайте и получили письмо по ошибке, пожалуста, проигнорируйте его.</span>
