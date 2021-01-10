@@ -218,7 +218,7 @@
                                         Если кнопка не работает, то скопируйте ссылку и откройте через адресную строку браузера.
                                         <br/>
                                         <a href="{{ $actionUrl }}" target="_blank" data-saferedirecturl="">
-                                           [{{ $displayableActionUrl }}]({{ $actionUrl }})
+                                           {{ $actionUrl }}
                                         </a>
                                         <br/>
                                         <span style="padding-top: 10px;">Если вы не регистрировались на нашем сайте и получили письмо по ошибке, пожалуста, проигнорируйте его.</span>

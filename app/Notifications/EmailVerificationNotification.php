@@ -38,13 +38,11 @@ class EmailVerificationNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail($notifiable, $url)
     {
         return (new MailMessage)
                     ->view('auth.verify-email')
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->action('Notification Action', $url);
     }
 
     /**
