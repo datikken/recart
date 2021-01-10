@@ -12,7 +12,7 @@
                     <span class="passResetForm_head_txt">Смена пароля</span>
                 </div>
 
-                <form method="POST" action="{{ route('password.email') }}">
+                <form>
 
                     <div class="form_group">
                         <label for="email" class="form_group_label">{{ __('Введите новый пароль') }}</label>
