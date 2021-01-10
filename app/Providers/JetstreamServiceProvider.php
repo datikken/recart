@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Fortify\Fortify;
-use Illuminate\Support\Facades\Route;
 
 class JetstreamServiceProvider extends ServiceProvider
 {

@@ -20,6 +20,7 @@ use App\Actions\Fortify\Login;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\DashboardController;
 /*
  * Search
  */
@@ -62,9 +63,9 @@ Route::get('/getAllYears', [AboutController::class, 'getAllYears'])
 /*
  * Users
  */
-Route::post('/createNewUser', [CreateNewUser::class, 'create'])
-    ->name('CreateNewUser');
-Route::post('/login', [Login::class, 'login'])
+//Route::post('/createNewUser', [CreateNewUser::class, 'create'])
+//    ->name('createNewUser');
+Route::post('/login', [Login::class,'__invoke'])
     ->name('login');
 Route::get('/exportUsersExcel', [UserController::class, 'exportUsersExcel'])
     ->name('exportUsersExcel');
@@ -138,9 +139,11 @@ Route::get('/tracking', [TrackingController::class, 'index'])
     ->name('tracking');
 Route::post('/trackingGet', [TrackingController::class, 'trackingGet'])
     ->name('trackingGet');
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
 Route::get('/cart', [CartController::class, 'index'])
     ->name('cart');
 
@@ -148,7 +151,6 @@ Route::get('/cart', [CartController::class, 'index'])
  * Emails
  */
 //verification.send
-
 
 /*
  * Checkout

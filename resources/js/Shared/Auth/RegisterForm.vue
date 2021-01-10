@@ -42,7 +42,7 @@
                                    name="type"
                                    style="display: none;"
                                    value="Физ. лицо"
-                                   autocomplete="type" autofocus>
+                                   autocomplete="type">
                         </div>
 
 
@@ -52,7 +52,6 @@
 
                             <div class="col-md-6">
                                 <input id="emailReg"type="email"
-                                       v-on:keyup="register"
                                        v-model="form.email"
                                        data-email placeholder="Введите вашу почту" class="form-control" name="email" value="" autocomplete="email">
                             </div>
@@ -64,9 +63,13 @@
 
                             <div class="col-md-6">
                                 <input id="passwordReg"
-                                       v-on:keyup="register"
                                        v-model="form.password"
-                                       data-required placeholder="Введите пароль" type="password" class="form-control password_input" name="password" autocomplete="new-password">
+                                       data-required
+                                       placeholder="Введите пароль"
+                                       type="password"
+                                       class="form-control password_input"
+                                       name="password"
+                                       autocomplete="new-password">
                             </div>
                         </div>
 
@@ -76,7 +79,6 @@
 
                             <div class="col-md-6">
                                 <input id="password_confirmation"
-                                       v-on:keyup="register"
                                        v-model="form.password_confirmation"
                                        data-required placeholder="Подтвердите пароль" type="password" class="form-control password_input" name="password_confirmation" autocomplete="new-password">
                             </div>
@@ -152,7 +154,7 @@
                 this.form.policy_confirm = !this.form.policy_confirm
             },
             register() {
-                this.$inertia.post('/createNewUser', this.form, {
+                this.$inertia.post('/register', this.form, {
                     onFinish: () => {
                         if (this.$page.errors.createNewUser) {
                             this.sieg = false

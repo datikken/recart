@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Login
 {
-    public function login(Request $request)
+    public function __invoke(Request $request)
     {
         $email = $request->email;
         $pass = $request->password;
@@ -26,7 +26,7 @@ class Login
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return Inertia::render('Dashboard');
+                return redirect('/dashboard');
             }
 
             return back()->withErrors([
