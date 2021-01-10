@@ -11,14 +11,16 @@ class EmailVerificationNotification extends Notification
 {
     use Queueable;
 
+    private $token;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -38,11 +40,12 @@ class EmailVerificationNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable, $url)
+    public function toMail($notifiable)
     {
         return (new MailMessage)
                     ->view('auth.verify-email')
-                    ->action('Notification Action', $url);
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/') . $this->token);
     }
 
     /**
