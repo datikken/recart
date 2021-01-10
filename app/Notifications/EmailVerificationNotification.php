@@ -11,17 +11,13 @@ class EmailVerificationNotification extends Notification
 {
     use Queueable;
 
-    private $token;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
-    {
-        $this->token = $token;
-    }
+    public function __construct()
+    {}
 
     /**
      * Get the notification's delivery channels.
