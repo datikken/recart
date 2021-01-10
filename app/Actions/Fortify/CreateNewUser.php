@@ -47,9 +47,4 @@ class CreateNewUser
             return response()->json('this form got errors');
         }
     }
-
-    public function validateOnPress(Request $request)
-    {
-
-    }
 }
