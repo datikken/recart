@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Mail\PasswordResetEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
@@ -87,7 +86,12 @@ class PasswordResetNotification extends Notification
      */
     protected function buildMailMessage($url, $email)
     {
-        return (new PasswordResetEmail($url, $email));
+        return (new MailMessage)
+            ->view('auth.verify-email')
+            ->subject(Lang::get('Cброс пароля на сайте Recart.me'))
+            ->action(Lang::get('Reset Password'), $url)
+            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
     }
 
     /**
