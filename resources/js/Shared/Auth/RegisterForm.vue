@@ -147,7 +147,7 @@ export default {
     ...mapActions([
       'CREATE_NEW_USER'
     ]),
-    setLoginError(state) {
+    registerStateHandler(state) {
       if(state != true) {
         this.sieg = true;
         this.errMessage = state;
@@ -160,12 +160,12 @@ export default {
     passValidate() {
       let state = passwordLength(this.form.password)
 
-      this.setLoginError(state);
+      this.registerStateHandler(state);
     },
     emailValidate() {
       let state = validateEmail(this.form.email)
 
-      this.setLoginError(state);
+      this.registerStateHandler(state);
     },
     togglePass(evnt, name) {
       let query = `[name=${name}]`;
@@ -182,14 +182,14 @@ export default {
     confirmPolicy() {
       this.form.policy_confirm = !this.form.policy_confirm
 
-      this.setLoginError(true);
+      this.registerStateHandler(true);
     },
     register() {
       if(this.form.policy_confirm != true) {
-        this.setLoginError('Необходимо принять пользовательское соглашение');
+        this.registerStateHandler('Необходимо принять пользовательское соглашение');
       }
       if(this.form.password != this.form.password_confirmation) {
-        this.setLoginError('Пароли должны совпадать');
+        this.registerStateHandler('Пароли должны совпадать');
       }
 
       this.$inertia.post('/register', this.form, {
@@ -199,11 +199,8 @@ export default {
           } else {
             this.sieg = true;
 
-            if(this.$page.errors.email) this.setLoginError(this.$page.errors.email);
-
-            if(this.$page.errors) {
-              console.warn(this.$page, 'some eerors register')
-            }
+            if(this.$page.errors.email) this.registerStateHandler(this.$page.errors.email);
+            if(this.$page.errors.length === 0) this.registerStateHandler(true);
           }
 
           this.CREATE_NEW_USER(this.form)
