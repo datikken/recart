@@ -219,55 +219,52 @@
                 <!-- BODY -->
 
                 <!-- FOOTER -->
-                <table border="0" cellpadding="0" cellspacing="0"
-                       style="width: 100%;max-width: 600px;min-height: 500px;background-repeat: no-repeat;min-width: 300px;color: #fff;background-image: url({{URL::to('/')}}/images/emails/footer_iphone.png)">
-                    <tr>
-                        <td class="footer_item" style="display: block;padding: 25px 50px 0 50px;">
-                            <div class="footer_item_left" style="height: 65px;float:left;">
-                                <img src="{{URL::to('/')}}/images/emails/footer_location.png" alt="phone"
-                                     style="float: left;padding-right: 10px;"/>
-                            </div>
-                            <div class="footer_item_right" style="float:left; display: contents;">
-                                <span style="padding-bottom: 10px; display: block;">АДРЕС:</span>
-                                <span>115230 Россия, Москва, Варшавское шоссе, дом, 36, строение 8, 2-й подъезд, этаж 2, офис 1578</span>
-                            </div>
-                        </td>
-                        <td class="footer_item" style="display: block;padding: 0;padding: 10px 50px;">
-                            <div class="footer_item_left" style="height: 65px;float:left;">
-                                <img src="{{URL::to('/')}}/images/emails/footer_phone.png" alt="phone"
-                                     style="float: left;padding-right: 10px;">
-                            </div>
-                            <div class="footer_item_right" style="float:left; display: contents;">
-                                <span style="padding-bottom: 5px; display: block;">КОНТАКТЫ:</span>
-                                <div class="footer_item_contacts">
-                                    <div class="footer_item_contacts_left" style="float:left;">
-                                        <img src="{{URL::to('/')}}/images/emails/footer_tel.png" alt=""
-                                             style="float:left;padding-top: 1px;">
-                                        <a href="tel:88005556633"
-                                           style="padding-left: 18px;padding-bottom: 5px;color: white; text-decoration: none;">8
-                                            (800) 555-66-33</a>
-                                    </div>
-                                    <div class="footer_item_contacts_right" style="float:left;padding-left: 40px;">
-                                        <img src="{{URL::to('/')}}/images/emails/footer_mail.png" alt=""
-                                             style="float:left;padding-top: 5px;">
-                                        <span style="padding-left: 18px;padding-bottom: 5px;color: white;text-decoration: none;"
-                                              class="footer_link">support@recart.me</span>
-                                    </div>
+                <tr>
+                    <td class="footer_item" style="display: block;padding: 25px 50px 0 50px;">
+                        <div class="footer_item_left" style="height: 65px;float:left;">
+                            <img src="{{URL::to('/')}}/images/emails/footer_location.png" alt="phone"
+                                 style="float: left;padding-right: 10px;"/>
+                        </div>
+                        <div class="footer_item_right" style="float:left; display: contents;">
+                            <span style="padding-bottom: 10px; display: block;">АДРЕС:</span>
+                            <span>115230 Россия, Москва, Варшавское шоссе, дом, 36, строение 8, 2-й подъезд, этаж 2, офис 1578</span>
+                        </div>
+                    </td>
+                    <td class="footer_item" style="display: block;padding: 0;padding: 10px 50px;">
+                        <div class="footer_item_left" style="height: 65px;float:left;">
+                            <img src="{{URL::to('/')}}/images/emails/footer_phone.png" alt="phone"
+                                 style="float: left;padding-right: 10px;">
+                        </div>
+                        <div class="footer_item_right" style="float:left; display: contents;">
+                            <span style="padding-bottom: 5px; display: block;">КОНТАКТЫ:</span>
+                            <div class="footer_item_contacts">
+                                <div class="footer_item_contacts_left" style="float:left;">
+                                    <img src="{{URL::to('/')}}/images/emails/footer_tel.png" alt=""
+                                         style="float:left;padding-top: 1px;">
+                                    <a href="tel:88005556633"
+                                       style="padding-left: 18px;padding-bottom: 5px;color: white; text-decoration: none;">8
+                                        (800) 555-66-33</a>
+                                </div>
+                                <div class="footer_item_contacts_right" style="float:left;padding-left: 40px;">
+                                    <img src="{{URL::to('/')}}/images/emails/footer_mail.png" alt=""
+                                         style="float:left;padding-top: 5px;">
+                                    <span style="padding-left: 18px;padding-bottom: 5px;color: white;text-decoration: none;"
+                                          class="footer_link">support@recart.me</span>
                                 </div>
                             </div>
-                        </td>
-                        <td style="float: left; width: 100%;padding: 31px 0 14px 135px;">
-                            <a href="#"
-                               style="color: black;font-size: 12px;height: 14px; cursor: pointer;text-decoration: none;">Политика
-                                конфиденциальности</a>
-                        </td>
-                        <td style="float: left;width: 100%;">
-                            <a href="#"
-                               style="color: black;padding-left: 135px;font-size: 12px;line-height: 14px;cursor:pointer;text-decoration: none;">Платежные
-                                системы</a>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                    </td>
+                    <td style="float: left; width: 100%;padding: 31px 0 14px 135px;">
+                        <a href="#"
+                           style="color: black;font-size: 12px;height: 14px; cursor: pointer;text-decoration: none;">Политика
+                            конфиденциальности</a>
+                    </td>
+                    <td style="float: left;width: 100%;">
+                        <a href="#"
+                           style="color: black;padding-left: 135px;font-size: 12px;line-height: 14px;cursor:pointer;text-decoration: none;">Платежные
+                            системы</a>
+                    </td>
+                </tr>
                 <!-- FOOTER -->
             </table>
         </td>

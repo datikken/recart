@@ -56,11 +56,14 @@ export default {
         'RESET_USER_PASSWORD'
     ]),
     showThanx() {
-      let element = this.$el.querySelector('#emailHasBeenSent');
-      UIkit.modal(element).show();
+      let thanx = document.querySelector('#emailHasBeenSent');
+          UIkit.modal(thanx).show();
     },
     submit() {
-      this.RESET_USER_PASSWORD(this.email);
+      let request = this.RESET_USER_PASSWORD(this.email);
+          UIkit.modal(this.$el).hide();
+
+          request.then(() => this.showThanx())
     }
   }
 }

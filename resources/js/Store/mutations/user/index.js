@@ -20,8 +20,6 @@ function resetUserPassword(state, email) {
         })
     })
 
-    status.then(data => console.warn('reset password return'))
-
     return status;
 }
 

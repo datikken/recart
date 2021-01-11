@@ -45,12 +45,8 @@ export default {
     },
     resendEmailVerify() {
       let status = this.RESEND_VERIFY_EMAIL();
-      let that = this;
 
-      status
-          .then(() => {
-            that.hideEmailIsNotVerified();
-          })
+      status.then(() => { this.hideEmailIsNotVerified() });
     }
   }
 }
