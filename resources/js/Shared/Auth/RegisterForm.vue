@@ -6,14 +6,12 @@
 
         <div class="card-greet register_greet">
 
-          <p class="card-greet_text" v-if="sieg">
+          <p class="card-greet_text" v-if="!sieg">
             Зарегистрируйте свой аккаунт<br/> используя любой способ
           </p>
 
-          <p class="card-greet_text" v-if="!sieg" :class="{error: !sieg}">
-            <InputError :message="form.error('email')"/>
-            <InputError :message="form.error('password')"/>
-            <InputError :message="form.error('policy_confirm')"/>
+          <p class="card-greet_text" v-if="sieg" :class="{login_error: sieg}">
+            {{ errMessage }}
           </p>
         </div>
 
@@ -51,7 +49,9 @@
               <label for="email" class="form_group_label col-md-4 col-form-label text-md-right">Почта</label>
 
               <div class="col-md-6">
-                <input id="emailReg" type="email"
+                <input id="emailReg"
+                       type="email"
+                       v-on:keyup="emailValidate"
                        v-model="form.email"
                        data-email placeholder="Введите вашу почту" class="form-control" name="email" value=""
                        autocomplete="email">
@@ -65,6 +65,7 @@
 
               <div class="col-md-6">
                 <input id="passwordReg"
+                       v-on:keyup="passValidate"
                        v-model="form.password"
                        data-required
                        placeholder="Введите пароль"
@@ -115,6 +116,8 @@ import InputError from '@/Jetstream/InputError'
 import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox';
 import TextBtn from '@/Shared/Btns/TextBtn'
 import {mapActions} from 'vuex'
+import {passwordLength} from "@/vanilla/functions/validation/passwordLength";
+import {validateEmail} from "@/vanilla/functions/validation/validateEmail";
 
 export default {
   name: "RegisterForm",
@@ -126,7 +129,8 @@ export default {
   props: ['name'],
   data() {
     return {
-      sieg: true,
+      sieg: false,
+      errMessage: false,
       form: this.$inertia.form({
         name: 'Пользователь',
         email: '',
@@ -139,15 +143,30 @@ export default {
       })
     }
   },
-  mounted() {
-    if (this.$page.errors && this.$page.errors.login) {
-      this.sieg = false;
-    }
-  },
   methods: {
     ...mapActions([
       'CREATE_NEW_USER'
     ]),
+    setLoginError(state) {
+      if(state != true) {
+        this.sieg = true;
+        this.errMessage = state;
+
+        return;
+      } else {
+        this.sieg = false;
+      }
+    },
+    passValidate() {
+      let state = passwordLength(this.form.password)
+
+      this.setLoginError(state);
+    },
+    emailValidate() {
+      let state = validateEmail(this.form.email)
+
+      this.setLoginError(state);
+    },
     togglePass(evnt, name) {
       let query = `[name=${name}]`;
 
@@ -162,14 +181,25 @@ export default {
     },
     confirmPolicy() {
       this.form.policy_confirm = !this.form.policy_confirm
+
+      this.setLoginError(true);
     },
     register() {
+      if(this.form.policy_confirm != true) {
+        this.setLoginError('Необходимо принять пользовательское соглашение');
+      }
+      if(this.form.password != this.form.password_confirmation) {
+        this.setLoginError('Пароли должны совпадать');
+      }
+
       this.$inertia.post('/register', this.form, {
         onFinish: () => {
           if (this.$page.errors.createNewUser) {
             this.sieg = false
           } else {
             this.sieg = true;
+
+            if(this.$page.errors.email) this.setLoginError(this.$page.errors.email);
           }
 
           this.CREATE_NEW_USER(this.form)
@@ -180,13 +210,12 @@ export default {
       this.form.type = str;
 
       let blocks = this.$el.querySelectorAll('[data-face]');
-      blocks.forEach((block) => {
+        blocks.forEach((block) => {
         block.classList.remove('activeFormItem');
 
         if (block.getAttribute('data-face') === str) {
           block.classList.add('activeFormItem');
         }
-
       })
     }
   }

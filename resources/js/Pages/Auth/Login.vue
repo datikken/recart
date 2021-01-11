@@ -12,11 +12,11 @@
 
     <RegisterForm/>
 
-
     <EmailIsNotVerified/>
-<!--    <PassResetForm/>-->
-<!--    <ResetPassword/>-->
     <EmailHasBeenSent/>
+
+    <!--    <PassResetForm/>-->
+    <!--    <ResetPassword/>-->
 
   </div>
 
@@ -51,14 +51,10 @@ export default {
         if(newVal) {
           this.check_email_verify();
         }
-
-        console.log('state user watch', newVal, oldVal)
     }
   },
   mounted() {
     this.check_email_verify();
-
-    console.warn(this.$page, 'login redirect')
   },
   methods: {
     open_verify_popup() {

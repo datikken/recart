@@ -121,8 +121,11 @@ a:hover {
 .active_border {
   border-bottom: 1px solid $yellow;
 }
-.error {
+.error,.login_error {
     color: $red;
+}
+.login_error {
+  min-height: 28px;
 }
 .error404 {
   width: 100%;
