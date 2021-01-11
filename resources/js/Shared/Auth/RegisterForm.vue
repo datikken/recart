@@ -200,7 +200,7 @@ export default {
             this.sieg = true;
 
             if(this.$page.errors.email) this.registerStateHandler(this.$page.errors.email);
-            if(this.$page.errors.length === 0) this.registerStateHandler(true);
+            if(Object.keys(this.$page.errors).length === 0) this.registerStateHandler(true);
 
             console.log(this.$page, 'wtf case')
           }
