@@ -119,18 +119,6 @@
                 .agreement_check {
                     display: flex;
                     align-items: center;
-
-                    .passreset-link {
-                        font-family: $font;
-                        font-size: 12px;
-                        line-height: 15px;
-                        text-align: right;
-                        letter-spacing: 0.02em;
-                        color: $blue;
-                        display: block;
-                        width: 150px;
-                        cursor: pointer;
-                    }
                 }
 
                 .form-check {

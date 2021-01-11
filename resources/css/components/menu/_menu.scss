@@ -177,9 +177,9 @@
                     transition: right 2s;
 
                     a {
-                        text-decoration: none;
                         color: $dblack;
                     }
+
                     &:hover {
                         background-color: $black;
                         .menu_wrapper-item-main_menu-item-text:after {
@@ -187,11 +187,6 @@
                         }
                         span {
                             color: $white;
-                        }
-                        span {
-                            a {
-                                color: $white;
-                            }
                         }
                     }
 
@@ -278,7 +273,6 @@
                                 &:hover {
                                     background-color: $black;
                                     a {
-                                        color: $white;
                                         font-family: $semifont;
                                     }
                                 }

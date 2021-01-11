@@ -54,7 +54,7 @@
 
             <div class="form-group row mb20">
               <div class="agreement_check">
-                <SimpleCheckbox name="agreement" @click.native="confirmPolicy"/>
+                <SimpleCheckbox name="agreement" @click.native="rememberMe"/>
 
                 <div class="form-check">
                   <label class="form-check-label">
@@ -62,7 +62,7 @@
                   </label>
                 </div>
 
-                <div class="passreset-link" @click="showPassResetForm">
+                <div class="link-passreset" @click="showPassResetForm">
                   Забыли пароль?
                 </div>
 
@@ -99,7 +99,8 @@ export default {
       emailError: false,
       form: this.$inertia.form({
         email: '',
-        password: ''
+        password: '',
+        remember: 'off'
       }, {
         bag: 'login'
       })
@@ -111,6 +112,13 @@ export default {
     }
   },
   methods: {
+    rememberMe() {
+      if(this.form.remember === 'off') {
+        this.form.remember = 'on';
+      } else {
+        this.form.remember = 'off';
+      }
+    },
     showPassResetForm() {
       let passReset = document.querySelector('#passResetRequest');
 

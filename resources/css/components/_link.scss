@@ -1,0 +1,54 @@
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: $black;
+}
+a:hover {
+  text-decoration: none;
+}
+.link, .link-decorated, .link-decorated-ft {
+  color: $white;
+  &:hover {
+    color: $white;
+  }
+}
+.link-decorated, .link-decorated-ft {
+  @include underline();
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    top: 21px;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .2s ease, background-color .2s ease, left .2s ease;
+  }
+
+  &:hover:after {
+    width: 100%;
+    left: 0;
+    background: white;
+  }
+}
+
+.link-decorated-ft {
+  &:after {
+    top: 16px;
+  }
+}
+
+.link-passreset {
+  font-family: $font;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: $blue;
+  display: block;
+  width: 150px;
+  cursor: pointer;
+}

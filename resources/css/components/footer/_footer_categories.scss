@@ -1,6 +1,23 @@
 .footer_cat {
   &-item {
     display: flex;
+
+    @include breakpoint(600px) {
+      min-width: 125px;
+    }
+
+    &:nth-child(2) {
+      flex-direction: column;
+      @include breakpoint($phone) {
+        flex-direction: row;
+      }
+      .footer_cat-item_list {
+        &-ul {
+          margin: 0;
+        }
+      }
+    }
+
     &_heading {
       font-weight: 600;
       font-size: 12px;
@@ -8,6 +25,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      max-width: initial!important;
 
       @include breakpoint($phone) {
         font-size: 18px;
@@ -53,18 +71,6 @@
           color: $white;
           margin: 0 0 7px 0;
           cursor: pointer;
-
-            span {
-                @media screen and (min-width: $phone) {
-                    display: inline-block!important;
-                    @include underline();
-
-                    &:after {
-                        top: 16px;
-                    }
-                }
-            }
-
         }
       }
     }

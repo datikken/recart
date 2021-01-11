@@ -11,10 +11,10 @@
             <div class="header_wrapper-item">
                 <ul class="header_wrapper-item_menu">
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link :href="route('catalog')" class="header_wrapper-item_menu-item_link">Каталог</inertia-link>
+                        <inertia-link :href="route('catalog')" class="link-decorated">Каталог</inertia-link>
                     </li>
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link preserve-scroll :href="route('information')" class="header_wrapper-item_menu-item_link">Информация</inertia-link>
+                        <inertia-link preserve-scroll :href="route('information')" class="link-decorated">Информация</inertia-link>
                         <ul class="header_wrapper-item_menu-item-secondary">
                             <inertia-link
                                 :key="linkName"
@@ -30,19 +30,19 @@
                         </ul>
                     </li>
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link :href="route('hits')" class="header_wrapper-item_menu-item_link">Хит - парад принтеров</inertia-link>
+                        <inertia-link :href="route('hits')" class="link-decorated">Хит - парад принтеров</inertia-link>
                     </li>
                     <!--<li class="header_wrapper-item_menu-item">-->
-                        <!--<inertia-link :href="route('sales')" class="header_wrapper-item_menu-item_link">Акции</inertia-link>-->
+                        <!--<inertia-link :href="route('sales')" class="link-decorated">Акции</inertia-link>-->
                     <!--</li>-->
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link :href="route('blog')" class="header_wrapper-item_menu-item_link">Блог</inertia-link>
+                        <inertia-link :href="route('blog')" class="link-decorated">Блог</inertia-link>
                     </li>
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link :href="route('about')" class="header_wrapper-item_menu-item_link">О нас</inertia-link>
+                        <inertia-link :href="route('about')" class="link-decorated">О нас</inertia-link>
                     </li>
                     <li class="header_wrapper-item_menu-item">
-                        <inertia-link preserve-scroll :href="route('contacts')" class="header_wrapper-item_menu-item_link">Контакты</inertia-link>
+                        <inertia-link preserve-scroll :href="route('contacts')" class="link-decorated">Контакты</inertia-link>
                     </li>
                 </ul>
             </div>

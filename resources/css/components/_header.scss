@@ -115,32 +115,6 @@
                         }
                     }
 
-                    &_link {
-                        color: white;
-
-                        &:after {
-                            content: '';
-                            display: block;
-                            position: absolute;
-                            bottom: 0;
-                            left: 50%;
-                            top: 45px;
-                            height: 2px;
-                            width: 0;
-                            background: transparent;
-                            transition: width .2s ease, background-color .2s ease, left .2s ease;
-                        }
-
-                        &:hover {
-                            color: $white;
-                        }
-                        &:hover:after {
-                            width: 100%;
-                            left: 0;
-                            background: white;
-                        }
-                    }
-
                     &-secondary {
                         position: absolute;
                         top: 54px;

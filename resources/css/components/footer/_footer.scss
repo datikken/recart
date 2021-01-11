@@ -148,9 +148,6 @@ footer {
         color: $white;
         margin-bottom: 10px;
         cursor: pointer;
-        a {
-          color: $white;
-        }
       }
       &_tel {
         font-weight: 600;
@@ -165,13 +162,6 @@ footer {
           cursor: pointer;
           color: #fff;
           text-decoration: none;
-        }
-
-        span {
-          a {
-            text-decoration: none;
-            color: $white !important;
-          }
         }
 
         &-icon {
@@ -189,29 +179,6 @@ footer {
         color: $white;
         margin-bottom: 15px;
         font-weight: 300;
-      }
-    }
-  }
-}
-
-.footer_cat {
-  &-item {
-    &_heading {
-        max-width: initial!important;
-    }
-    @include breakpoint(600px) {
-      min-width: 125px;
-    }
-
-    &:nth-child(2) {
-      flex-direction: column;
-      @include breakpoint($phone) {
-        flex-direction: row;
-      }
-      .footer_cat-item_list {
-        ul {
-          margin: 0;
-        }
       }
     }
   }

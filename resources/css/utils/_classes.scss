@@ -23,12 +23,6 @@
   overflow: hidden !important;
   position: fixed;
 }
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
-}
 .mobile-hide {
   display: none !important;
   @include breakpoint($phone) {
@@ -233,12 +227,6 @@ input, textarea {
       background: $black;
       color: #fff;
     }
-  }
-}
-
-a {
-  &:hover {
-    text-decoration: none!important;
   }
 }
 
