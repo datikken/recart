@@ -44,6 +44,8 @@ export default {
   },
   mounted() {
     this.check_email_verify();
+
+    console.warn(this.$page, 'login redirect')
   },
   methods: {
     open_verify_popup() {
