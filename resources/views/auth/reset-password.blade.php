@@ -176,8 +176,8 @@
                                      </span>
                                         <span class="main_description_item">
                                          Если это были вы, перейдите по ссылке, которая будет активна до {{ $count }}
-                                            <a href="{{ $url }}"> {{ $url }}</a>
                                         </span>
+                                        <a href="{{ $url }}"> {{ $url }}</a>
                                         <span class="main_description_item">
                                             Если ссылка не работает, то скопируйте ее и откройте через адресную строку браузера.
                                         </span>

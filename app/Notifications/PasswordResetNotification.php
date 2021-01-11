@@ -5,6 +5,7 @@ namespace App\Notifications;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
+use Carbon\Carbon;
 
 class PasswordResetNotification extends Notification
 {
@@ -86,12 +87,16 @@ class PasswordResetNotification extends Notification
      */
     protected function buildMailMessage($url, $email)
     {
+        $now = Carbon::now();
+        $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
+        $expire = $now->addMinutes($confExpire)->format('F Y h:i:s');
+
         return (new MailMessage)
             ->markdown('auth.reset-password',
                 [
                     'url' => $url,
                     'email' => $email,
-                    'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')
+                    'count' => $expire
                 ])
             ->subject(Lang::get('Cброс пароля на сайте Recart.me'));
     }
