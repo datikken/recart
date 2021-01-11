@@ -8,11 +8,6 @@
 @import "./utils/uikit";
 @import "./utils/animations";
 
-@import "./modifiers/padding";
-@import "./modifiers/weight";
-@import "./modifiers/margin";
-@import "./modifiers/flex";
-
 @import "./components/btns";
 @import "./components/checkbox";
 @import "./components/loader";
@@ -129,3 +124,8 @@
 @import "./components/modals/emailHasBeenSent";
 @import "./components/modals/emailIsNotVerified";
 @import "./components/modals/emailIsNotVerified";
+
+@import "./modifiers/padding";
+@import "./modifiers/weight";
+@import "./modifiers/margin";
+@import "./modifiers/flex";

@@ -15,8 +15,8 @@
     <EmailIsNotVerified/>
     <EmailHasBeenSent/>
 
-    <!--    <PassResetForm/>-->
-    <!--    <ResetPassword/>-->
+    <PassResetRequest/>
+    <PassResetForm/>
 
   </div>
 
@@ -28,7 +28,7 @@ import LoginForm from '@/Shared/Auth/LoginForm'
 import RegisterForm from '@/Shared/Auth/RegisterForm'
 import EmailIsNotVerified from "@/Shared/Modal/EmailIsNotVerified"
 import PassResetForm from "@/Shared/Modal/PassResetForm"
-import ResetPassword from "@/Shared/Modal/ResetPassword"
+import PassResetRequest from "@/Shared/Modal/PassResetRequest"
 import EmailHasBeenSent from "@/Shared/Modal/EmailHasBeenSent"
 import {mapState} from 'vuex'
 
@@ -37,7 +37,7 @@ export default {
   layout: MainLayout,
   components: {
     EmailHasBeenSent,
-    ResetPassword,
+    PassResetRequest,
     PassResetForm,
     EmailIsNotVerified,
     RegisterForm,

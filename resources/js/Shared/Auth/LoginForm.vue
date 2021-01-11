@@ -57,14 +57,15 @@
                 <SimpleCheckbox name="agreement" @click.native="confirmPolicy"/>
 
                 <div class="form-check">
-
                   <label class="form-check-label">
                     Запомнить меня
                   </label>
                 </div>
-                <inertia-link class="btn-link" href="#passReset" uk-toggle>
+
+                <div class="passreset-link" @click="showPassResetForm">
                   Забыли пароль?
-                </inertia-link>
+                </div>
+
               </div>
             </div>
 
@@ -110,6 +111,11 @@ export default {
     }
   },
   methods: {
+    showPassResetForm() {
+      let passReset = document.querySelector('#passResetRequest');
+
+      UIkit.modal(passReset).show();
+    },
     togglePass() {
       let passField = this.$el.querySelector('[name="password"]');
       this.passShown = !this.passShown;
