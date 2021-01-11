@@ -1,4 +1,7 @@
 let actions = {
+    CREATE_NEW_USER(context, obj) {
+        context.commit('createNewUser', obj)
+    },
     RESEND_VERIFY_EMAIL(context) {
         context.commit('resendEmailVerify');
     },

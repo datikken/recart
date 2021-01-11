@@ -26,10 +26,11 @@
 import MainLayout from '@/Layouts/MainLayout'
 import LoginForm from '@/Shared/Auth/LoginForm'
 import RegisterForm from '@/Shared/Auth/RegisterForm'
-import EmailIsNotVerified from "@/Shared/Modal/EmailIsNotVerified";
-import PassResetForm from "@/Shared/Modal/PassResetForm";
-import ResetPassword from "@/Shared/Modal/ResetPassword";
-import EmailHasBeenSent from "@/Shared/Modal/EmailHasBeenSent";
+import EmailIsNotVerified from "@/Shared/Modal/EmailIsNotVerified"
+import PassResetForm from "@/Shared/Modal/PassResetForm"
+import ResetPassword from "@/Shared/Modal/ResetPassword"
+import EmailHasBeenSent from "@/Shared/Modal/EmailHasBeenSent"
+import {mapState} from 'vuex'
 
 export default {
   name: "Login",
@@ -41,6 +42,18 @@ export default {
     EmailIsNotVerified,
     RegisterForm,
     LoginForm
+  },
+  computed: {
+    ...mapState(['user'])
+  },
+  watch: {
+    user(newVal, oldVal) {
+        if(newVal) {
+          this.check_email_verify();
+        }
+
+        console.log('state user watch', newVal, oldVal)
+    }
   },
   mounted() {
     this.check_email_verify();

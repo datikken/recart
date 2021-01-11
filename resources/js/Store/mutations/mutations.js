@@ -9,7 +9,11 @@ import {
 import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
 import {getAllInformationPosts} from './information/index'
-import {subscribeEmail, resendEmailVerify} from './user/index'
+import {
+    subscribeEmail,
+    resendEmailVerify,
+    createNewUser
+} from './user/index'
 import {
     getFilteredProducts,
     addProductToCart,
@@ -31,6 +35,7 @@ import {
 import {fetch_call} from '@/vanilla/functions/fetch_call'
 
 let mutations = {
+    createNewUser,
     resendEmailVerify,
     subscribeEmail,
     //information

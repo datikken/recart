@@ -1,5 +1,11 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
+function createNewUser(state, obj) {
+    state.user = obj;
+
+    return state.user;
+}
+
 function resendEmailVerify() {
     let status = fetch('/email/verification-notification', {
         method: "POST",
@@ -46,4 +52,9 @@ let updateUserPhoto = (state, formData) => {
         })
 }
 
-export {updateUserPhoto, subscribeEmail, resendEmailVerify}
+export {
+    updateUserPhoto,
+    subscribeEmail,
+    createNewUser,
+    resendEmailVerify
+}
