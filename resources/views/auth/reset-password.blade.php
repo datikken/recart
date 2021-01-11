@@ -175,7 +175,7 @@
                                      </span>
                                         <span class="main_description_item">
                                          Если это были вы, перейдите по ссылке, которая будет активна до
-                                            <a href="{{ $actionUrl }}"> {{ $actionUrl }}</a>
+                                            <a href="{{ $url }}"> {{ $url }}</a>
                                         </span>
                                         <span class="main_description_item">
                                             Если ссылка не работает, то скопируйте ее и откройте через адресную строку браузера.

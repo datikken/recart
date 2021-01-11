@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Mail\PasswordResetEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
@@ -86,11 +87,7 @@ class PasswordResetNotification extends Notification
      */
     protected function buildMailMessage($url, $email)
     {
-        return (new MailMessage)
-            ->view('auth.reset-password')
-            ->subject(Lang::get('Сброс пароля на сайте Recart.me'))
-            ->action(Lang::get('Reset Password'), $url)
-            ->with('email', $email);
+        return (new PasswordResetEmail($url, $email));
     }
 
     /**
