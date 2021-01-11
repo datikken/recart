@@ -27,6 +27,8 @@ class CreateNewUser implements CreatesNewUsers
 //        $pass = $request->password;
 //        $type = $request->type;
 
+
+
         Validator::make($input, [
             'name' => 'required',
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
