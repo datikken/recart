@@ -84,8 +84,8 @@ class PasswordResetNotification extends Notification
     protected function buildMailMessage($url)
     {
         return (new MailMessage)
-            ->view('auth.reset-password')
             ->subject(Lang::get('Сброс пароля на сайте Recart.me'))
+            ->view('auth.reset-password')
             ->action(Lang::get('Reset Password'), $url);
     }
 
