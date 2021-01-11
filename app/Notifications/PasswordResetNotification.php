@@ -87,11 +87,13 @@ class PasswordResetNotification extends Notification
     protected function buildMailMessage($url, $email)
     {
         return (new MailMessage)
-            ->view('auth.verify-email')
-            ->subject(Lang::get('Cброс пароля на сайте Recart.me'))
-            ->action(Lang::get('Reset Password'), $url)
-            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+            ->markdown('auth.reset-password',
+                [
+                    'url' => $url,
+                    'email' => $email,
+                    'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')
+                ])
+            ->subject(Lang::get('Cброс пароля на сайте Recart.me'));
     }
 
     /**

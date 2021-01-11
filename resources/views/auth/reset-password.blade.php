@@ -171,10 +171,11 @@
                                     <span class="main_heading">Здравствуйте!</span>
                                     <span class="main_description">
                                      <span class="main_description_item">
-                                         Мы получили запрос на восстановление доступа к вашей учётной записи RECART.me, которая привязана к почте.
+                                         Мы получили запрос на восстановление доступа к вашей учётной записи RECART.me,
+                                         которая привязана к почте {{ $email }}.
                                      </span>
                                         <span class="main_description_item">
-                                         Если это были вы, перейдите по ссылке, которая будет активна до
+                                         Если это были вы, перейдите по ссылке, которая будет активна до {{ $count }}
                                             <a href="{{ $url }}"> {{ $url }}</a>
                                         </span>
                                         <span class="main_description_item">
