@@ -17,7 +17,6 @@
           <a href="tel:88005556633" class="footer_wrapper-item_tel-phone">8 800 555 66 33</a>
         </div>
         <div class="footer_wrapper-item_adress">
-
           <span>
             115230 Россия, Москва, Варшавское шоссе, дом, 36,
             <br/>
