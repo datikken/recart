@@ -217,7 +217,7 @@
                                     <span class="main_desc">
                                         Если кнопка не работает, то скопируйте ссылку и откройте через адресную строку браузера.
                                         <br/>
-                                        <a href="{{ $actionUrl }}" target="_blank" data-saferedirecturl="">
+                                        <a href="{{ $actionUrl }}" target="_blank">
                                            {{ $actionUrl }}
                                         </a>
                                         <br/>

@@ -59,6 +59,8 @@ class PasswordResetNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $email = $notifiable->getEmailForPasswordReset();
+
         if (static::$toMailCallback) {
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
@@ -66,13 +68,14 @@ class PasswordResetNotification extends Notification
         if (static::$createUrlCallback) {
             $url = call_user_func(static::$createUrlCallback, $notifiable, $this->token);
         } else {
-            $url = url(route('password.reset', [
+            $url = url(route('login', [
                 'token' => $this->token,
-                'email' => $notifiable->getEmailForPasswordReset(),
+                'email' => $email,
+                'pass_reset' => true
             ], false));
         }
 
-        return $this->buildMailMessage($url);
+        return $this->buildMailMessage($url, $email);
     }
 
     /**
@@ -81,14 +84,13 @@ class PasswordResetNotification extends Notification
      * @param string $url
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    protected function buildMailMessage($url)
+    protected function buildMailMessage($url, $email)
     {
         return (new MailMessage)
             ->view('auth.reset-password')
             ->subject(Lang::get('Сброс пароля на сайте Recart.me'))
-            ->line('The introduction to the notification.')
-            ->action(Lang::get('Reset Password'), $url);
-
+            ->action(Lang::get('Reset Password'), $url)
+            ->with('email', $email);
     }
 
     /**
