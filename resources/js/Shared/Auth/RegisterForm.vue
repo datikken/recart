@@ -201,6 +201,8 @@ export default {
 
             if(this.$page.errors.email) this.registerStateHandler(this.$page.errors.email);
             if(this.$page.errors.length === 0) this.registerStateHandler(true);
+
+            console.log(this.$page, 'wtf case')
           }
 
           this.CREATE_NEW_USER(this.form)
