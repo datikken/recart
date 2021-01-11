@@ -17,7 +17,12 @@
           <a href="tel:88005556633" class="footer_wrapper-item_tel-phone">8 800 555 66 33</a>
         </div>
         <div class="footer_wrapper-item_adress">
-          <span>149390 Россия, Москва, ул. Набережные челны, д. 123,<br/> корпус 56, строение 88, подъезд 6, офис 987</span>
+
+          <span>
+            115230 Россия, Москва, Варшавское шоссе, дом, 36,
+            <br/>
+            строение 8, 2-й подъезд, этаж 2, офис 1578
+          </span>
         </div>
         <div class="footer_wrapper-item_social">
           <div class="footer_wrapper-item_social_facebook">
@@ -118,7 +123,3 @@ export default {
   name: "Footer"
 }
 </script>
-
-<style>
-
-</style>
