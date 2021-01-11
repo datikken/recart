@@ -7,20 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCreated extends Mailable
+class PasswordResetEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
-
+    public $url;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($url)
     {
-        $this->data = $data;
+        $this->url = $url;
     }
 
     /**
@@ -28,12 +27,11 @@ class OrderCreated extends Mailable
      *
      * @return $this
      */
-    public function build($subject)
+    public function build()
     {
         return $this
             ->from('admin@recart.me')
-            ->subject($subject)
-            ->view('emails.order_created')
-            ->with('link', $this->data);
+            ->view('auth.reset-password')
+            ->with('url', $this->url);
     }
 }

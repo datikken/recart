@@ -32,6 +32,7 @@
             color: #292930;
             padding: 10px 0 0 10px;
         }
+
         .main_btn {
             display: block;
             margin-bottom: 10px;
@@ -76,6 +77,7 @@
             display: block;
             text-indent: inherit;
         }
+
         .main_description_item {
             display: block;
             padding: 0 0 10px 0;
@@ -104,6 +106,7 @@
         .colors {
             padding: 54px 0 0 57px;
         }
+
         .colors_a, .colors_b, .colors_c, .colors_d, .colors_e {
             width: 25px;
             height: 25px;
@@ -112,21 +115,27 @@
             float: left;
             margin-right: 12px;
         }
+
         .colors_a {
             background-color: #FFCC33;
         }
+
         .colors_b {
             background-color: #14B6E7;
         }
+
         .colors_c {
             background-color: #FF9933;
         }
+
         .colors_d {
             background-color: #FF3399;
         }
+
         .colors_e {
             background-color: #66CCCC;
         }
+
         .footer_link a {
             color: white;
             text-decoration: none;
@@ -137,18 +146,21 @@
 <table border="0" cellpadding="0" cellspacing="0" bgcolor="#f6f6f6" style="width:100%; min-width:320px;">
     <tr align="center">
         <td valign="top" align="center" style="padding:0 10px;">
-            <table border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px; min-width:300px;background: #fff;">
+            <table border="0" cellpadding="0" cellspacing="0"
+                   style="width:100%; max-width:600px; min-width:300px;background: #fff;">
                 <!-- LOGO -->
                 <tr>
                     <td valign="top">
                         <a class="email_header">
-                            <img class="email_header_logo" src="{{URL::to('/')}}/images/emails/reset_header_logo.png" alt="order_logo" />
+                            <img class="email_header_logo" src="{{URL::to('/')}}/images/emails/reset_header_logo.png"
+                                 alt="order_logo"/>
                             <p>Подтверждение пароля</p>
                             <img class="email_header_alogo" src="{{URL::to('/')}}/images/emails/t2.png" alt="T2"/>
                         </a>
                     </td>
                 </tr>
                 <!--/ LOGO -->
+
                 <!-- BODY -->
                 <tr>
                     <td>
@@ -164,10 +176,10 @@
                                         <span class="main_description_item">
                                          Если это были вы, перейдите по ссылке, которая будет активна до
                                             <?
-                                                $helper = new \App\Includes\HelperDate();
-                                                echo $helper->getTommorrowWithMonth();
+                                            $helper = new \App\Includes\HelperDate();
+                                            echo $helper->getTommorrowWithMonth();
                                             ?> <a
-                                                href="{{ $data['link'] }}"> {{ $data['link'] }} </a>
+                                                    href="{{ $url }}"> {{ $url }} </a>
                                         </span>
                                         <span class="main_description_item">
                                             Если ссылка не работает, то скопируйте ее и откройте через адресную строку браузера.
@@ -189,14 +201,18 @@
                                     <span class="colors_d"></span>
                                     <span class="colors_e"></span>
                                 </div>
-                                <div class="yellow_logo" style="float:right;width: 50px; padding-right: 56px; cursor: pointer;">
+                                <div class="yellow_logo"
+                                     style="float:right;width: 50px; padding-right: 56px; cursor: pointer;">
                                     <img src="{{URL::to('/')}}/images/emails/colors_logo.png" alt="logo">
                                 </div>
                             </div>
-                            <div style="background-image: url({{ URL::to('/')}}/images/emails/email_bg2.png);height: 111px;background-position: center;background-size: contain;background-repeat: no-repeat;text-align: center;" alt="">
+                            <div style="background-image: url({{ URL::to('/')}}/images/emails/email_bg2.png);height: 111px;background-position: center;background-size: contain;background-repeat: no-repeat;text-align: center;"
+                                 alt="">
                                 <div class="socials" style="padding-top: 45px;">
-                                    <img src="{{URL::to('/')}}/images/emails/social_facebook.png" style="margin-right: 35px;cursor: pointer">
-                                    <img src="{{URL::to('/')}}/images/emails/social_instagram.png" style="margin-right: 35px;">
+                                    <img src="{{URL::to('/')}}/images/emails/social_facebook.png"
+                                         style="margin-right: 35px;cursor: pointer">
+                                    <img src="{{URL::to('/')}}/images/emails/social_instagram.png"
+                                         style="margin-right: 35px;">
                                     <img src="{{URL::to('/')}}/images/emails/social_emails.png">
                                 </div>
                             </div>
@@ -206,11 +222,13 @@
                 <!-- BODY -->
 
                 <!-- FOOTER -->
-                <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;max-width: 600px;min-height: 500px;background-repeat: no-repeat;min-width: 300px;color: #fff;background-image: url({{URL::to('/')}}/images/emails/footer_iphone.png)">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="width: 100%;max-width: 600px;min-height: 500px;background-repeat: no-repeat;min-width: 300px;color: #fff;background-image: url({{URL::to('/')}}/images/emails/footer_iphone.png)">
                     <tr>
                         <td class="footer_item" style="display: block;padding: 25px 50px 0 50px;">
                             <div class="footer_item_left" style="height: 65px;float:left;">
-                                <img src="{{URL::to('/')}}/images/emails/footer_location.png" alt="phone" style="float: left;padding-right: 10px;"/>
+                                <img src="{{URL::to('/')}}/images/emails/footer_location.png" alt="phone"
+                                     style="float: left;padding-right: 10px;"/>
                             </div>
                             <div class="footer_item_right" style="float:left; display: contents;">
                                 <span style="padding-bottom: 10px; display: block;">АДРЕС:</span>
@@ -219,38 +237,44 @@
                         </td>
                         <td class="footer_item" style="display: block;padding: 0;padding: 10px 50px;">
                             <div class="footer_item_left" style="height: 65px;float:left;">
-                                <img src="{{URL::to('/')}}/images/emails/footer_phone.png" alt="phone" style="float: left;padding-right: 10px;">
+                                <img src="{{URL::to('/')}}/images/emails/footer_phone.png" alt="phone"
+                                     style="float: left;padding-right: 10px;">
                             </div>
                             <div class="footer_item_right" style="float:left; display: contents;">
                                 <span style="padding-bottom: 5px; display: block;">КОНТАКТЫ:</span>
                                 <div class="footer_item_contacts">
                                     <div class="footer_item_contacts_left" style="float:left;">
-                                        <img src="{{URL::to('/')}}/images/emails/footer_tel.png" alt="" style="float:left;padding-top: 1px;">
-                                        <a href="tel:88005556633" style="padding-left: 18px;padding-bottom: 5px;color: white; text-decoration: none;">8 (800) 555-66-33</a>
+                                        <img src="{{URL::to('/')}}/images/emails/footer_tel.png" alt=""
+                                             style="float:left;padding-top: 1px;">
+                                        <a href="tel:88005556633"
+                                           style="padding-left: 18px;padding-bottom: 5px;color: white; text-decoration: none;">8
+                                            (800) 555-66-33</a>
                                     </div>
                                     <div class="footer_item_contacts_right" style="float:left;padding-left: 40px;">
-                                        <img src="{{URL::to('/')}}/images/emails/footer_mail.png" alt="" style="float:left;padding-top: 5px;">
-                                        <span  style="padding-left: 18px;padding-bottom: 5px;color: white;text-decoration: none;" class="footer_link">support@recart.me</span>
+                                        <img src="{{URL::to('/')}}/images/emails/footer_mail.png" alt=""
+                                             style="float:left;padding-top: 5px;">
+                                        <span style="padding-left: 18px;padding-bottom: 5px;color: white;text-decoration: none;"
+                                              class="footer_link">support@recart.me</span>
                                     </div>
                                 </div>
                             </div>
                         </td>
-
                         <td style="float: left; width: 100%;padding: 31px 0 14px 135px;">
-                            <a href="#" style="color: black;font-size: 12px;height: 14px; cursor: pointer;text-decoration: none;">Политика конфиденциальности</a>
+                            <a href="#"
+                               style="color: black;font-size: 12px;height: 14px; cursor: pointer;text-decoration: none;">Политика
+                                конфиденциальности</a>
                         </td>
-
                         <td style="float: left;width: 100%;">
-                            <a href="#" style="color: black;padding-left: 135px;font-size: 12px;line-height: 14px;cursor:pointer;text-decoration: none;">Платежные системы</a>
+                            <a href="#"
+                               style="color: black;padding-left: 135px;font-size: 12px;line-height: 14px;cursor:pointer;text-decoration: none;">Платежные
+                                системы</a>
                         </td>
-
                     </tr>
                 </table>
                 <!-- FOOTER -->
-                </td>
-
-                </tr>
             </table>
+        </td>
+    </tr>
 </table>
 </body>
 <html>

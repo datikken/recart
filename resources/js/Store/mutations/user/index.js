@@ -6,6 +6,25 @@ function createNewUser(state, obj) {
     return state.user;
 }
 
+function resetUserPassword(state, email) {
+    let status = fetch('/password.email', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            email
+        })
+    })
+
+    status.then(data => console.warn('reset password return'))
+
+    return status;
+}
+
 function resendEmailVerify() {
     let status = fetch('/email/verification-notification', {
         method: "POST",
@@ -56,5 +75,6 @@ export {
     updateUserPhoto,
     subscribeEmail,
     createNewUser,
-    resendEmailVerify
+    resendEmailVerify,
+    resetUserPassword
 }

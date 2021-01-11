@@ -8,11 +8,15 @@
           <span>Для подтверждения вашего аккаунта, введите свою почту</span>
         </div>
 
-        <form class="passReset_form">
+        <form class="passReset_form" @submit.prevent="submit">
           <div class="form_group">
             <label for="email" class="form_group_label">Введите почту</label>
 
-            <input class="form_group_input" type="text" name="email" v-model="email">
+            <input
+                class="form_group_input"
+                type="text" name="email"
+                v-model="email"
+            >
 
             <label for="required" class="form_group_message">Поле обязательно к заполнению</label>
           </div>
@@ -21,7 +25,7 @@
             <TextBtn
                 className="mauto action_btn yellow_btn"
                 text="Отправить"
-                @click.native="submitPassReset" />
+                @click.native="submit" />
           </div>
 
         </form>
@@ -35,6 +39,7 @@
 import TextBtn from '@/Shared/Btns/TextBtn'
 import {Fragment} from 'vue-fragment';
 import EmailHasBeenSent from '@/Shared/Modal/EmailHasBeenSent'
+import {mapActions} from 'vuex';
 
 export default {
   name: "PassResetRequest",
@@ -47,33 +52,15 @@ export default {
     Fragment
   },
   methods: {
+    ...mapActions([
+        'RESET_USER_PASSWORD'
+    ]),
     showThanx() {
       let element = this.$el.querySelector('#emailHasBeenSent');
-      // UIkit.modal(element).show();
+      UIkit.modal(element).show();
     },
-    submitPassReset() {
-      let email = this.email;
-
-      fetch('/forgot-password', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': window.token
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
-          email,
-          csrf_token: window.token
-        })
-      })
-          .then(response => {
-            return response.json();
-          })
-          .then(text => {
-            return console.log(text);
-          })
-          .catch(error => console.error(error));
+    submit() {
+      this.RESET_USER_PASSWORD(this.email);
     }
   }
 }

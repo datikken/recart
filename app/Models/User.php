@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Notifications\EmailVerificationNotification;
+use App\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -83,5 +83,12 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
         $token = $this->currentAccessToken();
 
         $this->notify(new EmailVerificationNotification($token));
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $token = $this->currentAccessToken();
+
+        $this->notify(new PasswordResetNotification($token));
     }
 }

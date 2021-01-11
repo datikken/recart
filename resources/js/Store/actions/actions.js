@@ -1,4 +1,7 @@
 let actions = {
+    RESET_USER_PASSWORD(context, email) {
+        context.commit('resetUserPassword', email)
+    },
     CREATE_NEW_USER(context, obj) {
         context.commit('createNewUser', obj)
     },

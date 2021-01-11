@@ -12,7 +12,8 @@ import {getAllInformationPosts} from './information/index'
 import {
     subscribeEmail,
     resendEmailVerify,
-    createNewUser
+    createNewUser,
+    resetUserPassword
 } from './user/index'
 import {
     getFilteredProducts,
@@ -38,6 +39,7 @@ let mutations = {
     createNewUser,
     resendEmailVerify,
     subscribeEmail,
+    resetUserPassword,
     //information
     getAllInformationPosts,
     //ui

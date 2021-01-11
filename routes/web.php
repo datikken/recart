@@ -154,6 +154,7 @@ Route::get('/cart', [CartController::class, 'index'])
  * Emails
  */
 //verification.send
+//password.email
 
 /*
  * Checkout
