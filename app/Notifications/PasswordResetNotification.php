@@ -32,7 +32,7 @@ class PasswordResetNotification extends Notification
     /**
      * Create a notification instance.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function __construct($token)
@@ -43,7 +43,7 @@ class PasswordResetNotification extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array|string
      */
     public function via($notifiable)
@@ -54,7 +54,7 @@ class PasswordResetNotification extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
@@ -78,7 +78,7 @@ class PasswordResetNotification extends Notification
     /**
      * Get the reset password notification mail message for the given URL.
      *
-     * @param  string  $url
+     * @param string $url
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     protected function buildMailMessage($url)
@@ -86,13 +86,15 @@ class PasswordResetNotification extends Notification
         return (new MailMessage)
             ->subject(Lang::get('Сброс пароля на сайте Recart.me'))
             ->view('auth.reset-password')
+            ->line('The introduction to the notification.')
             ->action(Lang::get('Reset Password'), $url);
+
     }
 
     /**
      * Set a callback that should be used when creating the reset password button URL.
      *
-     * @param  \Closure  $callback
+     * @param \Closure $callback
      * @return void
      */
     public static function createUrlUsing($callback)
@@ -103,7 +105,7 @@ class PasswordResetNotification extends Notification
     /**
      * Set a callback that should be used when building the notification mail message.
      *
-     * @param  \Closure  $callback
+     * @param \Closure $callback
      * @return void
      */
     public static function toMailUsing($callback)
