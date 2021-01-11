@@ -170,7 +170,7 @@ Route::get('/checkout', [CheckoutController::class, 'get'])
  * Test routes
  * to clear cachedMiddlewares: php artisan responsecache:clear
  */
-Route::get('/test', [TestController::class, 'index'])->name('test')
-    ->middleware('cacheResponse:30');
+Route::get('/test', [TestController::class, 'index'])->name('test');
+//    ->middleware('cacheResponse:30');
 Route::get('/all', [TestController::class, 'all'])->name('all');
 Route::get('/testSearch', [SearchController::class, 'testSearch'])->name('testSearch');

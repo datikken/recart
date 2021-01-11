@@ -8,6 +8,7 @@ use App\Nova\Year;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use App\Models\User;
+use Jenssegers\Date\Date;
 
 class TestController extends Controller
 {
@@ -79,10 +80,12 @@ class TestController extends Controller
 //        $years = $this->about->getAllYears();
 //        $visits = Redis::incr('visits');
 //        $prdcts = Product::where('id', '5035')->get();
-        $user = User::where('email', 'tikken23@gmail.com');
-        $user->sendPasswordResetNotification();
+        $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
+        $expire = Date::now('Europe/Moscow')->add('+'.$confExpire.'minutes');
+        $last = $expire->format('H:i - j F Y г');
 
-        return response()->json($user);
+
+        return $last;
     }
 
     public function all()

@@ -88,14 +88,15 @@ class PasswordResetNotification extends Notification
     protected function buildMailMessage($url, $email)
     {
         $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
-        $expire = Date::now()->add('minute', $confExpire);
+        $expire = Date::now('Europe/Moscow')->add('+'.$confExpire.'minutes');
+        $formated = $expire->format('H:i - j F Y г');
 
         return (new MailMessage)
             ->markdown('auth.reset-password',
                 [
                     'url' => $url,
                     'email' => $email,
-                    'count' => $expire
+                    'count' => $formated
                 ])
             ->subject(Lang::get('Cброс пароля на сайте Recart.me'));
     }
