@@ -140,7 +140,7 @@ Route::get('/tracking', [TrackingController::class, 'index'])
 Route::post('/trackingGet', [TrackingController::class, 'trackingGet'])
     ->name('trackingGet');
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
