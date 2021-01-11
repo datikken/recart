@@ -200,6 +200,10 @@ export default {
             this.sieg = true;
 
             if(this.$page.errors.email) this.setLoginError(this.$page.errors.email);
+
+            if(this.$page.errors) {
+              console.warn(this.$page, 'some eerors register')
+            }
           }
 
           this.CREATE_NEW_USER(this.form)
