@@ -13,7 +13,6 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrackingController;
-use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Actions\Fortify\Login;
@@ -104,17 +103,21 @@ Route::get('/exportOrdersExcel', [OrderController::class, 'exportOrdersExcel'])
  * Products
  */
 Route::get('/getAllProducts', [ProductController::class, 'getAllProducts'])
-    ->name('getAllProducts');
+    ->name('getAllProducts')
+    ->middleware('cacheResponse:3600');
+
 Route::get('/getTenProductsWithImages', [ProductController::class, 'getTenProductsWithImages'])
-    ->name('getTenProductsWithImages');
+    ->name('getTenProductsWithImages')
+    ->middleware('cacheResponse:3600');
+
 Route::post('/getProductById', [ProductController::class, 'getProductById'])
     ->name('getProductById');
+
 Route::get('/exportProductsExcel', [ProductController::class, 'exportProductsExcel'])
     ->name('exportProductsExcel');
 /*
  * end API
  */
-
 
 /*
  * Page routes
@@ -164,7 +167,9 @@ Route::get('/checkout', [CheckoutController::class, 'get'])
 
 /*
  * Test routes
+ * to clear cachedMiddlewares php artisan responsecache:clear
  */
-Route::get('/test', [TestController::class, 'index'])->name('test');
+Route::get('/test', [TestController::class, 'index'])->name('test')
+    ->middleware('cacheResponse:30');
 Route::get('/all', [TestController::class, 'all'])->name('all');
 Route::get('/testSearch', [SearchController::class, 'testSearch'])->name('testSearch');

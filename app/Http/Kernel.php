@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Ajax;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 class Kernel extends HttpKernel
 {
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\InertiaVersionMiddleware::class,
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class,
         ],
 
         'api' => [
@@ -66,6 +68,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'ajax' => \App\Http\Middleware\Ajax::class,
-        'remember' => \Reinink\RememberQueryStrings::class
+        'remember' => \Reinink\RememberQueryStrings::class,
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
     ];
 }

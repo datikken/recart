@@ -34,6 +34,7 @@
         "reinink/remember-query-strings": "^0.1.0",
         "spatie/laravel-image-optimizer": "^1.6",
         "spatie/laravel-permission": "^3.18",
+        "spatie/laravel-responsecache": "^6.6",
         "spatie/nova-tags-field": "^3.1",
         "stevebauman/location": "^5.2",
         "tightenco/ziggy": "^0.9.4",
