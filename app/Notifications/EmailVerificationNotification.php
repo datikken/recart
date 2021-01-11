@@ -8,6 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
 class EmailVerificationNotification extends Notification
@@ -49,6 +50,7 @@ class EmailVerificationNotification extends Notification
 
         return (new MailMessage)
                     ->view('auth.verify-email')
+                    ->subject(Lang::get('Подтверждение регистрации на сайте Recart.me'))
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', $verificationUrl);
     }

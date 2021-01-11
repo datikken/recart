@@ -171,15 +171,11 @@
                                     <span class="main_heading">Здравствуйте!</span>
                                     <span class="main_description">
                                      <span class="main_description_item">
-                                         Мы получили запрос на восстановление доступа к вашей учётной записи RECART.me, которая привязана к почте {{ $data['email'] }}
+                                         Мы получили запрос на восстановление доступа к вашей учётной записи RECART.me, которая привязана к почте.
                                      </span>
                                         <span class="main_description_item">
                                          Если это были вы, перейдите по ссылке, которая будет активна до
-                                            <?
-                                            $helper = new \App\Includes\HelperDate();
-                                            echo $helper->getTommorrowWithMonth();
-                                            ?> <a
-                                                    href="{{ $url }}"> {{ $url }} </a>
+                                            <a href="{{ $actionUrl }}"> {{ $actionUrl }}</a>
                                         </span>
                                         <span class="main_description_item">
                                             Если ссылка не работает, то скопируйте ее и откройте через адресную строку браузера.
