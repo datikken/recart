@@ -7,7 +7,7 @@ function createNewUser(state, obj) {
 }
 
 function resetUserPassword(state, email) {
-    let status = fetch('/password.email', {
+    let status = fetch('/forgot-password', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

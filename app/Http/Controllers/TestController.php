@@ -7,6 +7,7 @@ use App\Helpers\Converter;
 use App\Nova\Year;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Models\User;
 
 class TestController extends Controller
 {
@@ -78,9 +79,10 @@ class TestController extends Controller
 //        $years = $this->about->getAllYears();
 //        $visits = Redis::incr('visits');
 //        $prdcts = Product::where('id', '5035')->get();
-        $years = rand();
+        $user = User::where('email', 'tikken23@gmail.com');
+        $user->sendPasswordResetNotification();
 
-        return response()->json($years);
+        return response()->json($user);
     }
 
     public function all()

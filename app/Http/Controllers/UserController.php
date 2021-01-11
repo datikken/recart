@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
-use Laravel\Jetstream\Jetstream;
 use Stevebauman\Location\Facades\Location;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;

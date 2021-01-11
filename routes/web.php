@@ -153,8 +153,8 @@ Route::get('/cart', [CartController::class, 'index'])
 /*
  * Emails
  */
-//verification.send
-//password.email
+
+//emailverification url: verification.send
 
 /*
  * Checkout
@@ -168,7 +168,7 @@ Route::get('/checkout', [CheckoutController::class, 'get'])
 
 /*
  * Test routes
- * to clear cachedMiddlewares php artisan responsecache:clear
+ * to clear cachedMiddlewares: php artisan responsecache:clear
  */
 Route::get('/test', [TestController::class, 'index'])->name('test')
     ->middleware('cacheResponse:30');
