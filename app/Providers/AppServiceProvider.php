@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Observers\ProductsObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
+use Jenssegers\Date\Date;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Product::observe(ProductsObserver::class);
+        Date::setlocale(config('app.locale'));
     }
 }

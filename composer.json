@@ -20,6 +20,7 @@
         "infinety-es/nova-filemanager": "^2.8",
         "intervention/image": "^2.5",
         "jagdeepbanga/nova-date-time": "^1.0",
+        "jenssegers/date": "^4.0",
         "jorenvanhocht/laravel-share": "^3.3",
         "joshua060198/nova-editable-status-card": "^0.0.8",
         "laravel/framework": "^8.12",

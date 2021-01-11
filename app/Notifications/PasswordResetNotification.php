@@ -5,7 +5,7 @@ namespace App\Notifications;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
-use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class PasswordResetNotification extends Notification
 {
@@ -87,9 +87,8 @@ class PasswordResetNotification extends Notification
      */
     protected function buildMailMessage($url, $email)
     {
-        $now = Carbon::now();
         $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
-        $expire = $now->addMinutes($confExpire)->format('F Y h:i:s');
+        $expire = Date::now()->add('minute', $confExpire);
 
         return (new MailMessage)
             ->markdown('auth.reset-password',
