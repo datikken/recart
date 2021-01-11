@@ -75,9 +75,10 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-        $years = $this->about->getAllYears();
+//        $years = $this->about->getAllYears();
 //        $visits = Redis::incr('visits');
 //        $prdcts = Product::where('id', '5035')->get();
+        $years = rand();
 
         return response()->json($years);
     }
