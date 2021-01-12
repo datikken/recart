@@ -13,7 +13,7 @@ class AddressRepository
     {
         return Address::all();
     }
-    public function address($id)
+    public function get($id)
     {
         return Address::where($id);
     }
@@ -21,4 +21,11 @@ class AddressRepository
     {
         return Address::where('user_id'. $user->id)->get();
     }
+
+    public function __set($name, $value)
+    {
+        // TODO: Implement __set() method.
+    }
+
+
 }

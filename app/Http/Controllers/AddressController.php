@@ -33,9 +33,4 @@ class AddressController extends Controller
 
         return $lastAddr;
     }
-
-    public function set()
-    {
-        //TODO implement DTO pattern
-    }
 }
