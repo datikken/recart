@@ -45,6 +45,8 @@
     &_cover {
         img {
             width: 100%!important;
+            max-height: 500PX;
+            object-position: top;
         }
     }
     &_item {
