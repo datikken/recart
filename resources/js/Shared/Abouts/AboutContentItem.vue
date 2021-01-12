@@ -11,7 +11,9 @@
 
       <div class="aboutc_row" v-if="ind % 2 != 0" :class="{'right_row': ind % 2 === 0}"></div>
 
-      <div class="aboutc_row" :class="{'right_row': ind % 2 != 0}">
+      <div class="aboutc_row"
+           :class="{'right_row': ind % 2 != 0}"
+           @click="openModal">
         <i class="aboutc_search" v-if="(ind % 2 === 0)"></i>
 
         <a class="aboutc_prgf" uk-toggle="target: #modal-close-default" @click="getSelectedYearInfo">
@@ -28,20 +30,14 @@
 </template>
 
 <script>
-import AboutModal from './AboutModal.vue'
 
 export default {
   name: "AboutContentItem",
   props: ['data'],
-  data: () => ({}),
-  components: {
-    AboutModal
-  },
-  mounted() {
-    console.log(this.$props.data, 'props')
-  },
   methods: {
-    getSelectedYearInfo() {
+    openModal() {
+        let modal = document.querySelector('#aboutYearModal');
+        UIkit.modal(modal).show();
     }
   }
 }

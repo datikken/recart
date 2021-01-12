@@ -1,5 +1,5 @@
 <template>
-    <div id="modal-close-default" uk-modal>
+    <div id="aboutYearModal" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
 
 
@@ -46,9 +46,3 @@
         name: "AboutModal"
     }
 </script>
-
-<!--<style>-->
-<!--    .uk-modal-body {-->
-<!--        padding: 0;-->
-<!--    }-->
-<!--</style>-->

@@ -4,9 +4,11 @@
 
         <div class="aboutc_wrap">
             <AboutContentItem
-                v-if="item.events.length > 0"
+                v-if="item && item.events.length > 0"
                 v-for="item in lastTwoYears"
                 :data="item" :key="item.year"/>
+
+            <AboutModal />
         </div>
 
     </div>
@@ -15,11 +17,13 @@
 <script>
 import AboutContentItem from './AboutContentItem'
 import {mapActions, mapState} from 'vuex'
+import AboutModal from "./AboutModal";
 
 export default {
     name: "AboutContent",
     components: {
-        AboutContentItem
+        AboutModal,
+        AboutContentItem,
     },
     computed: mapState([
         'lastTwoYears'
@@ -29,8 +33,6 @@ export default {
     },
     mounted() {
         this.GET_ALL_YEARS_AND_EVENTS();
-
-        console.warn(this.events, 'content')
     }
 }
 </script>
