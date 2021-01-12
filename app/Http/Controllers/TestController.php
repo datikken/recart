@@ -77,13 +77,9 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-//        $years = $this->about->getAllYears();
-//        $visits = Redis::incr('visits');
-//        $prdcts = Product::where('id', '5035')->get();
         $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
         $expire = Date::now('Europe/Moscow')->add('+'.$confExpire.'minutes');
         $last = $expire->format('H:i - j F Y г');
-
 
         return $last;
     }
