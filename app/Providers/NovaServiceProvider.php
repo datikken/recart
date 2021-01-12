@@ -83,7 +83,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \Infinety\Filemanager\FilemanagerTool(),
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
-            (new \vmitchell85\NovaLinks\Links())
+            (new \vmitchell85\NovaLinks\Links()),
+            new \PhpJunior\NovaLogViewer\Tool()
         ];
     }
 
