@@ -1,7 +1,10 @@
 <template>
     <Fragment>
         <div class="postList">
-            <BlogPostsListItem v-for="post in posts" :post="post" :key="post.id"/>
+            <inertia-link v-for="post in posts"
+                          :href="route('blog.view', post.id)">
+                <BlogPostsListItem :post="post" :key="post.id"/>
+            </inertia-link>
         </div>
     </Fragment>
     <!--@include('components.modals.shouldBeLoggedIn')-->
@@ -23,7 +26,7 @@
         created() {
             this.posts = this.$page.posts;
 
-            // console.warn('blog posts list bla', this.$page)
+            console.warn('blog posts list bla', this.$page)
         }
     }
 </script>

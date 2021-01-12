@@ -24,7 +24,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function detail($id)
+    public function get($id)
     {
         $post = $this->postRepository->post($id);
 

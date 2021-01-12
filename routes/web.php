@@ -134,6 +134,8 @@ Route::get('/hits', [HitsController::class, 'index'])
     ->name('hits');
 Route::get('/blog', [PostController::class, 'index'])
     ->name('blog');
+Route::get('/blog/{id}', [PostController::class, 'get'])
+    ->name('blog.view');
 Route::get('/about', [AboutController::class, 'index'])
     ->name('about');
 Route::get('/contacts', [ContactsController::class, 'index'])

@@ -1,8 +1,7 @@
 <template>
     <Fragment>
-        <Breadcrumbs />
+        <Breadcrumbs :links="['index', 'blog']"/>
         <BlogPostsList />
-
     </Fragment>
 </template>
 
@@ -19,9 +18,6 @@
             BlogPostsList,
             Fragment,
             Breadcrumbs
-        },
-        mounted() {
-            console.warn('st3')
         }
     }
 </script>

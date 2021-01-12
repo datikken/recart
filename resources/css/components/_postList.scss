@@ -1,22 +1,12 @@
 .postList {
     max-width: $layoutw;
     margin: 0 auto;
+
     &_posted {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         padding-left: 25px;
         position: relative;
-
-        &:after {
-            content: '';
-            display: block;
-            height: 100%;
-            width: 1px;
-            background: $light_gray;
-            position: absolute;
-            top: 0;
-            left: -25px;
-        }
 
         &_author {
             font-family: $font;
@@ -37,10 +27,26 @@
             text-align: justify;
             letter-spacing: 0.02em;
             color: $dblack;
-            margin-left: 10px;
+            margin-left: 20px;
+
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                width: 1px;
+                background: $light_gray;
+                position: absolute;
+                top: 0;
+                left: -25px;
+            }
         }
     }
 
+    &_cover {
+        img {
+            width: 100%!important;
+        }
+    }
     &_item {
         margin-bottom: 30px;
         padding-bottom: 30px;
