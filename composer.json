@@ -40,7 +40,8 @@
         "stevebauman/location": "^5.2",
         "tightenco/ziggy": "^0.9.4",
         "vmitchell85/nova-links": "^1.0",
-        "vyuldashev/nova-permission": "^2.10"
+        "vyuldashev/nova-permission": "^2.10",
+        "datikken/app_variables": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -54,6 +55,10 @@
         {
             "type": "path",
             "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AppVariables"
         }
     ],
     "config": {

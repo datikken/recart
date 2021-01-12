@@ -108,10 +108,10 @@
                     )
                 }
 
-                if(link === 'dashboard') {
+                if(link === 'login') {
                     that.allLinks.push(
                         {
-                            'link': 'dashboard',
+                            'link': 'login',
                             'name': 'Профиль'
                         }
                     )

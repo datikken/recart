@@ -1,4 +1,6 @@
 let state = {
+    //
+    dashboardLayout: 'welcome',
     //paths
     productImages: '',
     //cart

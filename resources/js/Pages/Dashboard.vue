@@ -1,90 +1,67 @@
 <template>
     <Fragment>
-        <Breadcrumbs :links="['index','dashboard']" />
+        <Breadcrumbs :links="['index','login']"/>
 
         <div class="dash">
-            <div class="dash_left">
-                <div class="dash_left-wrap">
-                    <div class="dash_left-wrap_item dash_active">
-                        <span class="dash_left-wrap_item-text">
-                            <span>Dashboard</span>
-                        </span>
-                        <div class="dash_left-wrap_item-icon"
-                             style="background-image: url('/images/dash/dash_user.svg')"></div>
-                    </div>
+            <DashboardMenu/>
 
-                    <div class="dash_left-wrap_item">
-                        <span class="dash_left-wrap_item-text">
-                            <span>Заказы</span>
-                        </span>
-                        <div class="dash_left-wrap_item-icon"
-                             style="background-image: url('/images/dash/dash_orders.svg')"></div>
-                    </div>
-
-                    <div class="dash_left-wrap_item">
-                        <span class="dash_left-wrap_item-text">
-                            <span>Адреса</span>
-                        </span>
-                        <div class="dash_left-wrap_item-icon"
-                             style="background-image: url('/images/dash/dash_addr.svg')"></div>
-                    </div>
-
-                    <div class="dash_left-wrap_item">
-                        <span class="dash_left-wrap_item-text">
-                            <span>Заполнить аккаунт</span>
-                        </span>
-                        <div class="dash_left-wrap_item-icon"
-                             style="background-image: url('/images/dash/dash_fill.svg')"></div>
-                    </div>
-
-                    <div class="dash_left-wrap_item dash_logout" @click="logout">
-                        <span class="dash_left-wrap_item-text">
-                            <span>Выйти</span>
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-            <DashboardForms/>
-
+            <DashboardWelcome v-if="dashboardLayout === 'welcome'"/>
+            <DashboardOrders v-if="dashboardLayout === 'welcome1'" />
+            <DashboardAdresses v-if="dashboardLayout === 'welcome1'" />
+            <DashboardForms v-if="dashboardLayout === 'welcome1'" />
         </div>
     </Fragment>
 </template>
 
 <script>
-    import MainLayout from '@/Layouts/MainLayout'
-    import DashboardForms from '@/Shared/Dashboard/DashboardForms'
-    import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
-    import {Fragment} from 'vue-fragment'
+import MainLayout from '@/Layouts/MainLayout'
+import DashboardWelcome from "@/Shared/Dashboard/DashboardWelcome";
+import DashboardOrders from "@/Shared/Dashboard/DashboardOrders";
+import DashboardAdresses from "@/Shared/Dashboard/DashboardAdresses";
+import DashboardForms from '@/Shared/Dashboard/DashboardForms'
+import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
+import DashboardMenu from '@/Shared/Dashboard/DashboardMenu'
+import {Fragment} from 'vue-fragment'
+import {mapState} from 'vuex'
 
-    export default {
-        name: "Dashboard",
-        layout: MainLayout,
-        components: {
-            DashboardForms,
-            Fragment,
-            Breadcrumbs
-        },
-        data: () => ({
-            redirectedFromCheckout: false
-        }),
-        methods: {
-            checkIfRedirectedFromCheckout() {
-                let state = localStorage.getItem('redirectedFromCheckout');
-
-                if(state) {
-                    this.redirectedFromCheckout = true;
-                    localStorage.removeItem('redirectedFromCheckout');
-                    this.$inertia.visit('checkout');
-                }
-            },
-            logout() {
-                this.$inertia.post('logout');
-            }
-        },
-        mounted() {
-            this.checkIfRedirectedFromCheckout();
+export default {
+    name: "Dashboard",
+    layout: MainLayout,
+    components: {
+        DashboardWelcome,
+        DashboardOrders,
+        DashboardAdresses,
+        DashboardForms,
+        DashboardMenu,
+        Fragment,
+        Breadcrumbs
+    },
+    data: () => ({
+        redirectedFromCheckout: false
+    }),
+    computed: {
+        ...mapState([
+            'dashboardLayout'
+        ])
+    },
+    watch: {
+        dashboardLayout(newVal, oldVal) {
+            newVal ? this.dashboardLayout = newVal : this.dashboardLayout = oldVal;
         }
+    },
+    methods: {
+        checkIfRedirectedFromCheckout() {
+            let state = localStorage.getItem('redirectedFromCheckout');
+
+            if (state) {
+                this.redirectedFromCheckout = true;
+                localStorage.removeItem('redirectedFromCheckout');
+                this.$inertia.visit('checkout');
+            }
+        }
+    },
+    mounted() {
+        this.checkIfRedirectedFromCheckout();
     }
+}
 </script>
