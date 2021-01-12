@@ -89,8 +89,11 @@ let actions = {
     GET_ALL_YEARS_AND_EVENTS(context, year) {
         context.commit('getAllYearsAndEvents', year);
     },
-    GET_ABOUTS_YEARS(context) {
-        context.commit('getAboutYears');
+    SELECT_EVENT(context, vnt) {
+        context.commit('selectAboutEvent',vnt);
+    },
+    GET_ABOUTS_YEARS(context,vnt) {
+        context.commit('getAboutYears',vnt);
     },
     GET_YEAR_AND_BEFORE(context, year) {
         context.commit('getYearAndBefore', year)

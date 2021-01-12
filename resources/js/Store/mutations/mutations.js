@@ -333,6 +333,11 @@ let mutations = {
 
         state.lastTwoYears = result;
     },
+    selectAboutEvent(state, vnt) {
+        state.selectedEvent = vnt;
+
+        return state.selectedEvent;
+    },
     getAboutYears(state) {
         fetch('/getAboutYears', {
             method: "GET"

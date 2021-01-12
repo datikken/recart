@@ -3,7 +3,6 @@
 
     &_wrap {
         position: relative;
-        padding: 30px;
         height: 100%;
     }
 
@@ -43,16 +42,7 @@
         color: $black;
     }
 
-    &_wrap {}
-
-    &_content {}
-
-    &_footer {
-        position: absolute;
-        bottom: 0;
-
-        &_item {
-
-        }
+    &_content {
+        margin-bottom: 30px;
     }
 }

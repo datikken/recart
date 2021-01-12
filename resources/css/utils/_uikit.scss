@@ -1,3 +1,9 @@
+[uk-modal] {
+    z-index: 999999999;
+    .uk-modal-dialog {
+        @include absCenter();
+    }
+}
 .uk-notification {
     z-index: 9999999!important;
     top: 56px;
