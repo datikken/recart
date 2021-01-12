@@ -13,7 +13,8 @@ import {
     subscribeEmail,
     resendEmailVerify,
     createNewUser,
-    resetUserPassword
+    resetUserPassword,
+    switchDashMenu
 } from './user/index'
 import {
     getFilteredProducts,
@@ -40,6 +41,7 @@ let mutations = {
     resendEmailVerify,
     subscribeEmail,
     resetUserPassword,
+    switchDashMenu,
     //information
     getAllInformationPosts,
     //ui

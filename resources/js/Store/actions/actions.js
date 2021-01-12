@@ -1,4 +1,7 @@
 let actions = {
+    SWITCH_DASH_MENU(context, val) {
+        context.commit('switchDashMenu', val);
+    },
     RESET_USER_PASSWORD(context, email) {
         context.commit('resetUserPassword', email)
     },

@@ -5,10 +5,10 @@
         <div class="dash">
             <DashboardMenu/>
 
-            <DashboardWelcome v-if="dashboardLayout === 'welcome'"/>
-            <DashboardOrders v-if="dashboardLayout === 'welcome1'" />
-            <DashboardAdresses v-if="dashboardLayout === 'welcome1'" />
-            <DashboardForms v-if="dashboardLayout === 'welcome1'" />
+            <DashboardWelcome v-if="dashboardLayout === 0"/>
+            <DashboardOrders v-if="dashboardLayout === 1" />
+            <DashboardAdresses v-if="dashboardLayout === 2" />
+            <DashboardForms v-if="dashboardLayout === 3" />
         </div>
     </Fragment>
 </template>
@@ -43,11 +43,6 @@ export default {
         ...mapState([
             'dashboardLayout'
         ])
-    },
-    watch: {
-        dashboardLayout(newVal, oldVal) {
-            newVal ? this.dashboardLayout = newVal : this.dashboardLayout = oldVal;
-        }
     },
     methods: {
         checkIfRedirectedFromCheckout() {

@@ -1,8 +1,11 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
+function switchDashMenu(state, val) {
+    state.dashboardLayout = val;
+    return val;
+}
 function createNewUser(state, obj) {
     state.user = obj;
-
     return state.user;
 }
 
@@ -74,5 +77,6 @@ export {
     subscribeEmail,
     createNewUser,
     resendEmailVerify,
-    resetUserPassword
+    resetUserPassword,
+    switchDashMenu
 }
