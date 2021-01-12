@@ -312,11 +312,24 @@ let mutations = {
         let years = fetch_call('/getAllYears', 'GET');
 
         years.then((data) => {
-            state.years = data.years;
+            state.years = data.years.reverse();
             state.events = data.events;
         })
     }
     ,
+    getYearAndBefore(state, year) {
+        let all = state.events;
+        let result = [];
+
+        all.forEach((el, i) => {
+            if(el.year === year) {
+                result.push(all[i])
+                result.push(all[i + 1])
+            }
+        })
+
+        state.lastTwoYears = result;
+    },
     getAboutYears(state) {
         fetch('/getAboutYears', {
             method: "GET"

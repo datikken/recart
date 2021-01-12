@@ -92,6 +92,9 @@ let actions = {
     GET_ABOUTS_YEARS(context) {
         context.commit('getAboutYears');
     },
+    GET_YEAR_AND_BEFORE(context, year) {
+        context.commit('getYearAndBefore', year)
+    },
     GET_SINGLE_ORDER_INFO(context, id) {
         context.commit('getSingleOrderInfo', id)
     },

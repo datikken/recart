@@ -10,6 +10,7 @@ let state = {
     gridCatalog: false,
     years: false,
     events: false,
+    lastTwoYears: null,
     informationPosts: false,
     informationLinks: false,
     productsLoaded: false,
