@@ -8,9 +8,22 @@ function createNewUser(state, obj) {
     state.user = obj;
     return state.user;
 }
-
+function submitPostComment(state, {name, email, comment, post_id}) {
+    return fetch('/comment.store', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            name, email, comment, post_id
+        })
+    })
+}
 function resetUserPassword(state, email) {
-    let status = fetch('/forgot-password', {
+    return fetch('/forgot-password', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -22,12 +35,10 @@ function resetUserPassword(state, email) {
             email
         })
     })
-
-    return status;
 }
 
 function resendEmailVerify() {
-    let status = fetch('/email/verification-notification', {
+    return fetch('/email/verification-notification', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -36,8 +47,6 @@ function resendEmailVerify() {
         redirect: 'follow',
         referrerPolicy: 'no-referrer'
     })
-
-    return status;
 }
 
 let subscribeEmail = (state, email) => {
@@ -78,5 +87,6 @@ export {
     createNewUser,
     resendEmailVerify,
     resetUserPassword,
-    switchDashMenu
+    switchDashMenu,
+    submitPostComment
 }

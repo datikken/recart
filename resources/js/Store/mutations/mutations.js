@@ -14,7 +14,8 @@ import {
     resendEmailVerify,
     createNewUser,
     resetUserPassword,
-    switchDashMenu
+    switchDashMenu,
+    submitPostComment
 } from './user/index'
 import {
     getFilteredProducts,
@@ -42,6 +43,7 @@ let mutations = {
     subscribeEmail,
     resetUserPassword,
     switchDashMenu,
+    submitPostComment,
     //information
     getAllInformationPosts,
     //ui
@@ -424,7 +426,6 @@ let mutations = {
     }
     ,
     validateDeliveryAdress(state, form) {
-        // let valid = window.app.validator.formValidate([], $(form));
         let valid = true;
         state.deliveryAdress = valid;
 

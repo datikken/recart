@@ -23,6 +23,9 @@ let actions = {
     UPDATE_USER_PHOTO(context, formData) {
         context.commit('updateUserPhoto', formData);
     },
+    SUBMIT_POST_COMMENT(context, obj) {
+        context.commit('submitPostComment', obj);
+    },
     SET_OFERTA_POLICY_STATE(context, val) {
         context.commit('setOfertaPolicyState', val);
     },

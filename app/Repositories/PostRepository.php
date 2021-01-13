@@ -17,7 +17,7 @@ class PostRepository implements PostRepositoryInterface
     {
         $post = Post::with('likes')->where('id', $id)->get();
 
-        return $post;
+        return $post[0];
     }
     public function getByUser(User $user)
     {

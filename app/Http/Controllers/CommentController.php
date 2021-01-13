@@ -20,11 +20,11 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
 
         $comment->user()->associate($request->user());
-        $post = $this->$this->postRepository->post($postId);
+        $post = $this->postRepository->post($postId);
 
         $post->comments()->save($comment);
 
-        return response()->status(200);
+        return response()->json(['status' => 200]);
     }
 
     public function replyStore(Request $request)

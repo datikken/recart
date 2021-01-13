@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Inertia\Inertia;
 use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -29,7 +30,7 @@ class PostController extends Controller
         $post = $this->get($id);
 
         return Inertia::render('Blog/BlogPost',[
-            'post' => $post,
+            'post' => $post
         ]);
     }
 
