@@ -16,14 +16,13 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
-            $table->integer('post_id')->nullable();
-            $table->longText('content')->nullable();
-            $table->integer('parent_id')->nullable();
+            $table->integer('parent_id')->unsigned();
+            $table->longText('comment');
+            $table->integer('commentable_id')->unsigned();
+            $table->string('commentable_type');
             $table->integer('likes')->nullable();
-            $table->integer('dislikes')->nullable();
             $table->integer('shares')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

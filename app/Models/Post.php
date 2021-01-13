@@ -36,6 +36,11 @@ class Post extends Model
         return $this->hasMany('App\Models\Like');
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
+
     public function url()
     {
         $id = $this->id;

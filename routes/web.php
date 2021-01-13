@@ -20,6 +20,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CommentController;
 /*
  * Search
  */
@@ -134,7 +135,7 @@ Route::get('/hits', [HitsController::class, 'index'])
     ->name('hits');
 Route::get('/blog', [PostController::class, 'index'])
     ->name('blog');
-Route::get('/blog/{id}', [PostController::class, 'get'])
+Route::get('/blog/{id}', [PostController::class, 'detail'])
     ->name('blog.view');
 Route::get('/about', [AboutController::class, 'index'])
     ->name('about');
@@ -166,7 +167,13 @@ Route::get('/checkCartState', [CartController::class, 'show'])
 
 Route::get('/checkout', [CheckoutController::class, 'get'])
     ->name('checkout');
-
+/*
+ * Comments
+ */
+Route::post('/comment.store', [CommentController::class, 'store'])
+    ->name('comment.add');
+Route::post('/reply.store', [CommentController::class, 'replyStore'])
+    ->name('reply.add');
 
 /*
  * Test routes

@@ -24,12 +24,19 @@ class PostController extends Controller
         ]);
     }
 
-    public function get($id)
+    public function detail($id)
     {
-        $post = $this->postRepository->post($id);
+        $post = $this->get($id);
 
         return Inertia::render('Blog/BlogPost',[
             'post' => $post,
         ]);
+    }
+
+    public function get($id)
+    {
+        $post = $this->postRepository->post($id);
+
+        return $post;
     }
 }
