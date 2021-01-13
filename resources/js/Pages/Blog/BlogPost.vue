@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs :links="['index', 'blog']"/>
+        <Breadcrumbs :links="['index', 'blog', 1]" />
 
         <div class="postItem">
             <div class="postItem_top">

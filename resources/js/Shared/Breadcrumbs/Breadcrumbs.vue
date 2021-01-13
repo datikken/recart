@@ -6,6 +6,7 @@
                 v-for="(link, index) in allLinks"
                 :href="route(link.link, link.id)"
                 :key="link.name"
+                v-bind:class="{ breadcrumb_item_last: link === allLinks[allLinks.length-1] }"
             >
                 <span class="breadcrumb_item_inner">{{ link.name }}</span>
                 <span class="breadcrumb_arrow"></span>
@@ -21,27 +22,37 @@
         props: ['links'],
         data() {
             return {
-                allLinks: []
+                allLinks: [],
+                isActive: false
             }
         },
         mounted() {
             let all = this.$props.links;
             let product = this.$page.product;
+            let post = this.$page.post;
+            let that = this;
             let name;
 
             name = product ? product.name_ecom : ''
+            name = post ? post.heading : name;
 
-            let that = this;
-
-            // console.warn(this.$page.product)
-            // return;
-
+            /**
+             *  Move ziggy routes to separate file ot identify crumbs
+             */
             all.forEach(link => {
-                if(typeof link === 'number') {
+                if(typeof link === 'number' && name === 'catalog') {
                     that.allLinks.push({
                         link: 'catalog.view',
                         id: link,
                         name
+                    })
+                }
+
+                if(typeof link === 'number' && post) {
+                    that.allLinks.push({
+                        link: 'blog.view',
+                        id: link,
+                        name: post.heading
                     })
                 }
 

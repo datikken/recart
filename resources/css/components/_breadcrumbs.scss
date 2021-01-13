@@ -44,5 +44,14 @@
             letter-spacing: 0.02em;
             color: $gray;
         }
+        &_last {
+            .breadcrumb_item_inner {
+                font-family: $semifont;
+                color: $dblack;
+            }
+            .breadcrumb_arrow {
+                display: none;
+            }
+        }
     }
 }
