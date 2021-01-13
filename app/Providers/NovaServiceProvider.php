@@ -9,9 +9,7 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Metrics\NewOrders;
 use Infinety\Filemanager\FilemanagerTool;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
-use vmitchell85\NovaLinks;
 use PhpJunior\NovaLogViewer\Tool;
-
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -88,8 +86,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new FilemanagerTool(),
             new NovaPermissionTool(),
-            new NovaLinks(),
-            new Tool()
+            new Tool(),
+            (new \vmitchell85\NovaLinks\Links())
         ];
     }
 
