@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
-use Vexilo\NovaFroalaEditor\NovaFroalaEditor;
 use Laravel\Nova\Fields\BelongsTo;
 use Spatie\TagsField\Tags;
+use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
 
 class Post extends Resource
 {
@@ -51,7 +51,7 @@ class Post extends Resource
             Text::make('Description'),
             Tags::make('Tags'),
             BelongsTo::make('User')->rules('required'),
-            NovaFroalaEditor::make('Content'),
+            CKEditor5Classic::make('Content')->withFiles('local'),
             DateTime::make('Created At')
         ];
     }

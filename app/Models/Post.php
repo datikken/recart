@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Tags\HasTags;
 
 class Post extends Model
 {
     use HasFactory;
-    use \Spatie\Tags\HasTags;
+    use HasTags;
 
     protected $guarded = [];
+
     protected $fillable = [
         'category',
         'heading',

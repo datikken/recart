@@ -155,7 +155,7 @@ class Sticky {
      * @param {node} element - Element from which listener is deleted
      */
     destroyResizeEvents(element) {
-        window.removeEventListener('resize', element.sticky.resizeListener);
+        window.removeEventListener('resize', element.sticky ? element.sticky.resizeListener: '');
     }
 
 

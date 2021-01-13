@@ -43,7 +43,9 @@
                         <span>Опубликовано администратором</span>
                     </div>
                     <div class="postList_posted_date">
-                        <!--                        <span>{{ $post['created_at']->format("m.d.Y") }}</span>-->
+                        <span>
+                            {{ post.updated_at | formatDate }}
+                        </span>
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-        <PostCommentItem v-for="comment in comments" name="sir" id="1" created_at="today"/>
+<!--        <PostCommentItem v-for="comment in comments" name="sir" id="1" created_at="today"/>-->
 
         </div>
 

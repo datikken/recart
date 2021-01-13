@@ -2,9 +2,9 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Ajax;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Spatie\ResponseCache\Middlewares\CacheResponse;
+use NumaxLab\NovaCKEditor5Classic\Jobs\PruneStaleAttachments;
+use Illuminate\Console\Scheduling\Schedule;
 
 class Kernel extends HttpKernel
 {
@@ -71,4 +71,17 @@ class Kernel extends HttpKernel
         'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
     ];
+
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            (new PruneStaleAttachments)();
+        })->daily();
+    }
 }

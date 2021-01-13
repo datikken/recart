@@ -37,7 +37,7 @@
     }
 
     &_head {
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
 
     &_btns {
@@ -269,6 +269,7 @@
         max-width: $layoutw;
         margin: 0 auto;
     }
+
     p {
         font-size: 12px;
         font-family: $font;
