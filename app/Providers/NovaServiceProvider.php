@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Metrics\NewOrders;
+use Infinety\Filemanager\FilemanagerTool;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
+use vmitchell85\NovaLinks;
+use PhpJunior\NovaLogViewer\Tool;
+
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -81,10 +86,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new \Infinety\Filemanager\FilemanagerTool(),
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
-            (new \vmitchell85\NovaLinks\Links()),
-            new \PhpJunior\NovaLogViewer\Tool()
+            new FilemanagerTool(),
+            new NovaPermissionTool(),
+            new NovaLinks(),
+            new Tool()
         ];
     }
 
