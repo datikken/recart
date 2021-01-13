@@ -271,6 +271,12 @@
     }
     p {
         font-size: 12px;
+        font-family: $font;
+        line-height: 20px;
+        text-align: justify;
+        letter-spacing: 0.02em;
+        color:$dblack;
+
         img {
             object-fit: cover;
         }

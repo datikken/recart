@@ -5,37 +5,35 @@
         <div class="postItem">
             <div class="postItem_top">
                 <div class="postList_cat postItem_cat">
-<!--                    <span>{{ $post['category'] }}</span>-->
+                    <span>{{ post.category }}</span>
                 </div>
                 <div class="postList_head postItem_head">
-<!--                    <span>{{ $post['heading'] }}</span>-->
+                    <span>{{ post.heading }}</span>
                 </div>
             </div>
-            <div class="postItem_wrap">
-<!--                @php echo $post['content']; @endphp-->
-            </div>
+            <div class="postItem_wrap" data-postContent></div>
 
             <div class="postItem_btns">
 
                 <div class="postList_btns_actions postItem_actions">
                     <div class="postList_like">
                         <div class="postList_like_icon"></div>
-<!--                        <div class="postList_like_val">{{ $post['likes'] }}</div>-->
+                        <div class="postList_like_val">{{ likesCount }}</div>
                     </div>
 
                     <div class="postList_dislike">
                         <div class="postList_dislike_icon"></div>
-<!--                        <div class="postList_dislike_val">{{ $post['dislikes'] }}</div>-->
+                        <div class="postList_dislike_val">{{ dislikesCount }}</div>
                     </div>
 
                     <a href="#blogCom" class="postList_comment">
                         <div class="postList_comment_icon"></div>
-<!--                        <div class="postList_comment_val">{{ count($post['comments']) }}</div>-->
+                        <div class="postList_comment_val">{{ 0 }}</div>
                     </a>
 
                     <div class="postList_share">
                         <div class="postList_share_icon"></div>
-<!--                        <div class="postList_share_val">{{ $post['shares'] }}</div>-->
+                        <div class="postList_share_val">{{ 0 }}</div>
                     </div>
                 </div>
 
@@ -45,7 +43,7 @@
                         <span>Опубликовано администратором</span>
                     </div>
                     <div class="postList_posted_date">
-<!--                        <span>{{ $post['created_at']->format("m.d.Y") }}</span>-->
+                        <!--                        <span>{{ $post['created_at']->format("m.d.Y") }}</span>-->
                     </div>
                 </div>
 
@@ -100,7 +98,9 @@ export default {
     name: "BlogPost",
     layout: MainLayout,
     data: () => ({
-        post: false
+        post: false,
+        likesCount: null,
+        dislikesCount: null
     }),
     components: {
         PostComment,
@@ -109,7 +109,21 @@ export default {
         Fragment
     },
     mounted() {
+        let block = document.querySelector('[data-postContent]');
         this.post = this.$page.post;
+        let likes = this.post.likes;
+
+        block.innerHTML = this.post.content;
+        likes.forEach(el => {
+            if (el.like > 0) {
+                this.likesCount = this.likesCount + el.like;
+            }
+            if (el.like === 0) {
+                this.dislikesCount = this.dislikesCount + 1;
+            }
+        });
+
+        console.log(this.post)
     }
 }
 </script>
