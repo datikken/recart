@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Product;
 use App\Helpers\Converter;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function __construct(AboutController $about)
+    public function __construct(AboutController $about, PostController $posts)
     {
         $this->about = $about;
+        $this->posts = $posts;
     }
 
     public function parse()
@@ -73,9 +75,7 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-        $last = Product::where('id', 2561);
-
-        dd($last->model);
+        $last = Post::where('id', 1)->get();
 
         return $last;
     }

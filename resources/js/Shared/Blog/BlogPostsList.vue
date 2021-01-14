@@ -20,8 +20,7 @@
 
         <template
             slot="buttons"
-            slot-scope="props"
-        >
+            slot-scope="props">
             <div class="loadmore-btn">
                 <TextBtn text="Показать еще" className="yellow_btn loadmore_btn"/>
             </div>

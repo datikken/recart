@@ -9,12 +9,12 @@
                 <span class="postItem_date">{{ created_at }}</span>
             </div>
             <div class="postItem_comments_comment">
-                <span>{{  }}</span>
+                <span>{{ comment }}</span>
             </div>
         </div>
         <div class="postItem_comments_col">
             <div class="postItem_comments_col_item">
-                <div class="postItem_comments_like"></div>mments
+                <div class="postItem_comments_like"></div>
                 <span class="postItem_comments_likeCount">0</span>
                 <div class="postItem_comments_dislike"></div>
                 <span class="postItem_comments_dislikeCount">0</span>

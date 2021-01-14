@@ -13,37 +13,6 @@ class CommentController extends Controller
     {
         $this->postRepository = $postRepository;
     }
-    public function store(Request $request)
-    {
-        $comment = new Comment();
 
-        $postId = $request->post_id;
-        $comment->comment = $request->comment;
 
-        $comment->user()->associate($request->user());
-        $post = $this->postRepository->post($postId);
-
-        if($comment === '') throw new Exception('Comment cannot be null');
-
-        $post['post'][0]->comments()->save($comment);
-
-        return response()->json(['status' => 200]);
-    }
-
-    public function replyStore(Request $request)
-    {
-        $reply = new Comment();
-        $reply->comment = $request->get('comment');
-        $postId = $request->post_id;
-
-        $reply->user()->associate($request->user());
-
-        $reply->parent_id = $request->get('comment_id');
-
-        $post = $this->$this->postRepository->post($postId);
-
-        $post->comments()->save($reply);
-
-        return response()->status(200);
-    }
 }

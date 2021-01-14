@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-        <PostCommentItem v-for="comment in comments" :comment="comment" />
+        <PostCommentItem v-for="comment in comments" :comment="" />
 
         </div>
 
@@ -38,8 +38,9 @@ export default {
         Fragment
     },
     mounted() {
-        this.comments = this.$page.post.post[0];
-        // console.log(this.comments,'test comments');
+        this.comments = this.$page.post;
+
+        console.log(this.comments,'test comments 777123');
     }
 }
 </script>

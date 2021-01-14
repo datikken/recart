@@ -90,6 +90,7 @@
             </div>
 
             <CommentForm/>
+
         </div>
     </Fragment>
 </template>
