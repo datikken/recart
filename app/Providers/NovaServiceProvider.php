@@ -60,12 +60,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-//            new Help,
             new NewOrders,
             new NewOrdersPerDay
         ];
     }
-
     /**
      * Get the extra dashboards that should be displayed on the Nova dashboard.
      *
