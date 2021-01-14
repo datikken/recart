@@ -32,10 +32,39 @@
 }
 
 @mixin flex($align, $justify, $wrap) {
-    display: flex!important;
+    display: flex !important;
     align-items: $align;
     justify-content: $justify;
     flex-wrap: $wrap;
+}
+
+@mixin vueAdsPagi() {
+    &:last-child {
+        button {
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $light_gray;
+            border-radius: 50%;
+            margin: 0 0 0 10px;
+            cursor: pointer;
+
+            &:last-child {
+                margin: 0;
+            }
+
+            span, a {
+                display: block;
+                font-family: $semifont;
+                font-size: 12px;
+                line-height: 14px;
+                letter-spacing: 0.02em;
+                color: $black;
+            }
+        }
+    }
 }
 
 @mixin absCenter() {
@@ -44,6 +73,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .active_bullet {
     background: $white !important;
     border: 1px solid $light_gray;
@@ -51,7 +81,7 @@
 
 @mixin underline() {
     position: relative;
-    display: inline-block!important;
+    display: inline-block !important;
 
     &:after {
         content: '';
@@ -75,6 +105,7 @@
         background: white;
     }
 }
+
 .active_info {
     &:after {
         margin-top: 10px;
@@ -88,12 +119,13 @@
 
 .clear:after, .clear:before {
     content: '';
-    display: none!important;
+    display: none !important;
 }
 
 @mixin btnShadow() {
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 }
+
 //
 //@mixin menu_underline() {
 //    &:before {
@@ -135,9 +167,11 @@
 .pt-10 {
     padding-top: 10px;
 }
+
 .mb-50 {
     margin-bottom: 50px;
 }
+
 .mb-20 {
     margin-bottom: 20px;
 }
@@ -181,31 +215,34 @@
 }
 
 .menu_visible {
-    height: 90vh!important;
-    overflow-y: scroll!important;
-    z-index: 99999999!important;
+    height: 90vh !important;
+    overflow-y: scroll !important;
+    z-index: 99999999 !important;
     -webkit-overflow-scrolling: touch;
 
-    @media not all and (min-resolution:.001dpcm) {
+    @media not all and (min-resolution: .001dpcm) {
         max-height: 505px;
     }
 }
+
 .overflow {
-    overflow: hidden!important;
+    overflow: hidden !important;
 }
+
 p {
     padding: 0;
 }
+
 .selected_filter {
-    background-color: $dblack!important;
-    color: $white!important;
+    background-color: $dblack !important;
+    color: $white !important;
 }
 
 .checkbox {
     position: absolute;
     margin-right: 20px;
     cursor: pointer;
-    user-select: none!important;
+    user-select: none !important;
 
     &-wrap {
         width: 20px;
@@ -230,7 +267,7 @@ p {
     position: absolute;
     margin-right: 20px;
     cursor: pointer;
-    user-select: none!important;
+    user-select: none !important;
 
     &-wrap {
         width: 20px;
@@ -251,12 +288,12 @@ p {
 }
 
 .invisible {
-    display: none!important;
+    display: none !important;
 }
 
 @mixin formGroup() {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
 
     input {
         width: 340px;
@@ -303,7 +340,7 @@ input::-webkit-input-placeholder {
 }
 
 .inline_group {
-    flex-direction: row!important;
+    flex-direction: row !important;
 }
 
 @import "https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css";

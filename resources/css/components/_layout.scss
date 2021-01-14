@@ -55,7 +55,6 @@
   }
 }
 .desktop-layout {
-  //display: none;
   @include breakpoint($phone) {
     display: flex;
   }

@@ -24,32 +24,7 @@
             }
         }
 
-        &:last-child {
-            button {
-                height: 30px;
-                width: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid $light_gray;
-                border-radius: 50%;
-                margin: 0 0 0 10px;
-                cursor: pointer;
-
-                &:last-child {
-                    margin: 0;
-                }
-
-                span, a {
-                    display: block;
-                    font-family: $semifont;
-                    font-size: 12px;
-                    line-height: 14px;
-                    letter-spacing: 0.02em;
-                    color: $black;
-                }
-            }
-        }
+            @include vueAdsPagi();
     }
 }
 

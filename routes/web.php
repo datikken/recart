@@ -22,9 +22,13 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+
 /*
  * API
  */
+//Posts API
+Route::get('getAllPosts', [PostController::class, 'getAllPosts'])
+    ->name('getAllPosts');
 //Subscriptions API
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
     ->name('subscribe');

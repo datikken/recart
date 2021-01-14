@@ -1,5 +1,6 @@
 let state = {
     //
+    posts: false,
     dashboardLayout: 0,
     //paths
     productImages: '',

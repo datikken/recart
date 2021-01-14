@@ -17,11 +17,14 @@ class PostController extends Controller
 
     public function index()
     {
+        return Inertia::render('Blog/Blog');
+    }
+
+    public function getAllPosts()
+    {
         $posts = $this->postRepository->all();
 
-        return Inertia::render('Blog/Blog',[
-            'posts' => $posts
-        ]);
+        return $posts;
     }
 
     public function detail($id)

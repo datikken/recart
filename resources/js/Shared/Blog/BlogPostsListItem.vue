@@ -94,8 +94,8 @@ export default {
             let img = html.querySelector('img');
             this.postCover = img;
 
-            let dest = this.$el.querySelector('.postList_cover');
-            dest.appendChild(img);
+            // let dest = this.$el.querySelector('.postList_cover');
+            // dest.appendChild(img);
 
             this.date = this.$props.post.created_at ? this.$props.post.created_at : this.$props.post.updated_at;
 

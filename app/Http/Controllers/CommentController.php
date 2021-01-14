@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Repositories\PostRepository;
+use Exception;
 
 class CommentController extends Controller
 {
@@ -22,7 +23,9 @@ class CommentController extends Controller
         $comment->user()->associate($request->user());
         $post = $this->postRepository->post($postId);
 
-        $post->comments()->save($comment);
+        if($comment === '') throw new Exception('Comment cannot be null');
+
+        $post['post'][0]->comments()->save($comment);
 
         return response()->json(['status' => 200]);
     }

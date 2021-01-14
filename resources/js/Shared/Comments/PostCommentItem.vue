@@ -9,7 +9,7 @@
                 <span class="postItem_date">{{ created_at }}</span>
             </div>
             <div class="postItem_comments_comment">
-                <span>Не стоит обращаться за заменой картриджа, ресурс которого исчерпан. Сотрудник сервисного центра определит отсутствие чернил в картридже и откажет в замене.</span>
+                <span>{{  }}</span>
             </div>
         </div>
         <div class="postItem_comments_col">
@@ -36,9 +36,15 @@
 export default {
     name: "PostCommentItem",
     props: [
-        'name',
-        'id',
-        'created_at'
-    ]
+        'comment'
+    ],
+    data: () => ({
+        id: '',
+        name: '',
+        created_at: ''
+    }),
+    mounted() {
+        console.warn(this.$props.comment,'test tets')
+    }
 }
 </script>

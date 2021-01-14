@@ -97,9 +97,10 @@
 <script>
 import MainLayout from '@/Layouts/MainLayout'
 import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
-import PostComment from "@/Shared/Comments/PostComment";
+import PostComment from "@/Shared/Comments/PostComment"
 import CommentForm from '@/Shared/Comments/CommentForm'
 import {Fragment} from 'vue-fragment'
+import {mapActions} from 'vuex'
 
 export default {
     name: "BlogPost",
@@ -118,28 +119,28 @@ export default {
         Fragment
     },
     methods: {
+        ...mapActions(['GET_ALL_POSTS']),
         toggleLike(id) {
 
         }
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
-        this.post = this.$page.post.post[0];
-        this.likes = this.$page.post.post[0].likes;
-        this.nextLink = this.$page.post.next
 
-        block.innerHTML = this.post.content;
-
-        this.likes.forEach(el => {
-            if (el.like > 0) {
-                this.likesCount = this.likesCount + el.like;
-            }
-            if (el.like === 0) {
-                this.dislikesCount = this.dislikesCount + 1;
-            }
-        });
-
-        console.log('prikoli')
+        // this.post = this.$page.post.post[0];
+        // this.likes = this.$page.post.post[0].likes;
+        // this.nextLink = this.$page.post.next;
+        //
+        // block.innerHTML = this.post.content;
+        //
+        // this.likes.forEach(el => {
+        //     if (el.like > 0) {
+        //         this.likesCount = this.likesCount + el.like;
+        //     }
+        //     if (el.like === 0) {
+        //         this.dislikesCount = this.dislikesCount + 1;
+        //     }
+        // });
     }
 }
 </script>

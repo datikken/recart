@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-<!--        <PostCommentItem v-for="comment in comments" name="sir" id="1" created_at="today"/>-->
+        <PostCommentItem v-for="comment in comments" :comment="comment" />
 
         </div>
 
@@ -36,6 +36,11 @@ export default {
         PostCommentItem,
         TextBtn,
         Fragment
+    },
+    mounted() {
+        this.comments = this.$page.post.post[0];
+
+        console.log(this.comments,'test comments');
     }
 }
 </script>

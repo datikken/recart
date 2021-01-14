@@ -10,6 +10,7 @@
     import BlogPostsList from '@/Shared/Blog/BlogPostsList'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
     import {Fragment} from 'vue-fragment'
+    import {mapActions} from 'vuex';
 
     export default {
         name: "Blog",
