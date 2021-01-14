@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Helpers\Converter;
-use App\Nova\Year;
 use Illuminate\Http\Request;
-use App\Http\Controllers\CartController;
-use App\Models\User;
-use Jenssegers\Date\Date;
 
 class TestController extends Controller
 {
@@ -77,9 +73,9 @@ class TestController extends Controller
 
     public function index(Request $request)
     {
-        $confExpire = config('auth.passwords.'.config('auth.defaults.passwords').'.expire');
-        $expire = Date::now('Europe/Moscow')->add('+'.$confExpire.'minutes');
-        $last = $expire->format('H:i - j F Y г');
+        $last = Product::where('id', 2561);
+
+        dd($last->model);
 
         return $last;
     }

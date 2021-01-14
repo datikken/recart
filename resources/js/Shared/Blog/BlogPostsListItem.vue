@@ -1,22 +1,25 @@
 <template>
     <div class="postList_item" :data-id="post.id">
-        <div class="postList_cat">
-            <span>{{ post.category }}</span>
-        </div>
-        <div class="postList_head">
-            <span>{{ post.heading }}</span>
-        </div>
 
-        <div class="postList_cover"></div>
-
-        <div class="postList_description">
-            <span>{{ post.description }}</span>
-        </div>
+        <inertia-link :href="route('blog.view', post.id)">
+            <div class="postList_cat">
+                <span>{{ post.category }}</span>
+            </div>
+            <div class="postList_head">
+                <span>{{ post.heading }}</span>
+            </div>
+            <div class="postList_cover"></div>
+            <div class="postList_description">
+                <span>{{ post.description }}</span>
+            </div>
+        </inertia-link>
 
         <div class="postList_btns">
             <div class="postList_btns_inner">
 
-                <TextBtn className="yellow_btn" text="Читать далее"/>
+                <inertia-link :href="route('blog.view', post.id)">
+                    <TextBtn className="yellow_btn" text="Читать далее"/>
+                </inertia-link>
 
                 <div class="postList_btns_actions">
                     <div class="postList_like">

@@ -1,11 +1,9 @@
 <template>
     <Fragment>
-        <div class="postList">
-            <inertia-link v-for="post in posts"
-                          :key="post.id"
-                          :href="route('blog.view', post.id)">
-                <BlogPostsListItem :post="post" :key="post.id"/>
-            </inertia-link>
+        <div class="postList"
+             v-for="post in posts"
+             :key="post.id">
+            <BlogPostsListItem :post="post" :key="post.id"/>
         </div>
 
         <ShouldBeLoggedIn/>
