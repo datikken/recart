@@ -39,8 +39,7 @@ export default {
     },
     mounted() {
         this.comments = this.$page.post.post[0];
-
-        console.log(this.comments,'test comments');
+        // console.log(this.comments,'test comments');
     }
 }
 </script>

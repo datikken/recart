@@ -44,7 +44,7 @@ export default {
         created_at: ''
     }),
     mounted() {
-        console.warn(this.$props.comment,'test tets')
+        // console.warn(this.$props.comment,'test tets')
     }
 }
 </script>

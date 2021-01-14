@@ -126,21 +126,20 @@ export default {
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
+        this.post = this.$page.post.post[0];
+        this.likes = this.$page.post.post[0].likes;
+        this.nextLink = this.$page.post.next;
 
-        // this.post = this.$page.post.post[0];
-        // this.likes = this.$page.post.post[0].likes;
-        // this.nextLink = this.$page.post.next;
-        //
-        // block.innerHTML = this.post.content;
-        //
-        // this.likes.forEach(el => {
-        //     if (el.like > 0) {
-        //         this.likesCount = this.likesCount + el.like;
-        //     }
-        //     if (el.like === 0) {
-        //         this.dislikesCount = this.dislikesCount + 1;
-        //     }
-        // });
+        block.innerHTML = this.post.content;
+
+        this.likes.forEach(el => {
+            if (el.like > 0) {
+                this.likesCount = this.likesCount + el.like;
+            }
+            if (el.like === 0) {
+                this.dislikesCount = this.dislikesCount + 1;
+            }
+        });
     }
 }
 </script>
