@@ -23,12 +23,12 @@
 
                 <div class="postList_btns_actions">
                     <div class="postList_like">
-                        <div class="postList_like_icon"></div>
+                        <div class="postList_like_icon" @click="toggleLike(post.id)"></div>
                         <div class="postList_like_val">{{ likesCount }}</div>
                     </div>
 
                     <div class="postList_dislike">
-                        <div class="postList_dislike_icon"></div>
+                        <div class="postList_dislike_icon" @click="toggleLike(post.id)"></div>
                         <div class="postList_dislike_val">{{ dislikesCount }}</div>
                     </div>
 
@@ -59,6 +59,7 @@
 
 <script>
 import TextBtn from '@/Shared/Btns/TextBtn'
+import {mapActions} from 'vuex';
 
 export default {
     name: "BlogPostsListItem",
@@ -78,6 +79,12 @@ export default {
         this.createPostCover()
     },
     methods: {
+        ...mapActions([
+            'TOGGLE_LIKE_POST'
+        ]),
+        toggleLike(id) {
+            return this.TOGGLE_LIKE_POST(id);
+        },
         createPostCover() {
             let postCont = this.$props.post.content;
 

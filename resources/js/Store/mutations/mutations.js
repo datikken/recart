@@ -15,7 +15,8 @@ import {
     createNewUser,
     resetUserPassword,
     switchDashMenu,
-    submitPostComment
+    submitPostComment,
+    likeBlogPost
 } from './user/index'
 import {
     getFilteredProducts,
@@ -44,6 +45,7 @@ let mutations = {
     resetUserPassword,
     switchDashMenu,
     submitPostComment,
+    likeBlogPost,
     //information
     getAllInformationPosts,
     //ui

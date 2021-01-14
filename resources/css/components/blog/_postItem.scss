@@ -1,6 +1,18 @@
 .postItem {
     width: 100%;
 
+    &_next, &_prev {
+        width: 20px;
+        height: 20px;
+    }
+    &_prev {
+        margin-right: 10px;
+    }
+    &_next {
+        transform: rotate(180deg);
+        margin-left: 10px;
+    }
+
     &_actions {
         margin-left: 85px;
     }
@@ -25,15 +37,6 @@
     &_backIcon, &_fwdIcon {
         width: 25px;
         height: 25px;
-    }
-
-    &_backIcon {
-        background-image: url('/images/blog/blogPost_prev.svg');
-        margin-right:10px;
-    }
-    &_fwdIcon {
-        background-image: url('/images/blog/blogPost_next.svg');
-        margin-left:10px;
     }
 
     &_head {

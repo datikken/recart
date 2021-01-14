@@ -11,14 +11,22 @@ class PostRepository implements PostRepositoryInterface
 {
     public function all()
     {
-        return Post::with('likes')->get();
+        return Post::with('Likes')->get();
     }
+
     public function post($id)
     {
-        $post = Post::with('likes')->where('id', $id)->get();
+        $post = Post::where('id', $id)
+            ->with('Likes')
+            ->get();
 
-        return $post[0];
+        $next = Post::where('id', '>', $id)
+            ->orderBy('id')
+            ->value('id');
+
+        return array('post' => $post, 'next' => $next);
     }
+
     public function getByUser(User $user)
     {
         return Post::where('user_id'. $user->id)->get();

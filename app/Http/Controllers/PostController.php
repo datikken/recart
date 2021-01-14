@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Repositories\Interfaces\PostRepositoryInterface;
-use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -21,7 +20,7 @@ class PostController extends Controller
         $posts = $this->postRepository->all();
 
         return Inertia::render('Blog/Blog',[
-            'posts' => $posts,
+            'posts' => $posts
         ]);
     }
 
@@ -39,5 +38,13 @@ class PostController extends Controller
         $post = $this->postRepository->post($id);
 
         return $post;
+    }
+
+    public function likePost(Request $request)
+    {
+        $id = $request->id;
+        $like = $this->postRepository->likePost($id);
+
+        return $like;
     }
 }

@@ -1,5 +1,19 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
+function likeBlogPost(state, id) {
+    return fetch('/like.post', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            id
+        })
+    })
+}
 function switchDashMenu(state, val) {
     state.dashboardLayout = val;
     return val;
@@ -88,5 +102,6 @@ export {
     resendEmailVerify,
     resetUserPassword,
     switchDashMenu,
-    submitPostComment
+    submitPostComment,
+    likeBlogPost
 }

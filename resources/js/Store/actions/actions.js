@@ -1,4 +1,7 @@
 let actions = {
+    TOGGLE_LIKE_POST(context, id) {
+        context.commit('likeBlogPost', id)
+    },
     SWITCH_DASH_MENU(context, val) {
         context.commit('switchDashMenu', val);
     },

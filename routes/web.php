@@ -6,7 +6,6 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\HitsController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\LikeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ProductController;
@@ -22,7 +21,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\LikeController;
 /*
  * API
  */
@@ -91,9 +90,9 @@ Route::post('/reply.store', [CommentController::class, 'replyStore'])
 //Checkout API
 Route::get('/checkCartState', [CartController::class, 'show'])
     ->name('checkCartState');
-////POST
-//Route::get('/like.post/{id}', [LikeController::class, 'like'])
-//    ->name('like.post');
+//Likes
+Route::post('/like.post',[LikeController::class, 'likePost'])
+    ->name('like.post');
 //Search API
 Route::group(['middleware' => 'ajax'], function () {
     Route::post('/search', [SearchController::class, 'search'])

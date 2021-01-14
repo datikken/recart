@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <Breadcrumbs :links="['index', 'blog', 1]" />
+        <Breadcrumbs :links="['index', 'blog', post.id]"/>
 
         <div class="postItem">
             <div class="postItem_top">
@@ -51,24 +51,29 @@
 
 
                 <div class="postItem_btns_inner">
-                    <div class="postItem_btns_item">
-                        <div class="postItem_backIcon"></div>
+                    <inertia-link :href="route('blog')" class="postItem_btns_item link">
+                        <img src="/images/icons/yellow_arrow.svg" class="postItem_prev"/>
                         <div class="postItem_backText">назад в ленту блога</div>
-                    </div>
-                    <div class="postItem_btns_item">
+                    </inertia-link>
+                    <inertia-link
+                        v-if="nextLink != null"
+                        :href="route('blog.view',nextLink)" class="postItem_btns_item link">
                         <div class="postItem_fwdText">следующая статья</div>
-                        <div class="postItem_fwdIcon"></div>
+                        <img src="/images/icons/yellow_arrow.svg" class="postItem_next"/>
+                    </inertia-link>
+                    <div v-else class="postItem_btns_item link">
+                        <div class="postItem_fwdText">следующая статья</div>
+                        <img src="/images/icons/yellow_arrow.svg" class="postItem_next"/>
                     </div>
                 </div>
-
             </div>
 
             <div class="postItem_footer">
                 <div class="postItem_footer_inner">
                     <div class="postItem_footer_item">
                         <span class="postItem_text">Понравилась статья?</span>
-                        <span class="postItem_like"></span>
-                        <span class="postItem_dislike"></span>
+                        <span class="postItem_like" @click="toggleLike()"></span>
+                        <span class="postItem_dislike" @click="toggleLike()"></span>
                     </div>
                     <div class="postItem_footer_item">
                         <span class="postItem_text">Поделиться в соц.сетях</span>
@@ -101,8 +106,10 @@ export default {
     layout: MainLayout,
     data: () => ({
         post: false,
-        likesCount: null,
-        dislikesCount: null
+        likes: false,
+        likesCount: 0,
+        dislikesCount: 0,
+        nextLink: null
     }),
     components: {
         PostComment,
@@ -110,13 +117,20 @@ export default {
         CommentForm,
         Fragment
     },
+    methods: {
+        toggleLike(id) {
+
+        }
+    },
     mounted() {
         let block = document.querySelector('[data-postContent]');
-        this.post = this.$page.post;
-        let likes = this.post.likes;
+        this.post = this.$page.post.post[0];
+        this.likes = this.$page.post.post[0].likes;
+        this.nextLink = this.$page.post.next
 
         block.innerHTML = this.post.content;
-        likes.forEach(el => {
+
+        this.likes.forEach(el => {
             if (el.like > 0) {
                 this.likesCount = this.likesCount + el.like;
             }
@@ -124,8 +138,6 @@ export default {
                 this.dislikesCount = this.dislikesCount + 1;
             }
         });
-
-        console.log(this.post)
     }
 }
 </script>
