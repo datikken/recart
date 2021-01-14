@@ -22,8 +22,8 @@
             slot="buttons"
             slot-scope="props"
         >
-            <div class="load_more-btn">
-                <TextBtn text="загрузить еще" className="yellow_btn animated_btn"/>
+            <div class="loadmore-btn">
+                <TextBtn text="Показать еще" className="yellow_btn loadmore_btn"/>
             </div>
 
             <vue-ads-page-button
