@@ -138,6 +138,8 @@ export default {
                 this.dislikesCount = this.dislikesCount + 1;
             }
         });
+
+        console.log('prikoli')
     }
 }
 </script>
