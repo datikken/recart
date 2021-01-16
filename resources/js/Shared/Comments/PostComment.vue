@@ -1,5 +1,5 @@
 <template>
-    <Fragment>
+    <div>
         <div class="postItem_comments postItem_comments-shorten">
             <div class="postItem_comments_header">
                 <div class="postItem_comments_header_item">
@@ -18,7 +18,7 @@
             text="Смотреть все комментарии"
             className="action_btn allcomments_btn" />
 
-    </Fragment>
+    </div>
 </template>
 
 <script>

@@ -16,9 +16,10 @@ class CommentResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'post_id' => 1,
             'body' => $this->body,
             'user' => new PublicUserResource($this->user),
-            'children' => CommentResource::collection($this->children),
+            'parent_id' => $this->parent_id,
             'created_at' => $this->created_at
         ];
     }

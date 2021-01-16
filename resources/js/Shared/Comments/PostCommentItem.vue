@@ -1,6 +1,5 @@
 <template>
-    <Fragment>
-
+    <div>
         <div
             :class="className"
             class="postItem_comments_item">
@@ -10,7 +9,9 @@
             <div class="postItem_comments_col">
                 <div class="postItem_comments_nick">
                     <span>{{ data.user.name }}</span>
-                    <span class="postItem_date">{{ data.created_at | formatDate }}</span>
+                    <span
+                        @click="deleteComment(data.id)"
+                        class="postItem_date">{{ data.created_at | formatDate }}</span>
                 </div>
                 <div class="postItem_comments_comment">
                     <span>{{ data.body }}</span>
@@ -40,11 +41,12 @@
             :key="chld.id"
             :className="`ml${50 * ind}`" />
 
-    </Fragment>
+    </div>
 </template>
 
 <script>
 import {Fragment} from 'vue-fragment'
+import {mapActions, mapState} from 'vuex'
 
 export default {
     name: "PostCommentItem",
@@ -52,6 +54,15 @@ export default {
         'data',
         'className'
     ],
+    methods: {
+        ...mapActions([
+            'DELETE_COMMENT'
+        ]),
+        deleteComment(id) {
+            this.DELETE_COMMENT(id);
+        }
+    },
+    computed: mapState(['postChildren']),
     components: {
         Fragment
     },
@@ -59,9 +70,6 @@ export default {
         id: '',
         name: '',
         created_at: ''
-    }),
-    mounted() {
-        console.warn(this.$props.data.children, 'test 777')
-    }
+    })
 }
 </script>

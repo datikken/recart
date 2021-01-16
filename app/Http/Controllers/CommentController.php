@@ -11,16 +11,18 @@ class CommentController extends Controller
     {
         $comments = Comment::with([
             'user',
-            'children',
-            'children.children',
-            'children.children.children'
+            'children.user',
         ])
-            ->isParent()
             ->latest()
             ->get();
 
         return CommentResource::collection(
             $comments
         );
+    }
+
+    public function destroy()
+    {
+
     }
 }

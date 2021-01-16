@@ -2,6 +2,9 @@ let actions = {
     GET_POST_COMMENTS(context) {
         context.commit('getPostComments');
     },
+    DELETE_COMMENT(context, id) {
+        context.commit('deleteComment', id);
+    },
     GET_ALL_POSTS(context) {
         context.commit('getAllPosts');
     },

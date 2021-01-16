@@ -1,6 +1,11 @@
 import _ from "lodash";
 
-import {getPostComments,getAllPosts} from './posts/index'
+import {
+    getPostComments,
+    getAllPosts,
+    deleteComment,
+    postChildren
+} from './posts/index'
 import {
     showNotification,
     blockFormInputs,
@@ -42,6 +47,8 @@ import {fetch_call} from '@/vanilla/functions/fetch_call'
 let mutations = {
     getAllPosts,
     getPostComments,
+    deleteComment,
+    postChildren,
     createNewUser,
     resendEmailVerify,
     subscribeEmail,
@@ -77,7 +84,6 @@ let mutations = {
     getAllProducts,
     //analytics
     sendGoogleAnalytics,
-
     setOfertaPolicyState(state, val) {
         state.ofertaPolicy = val;
     },
