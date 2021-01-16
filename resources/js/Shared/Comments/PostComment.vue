@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-        <PostCommentItem v-for="comment in comments" />
+        <PostCommentItem v-for="comment in comments" :data="comment" />
 
         </div>
 
@@ -23,24 +23,28 @@
 
 <script>
 import TextBtn from '@/Shared/Btns/TextBtn'
-import PostCommentItem from "./PostCommentItem";
+import PostCommentItem from "./PostCommentItem"
 import {Fragment} from 'vue-fragment'
+import {mapActions, mapState} from 'vuex'
 
 export default {
     name: "PostComment",
     data: () => ({
-        commentsCount: false,
-        comments: []
+        commentsCount: false
     }),
+    computed: mapState(['comments']),
+    methods: {
+        ...mapActions([
+            'GET_POST_COMMENTS'
+        ])
+    },
     components: {
         PostCommentItem,
         TextBtn,
         Fragment
     },
     mounted() {
-        this.comments = this.$page.post;
-
-        console.log(this.comments,'test comments 777123');
+        this.GET_POST_COMMENTS();
     }
 }
 </script>

@@ -1,6 +1,9 @@
 let actions = {
+    GET_POST_COMMENTS(context) {
+        context.commit('getPostComments');
+    },
     GET_ALL_POSTS(context) {
-        context.commit('getAllPosts')
+        context.commit('getAllPosts');
     },
     TOGGLE_LIKE_POST(context, id) {
         context.commit('likeBlogPost', id)

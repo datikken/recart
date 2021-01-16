@@ -142,6 +142,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
+Route::get('comments', [CommentController::class,'index'])
+    ->name('comments');
+
 /*
  * Test routes
  * to clear cachedMiddlewares: php artisan responsecache:clear

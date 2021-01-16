@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
-use App\Repositories\PostRepository;
-use Exception;
 
 class CommentController extends Controller
 {
-    public function __construct(PostRepository $postRepository)
+    public function index()
     {
-        $this->postRepository = $postRepository;
+        $comments = Comment::with([
+            'user',
+            'children',
+            'children.children',
+            'children.children.children'
+        ])
+            ->isParent()
+            ->latest()
+            ->get();
+
+        return CommentResource::collection(
+            $comments
+        );
     }
-
-
 }

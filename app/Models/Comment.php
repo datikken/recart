@@ -9,15 +9,17 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    public function scopeIsParent($builder)
+    {
+        return $builder->whereNull('parent_id');
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    public function replies()
+    public function children()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id')->latest();
     }
 }

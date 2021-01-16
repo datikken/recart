@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import {getAllPosts} from './posts/index'
+import {getPostComments,getAllPosts} from './posts/index'
 import {
     showNotification,
     blockFormInputs,
@@ -41,6 +41,7 @@ import {fetch_call} from '@/vanilla/functions/fetch_call'
 
 let mutations = {
     getAllPosts,
+    getPostComments,
     createNewUser,
     resendEmailVerify,
     subscribeEmail,

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -19,10 +20,14 @@ class CommentFactory extends Factory
      *
      * @return array
      */
+
+//    Comment::factory(3)->create(['parent_id' => null]);
+
     public function definition()
     {
         return [
-            //
+            'user_id' => self::factoryForModel(User::class)->create()->id,
+            'body' => $this->faker->sentence(10)
         ];
     }
 }
