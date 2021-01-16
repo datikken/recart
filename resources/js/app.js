@@ -31,7 +31,7 @@ new Vue({
 }).$mount(app);
 
 
-console.log('app2');
+console.log('app3');
 
 Vue.use(VueTruncate)
 Vue.use(InertiaApp);
