@@ -30,6 +30,9 @@ new Vue({
         })
 }).$mount(app);
 
+
+console.log('app');
+
 Vue.use(VueTruncate)
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);

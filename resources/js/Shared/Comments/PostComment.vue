@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-        <PostCommentItem v-for="comment in comments" :comment="" />
+        <PostCommentItem v-for="comment in comments" />
 
         </div>
 
