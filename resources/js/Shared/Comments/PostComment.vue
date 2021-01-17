@@ -22,7 +22,7 @@
                     <a class="level-item">
                         Edit
                     </a>
-                    <a class="level-item" @click.prevent="deleteComment(comment)">
+                    <a class="level-item" @click.prevent="deleteComment(comment.id)">
                         Delete
                     </a>
                 </div>

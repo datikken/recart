@@ -144,6 +144,7 @@ export default {
         this.post = this.$page.post.post[0];
         this.likes = this.$page.post.post[0].likes;
         this.nextLink = this.$page.post.next;
+        let postId = this.$page.post.post[0].id;
 
         block.innerHTML = this.post.content;
 
@@ -156,7 +157,7 @@ export default {
             }
         });
 
-        this.getComments()
+        this.getComments(postId)
     }
 }
 </script>

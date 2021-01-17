@@ -142,8 +142,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
-Route::get('comments', [CommentController::class,'index'])
+/*
+ * Resources
+ */
+Route::get('comments', [CommentController::class,'get'])
     ->name('comments');
+Route::get('getPostComments', [CommentController::class,'getPostComments'])
+    ->name('postComments');
+Route::delete('comment.delete', [CommentController::class,'destroy'])
+    ->name('comment.delete');
 
 /*
  * Test routes

@@ -1,11 +1,24 @@
 let actions = {
-    async getComments ({ commit }) {
-        let response = await axios.get('http://127.0.0.1:8000/comments')
+    async getComments ({ commit }, id) {
+        let response = await axios.get('http://127.0.0.1:8000/getPostComments', {
+            params: {
+                id
+            }
+        })
 
         commit('SET_COMMENTS', response.data.data)
     },
-    async deleteComment ({ commit }, comment) {
-        await axios.delete(`http://127.0.0.1:8000/comments/${comment.id}`)
+    async deleteComment ({ commit }, id) {
+        await fetch(`http://127.0.0.1:8000/comment.delete`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': window.token
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            method: "DELETE",
+            body: JSON.stringify({id})
+        })
 
         commit('DELETE_COMMENT', comment)
     },

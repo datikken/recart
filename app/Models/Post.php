@@ -39,6 +39,11 @@ class Post extends Model
         URL::to('/blog/' . $id);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function likes()
     {
         return $this->hasMany(Like::class);
