@@ -88,7 +88,13 @@ Route::get('/exportProductsExcel', [ProductController::class, 'exportProductsExc
     ->name('exportProductsExcel');
 //Comments API
 Route::post('/comment.store', [CommentController::class, 'store'])
-    ->name('comment.add');
+    ->name('comment.store');
+Route::get('comments', [CommentController::class,'get'])
+    ->name('comments');
+Route::get('getPostComments', [CommentController::class,'getPostComments'])
+    ->name('postComments');
+Route::delete('comment.delete', [CommentController::class,'destroy'])
+    ->name('comment.delete');
 Route::post('/reply.store', [CommentController::class, 'replyStore'])
     ->name('reply.add');
 //Checkout API
@@ -141,16 +147,6 @@ Route::get('/checkout', [CheckoutController::class, 'get'])
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
-
-/*
- * Resources
- */
-Route::get('comments', [CommentController::class,'get'])
-    ->name('comments');
-Route::get('getPostComments', [CommentController::class,'getPostComments'])
-    ->name('postComments');
-Route::delete('comment.delete', [CommentController::class,'destroy'])
-    ->name('comment.delete');
 
 /*
  * Test routes

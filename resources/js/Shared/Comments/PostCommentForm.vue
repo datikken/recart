@@ -21,7 +21,7 @@
             <div class="blogCom_area">
                 <label>Комментарий</label>
                 <textarea
-                    v-model="comment"
+                    v-model="body"
                     name="message"
                     cols="30"
                     rows="10" placeholder="Напишите свой комментарий"/>
@@ -38,38 +38,54 @@ import TextBtn from "@/Shared/Btns/TextBtn"
 import {mapActions} from "vuex"
 
 export default {
-    name: "CommentForm",
+    name: "PostCommentForm",
     components: {
         TextBtn
     },
     data: () => ({
         name: '',
         email: '',
-        comment: ''
+        body: ''
     }),
+    props: {
+        postId: {
+            type: Number
+        }
+    },
+    mounted() {
+        if (this.$page.user) {
+            this.name = this.$page.user.name;
+            this.email = this.$page.user.email;
+        }
+    },
     methods: {
         ...mapActions([
             'SUBMIT_POST_COMMENT',
-            'SHOW_NOTIFICATION'
+            'SHOW_NOTIFICATION',
+            'getComments'
         ]),
         flushForm() {
             this.name = '';
             this.email = '';
-            this.comment = '';
+            this.body = '';
         },
         submitComment() {
             let form = {
                 name: this.name,
                 email: this.email,
-                comment: this.comment,
-                post_id: 1
+                body: this.body,
+                post_id: this.$props.postId,
+                user_id: this.$page.user ? this.$page.user.id : 0
             }
 
             this.SUBMIT_POST_COMMENT(form)
                 .then(() => {
                     this.SHOW_NOTIFICATION({msg: 'Комментарий успешно отправлен.', type: 'success'});
                     this.flushForm();
-                });
+                })
+                .then(() => {
+                    this.getComments(this.$props.postId);
+                })
         }
     }
 }

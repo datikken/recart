@@ -144,7 +144,7 @@
             }
         },
         computed: {
-            ...mapGetters(['user','orders']),
+            ...mapGetters(['orders']),
             orders() {
                 return this.$store.state.orders
             }

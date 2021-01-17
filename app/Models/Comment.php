@@ -9,6 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'body',
+        'post_id',
+        'user_id',
+        'parent_id'
+    ];
+
     public function scopeIsParent($builder)
     {
         return $builder->whereNull('parent_id');

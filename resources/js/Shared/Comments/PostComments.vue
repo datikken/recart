@@ -15,15 +15,11 @@ export default {
     components: {
         PostComment
     },
-
     props: {
         comments: {
             required: true,
             type: Array
         }
-    },
-    mounted() {
-        console.warn(this.$props, 'appcomments')
     }
 }
 </script>

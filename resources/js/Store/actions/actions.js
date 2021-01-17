@@ -20,7 +20,7 @@ let actions = {
             body: JSON.stringify({id})
         })
 
-        commit('DELETE_COMMENT', comment)
+        commit('DELETE_COMMENT', id)
     },
     GET_ALL_POSTS({commit}) {
         commit('getAllPosts');

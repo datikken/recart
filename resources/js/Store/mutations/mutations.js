@@ -680,10 +680,14 @@ let mutations = {
     SET_COMMENTS (state, comments) {
         state.comments = comments
     },
-    DELETE_COMMENT (state, comment) {
-        state.comments = state.comments.filter((c) => {
-            return c.id !== comment.id
-        })
+    DELETE_COMMENT (state, id) {
+        if(!state.user) {
+            return state.comments
+        } else {
+            state.comments = state.comments.filter((c) => {
+                if(c.user.id === state.user.id) return c.id !== id
+            })
+        }
     }
 }
 

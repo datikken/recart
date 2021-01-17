@@ -28,25 +28,24 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'id' => 'required',
             'post_id' => 'required',
-            'user_id' => 'required',
-            'parent_id' => 'required'
+            'body' => 'required',
+            'user_id' => 'required'
         ])->validate();
 
-        $id = $request->id;
         $post_id = $request->post_id;
         $body = $request->body;
         $user_id = Auth::id();
         $parent_id = isset($request->parent_id) ? $request->parent_id : null;
 
         $comment = new Comment([
-            'id' => $id,
             'post_id' => $post_id,
             'body' => $body,
             'user_id' => $user_id,
             'parent_id' => $parent_id
         ]);
+
+        $comment->save();
 
         return $comment;
     }

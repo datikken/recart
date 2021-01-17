@@ -101,7 +101,8 @@
                 </div>
             </div>
 
-            <CommentForm/>
+            <PostCommentForm
+                :postId="post.id" />
 
         </div>
     </div>
@@ -111,7 +112,7 @@
 import MainLayout from '@/Layouts/MainLayout'
 import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
 import PostComments from "@/Shared/Comments/PostComments"
-import CommentForm from '@/Shared/Comments/CommentForm'
+import PostCommentForm from '@/Shared/Comments/PostCommentForm'
 import {mapActions, mapGetters} from 'vuex'
 import {Fragment} from 'vue-fragment'
 
@@ -130,7 +131,7 @@ export default {
     components: {
         PostComments,
         Breadcrumbs,
-        CommentForm,
+        PostCommentForm,
         Fragment
     },
     computed: {
@@ -139,14 +140,14 @@ export default {
     methods: {
         ...mapActions(['getComments'])
     },
-    mounted() {
-        let block = document.querySelector('[data-postContent]');
+    created() {
         this.post = this.$page.post.post[0];
         this.likes = this.$page.post.post[0].likes;
         this.nextLink = this.$page.post.next;
-        let postId = this.$page.post.post[0].id;
-
-        block.innerHTML = this.post.content;
+    },
+    mounted() {
+        let block = document.querySelector('[data-postContent]');
+            block.innerHTML = this.post.content;
 
         this.likes.forEach(el => {
             if (el.like > 0) {
@@ -157,7 +158,7 @@ export default {
             }
         });
 
-        this.getComments(postId)
+        this.getComments(this.post.id)
     }
 }
 </script>
