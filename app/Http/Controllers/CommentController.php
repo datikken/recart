@@ -11,6 +11,7 @@ class CommentController extends Controller
     {
         $comments = Comment::with([
             'user',
+            'post',
             'children.user',
         ])
             ->latest()
