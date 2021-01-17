@@ -6,24 +6,26 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Event extends Resource
+class Comment extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Event::class;
+    public static $model = \App\Models\Comment::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'event';
+    public static $title = 'body';
 
     /**
      * The columns that should be searched.
@@ -32,8 +34,12 @@ class Event extends Resource
      */
     public static $search = [
         'id',
-        'heading',
-        'description'
+        'post_id',
+        'user_id',
+        'parent_id',
+        'body',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -46,10 +52,9 @@ class Event extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('heading'),
-            Trix::make('description'),
-            Image::make('icon'),
-            BelongsTo::make('Year', 'year', Year::class)
+            BelongsTo::make('Post', 'post', Post::class),
+            BelongsTo::make('User', 'user', User::class),
+            Text::make('body')
         ];
     }
 
