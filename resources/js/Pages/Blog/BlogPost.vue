@@ -1,5 +1,5 @@
 <template>
-    <Fragment>
+    <div>
         <Breadcrumbs :links="['index', 'blog', post.id]"/>
 
         <div class="postItem">
@@ -86,22 +86,34 @@
             </div>
 
             <div class="postItem_block">
-                <PostComment :comments="[1,2]"/>
+                <div class="postItem_comments postItem_comments-shorten">
+                    <div class="postItem_comments_header">
+                        <div class="postItem_comments_header_item">
+                            <span>комментарии</span>
+                        </div>
+                        <div class="postItem_comments_header_item">
+                            <span>{{ commentsCount }}</span>
+                        </div>
+                    </div>
+
+                    <PostComments :comments="comments" />
+
+                </div>
             </div>
 
             <CommentForm/>
 
         </div>
-    </Fragment>
+    </div>
 </template>
 
 <script>
 import MainLayout from '@/Layouts/MainLayout'
 import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
-import PostComment from "@/Shared/Comments/PostComment"
+import PostComments from "@/Shared/Comments/PostComments"
 import CommentForm from '@/Shared/Comments/CommentForm'
+import {mapActions, mapGetters} from 'vuex'
 import {Fragment} from 'vue-fragment'
-import {mapActions} from 'vuex'
 
 export default {
     name: "BlogPost",
@@ -111,19 +123,21 @@ export default {
         likes: false,
         likesCount: 0,
         dislikesCount: 0,
-        nextLink: null
+        nextLink: null,
+        tmpBlocks: [],
+        commentsCount: 0
     }),
     components: {
-        PostComment,
+        PostComments,
         Breadcrumbs,
         CommentForm,
         Fragment
     },
+    computed: {
+        ...mapGetters(['comments'])
+    },
     methods: {
-        ...mapActions(['GET_ALL_POSTS']),
-        toggleLike(id) {
-
-        }
+        ...mapActions(['getComments'])
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
@@ -141,6 +155,8 @@ export default {
                 this.dislikesCount = this.dislikesCount + 1;
             }
         });
+
+        this.getComments()
     }
 }
 </script>

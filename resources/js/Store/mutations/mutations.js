@@ -1,10 +1,7 @@
 import _ from "lodash";
 
 import {
-    getPostComments,
-    getAllPosts,
-    deleteComment,
-    postChildren
+    getAllPosts
 } from './posts/index'
 import {
     showNotification,
@@ -46,9 +43,6 @@ import {fetch_call} from '@/vanilla/functions/fetch_call'
 
 let mutations = {
     getAllPosts,
-    getPostComments,
-    deleteComment,
-    postChildren,
     createNewUser,
     resendEmailVerify,
     subscribeEmail,
@@ -682,6 +676,14 @@ let mutations = {
     },
     setCloseListener(state, payload) {
         state.closeListener = payload;
+    },
+    SET_COMMENTS (state, comments) {
+        state.comments = comments
+    },
+    DELETE_COMMENT (state, comment) {
+        state.comments = state.comments.filter((c) => {
+            return c.id !== comment.id
+        })
     }
 }
 

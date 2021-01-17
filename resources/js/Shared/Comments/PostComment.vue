@@ -1,50 +1,66 @@
 <template>
-    <div>
-        <div class="postItem_comments postItem_comments-shorten">
-            <div class="postItem_comments_header">
-                <div class="postItem_comments_header_item">
-                    <span>комментарии</span>
-                </div>
-                <div class="postItem_comments_header_item">
-                    <span>{{ commentsCount }}</span>
-                </div>
+    <article class="media">
+        <figure class="media-left">
+            <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>{{ comment.user.name }}</strong>
+                    <br>
+                    <strong>{{ comment.id }}</strong> {{ comment.body }}
+                </p>
             </div>
 
-        <PostCommentItem v-for="comment in comments" :data="comment" />
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <a class="level-item">
+                        Reply
+                    </a>
+                    <a class="level-item">
+                        Edit
+                    </a>
+                    <a class="level-item" @click.prevent="deleteComment(comment)">
+                        Delete
+                    </a>
+                </div>
+            </nav>
 
+            <PostComment
+                v-for="(child, ind) in children(comment.id)"
+                :key="child.id"
+                :comment="child"
+                :class="`ml${50 * ind}`"
+            />
         </div>
-
-        <TextBtn
-            text="Смотреть все комментарии"
-            className="action_btn allcomments_btn" />
-
-    </div>
+    </article>
 </template>
 
 <script>
-import TextBtn from '@/Shared/Btns/TextBtn'
-import PostCommentItem from "./PostCommentItem"
-import {Fragment} from 'vue-fragment'
-import {mapActions, mapState} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    name: "PostComment",
-    data: () => ({
-        commentsCount: false
-    }),
-    computed: mapState(['comments']),
+    name: 'PostComment',
+
+    props: {
+        comment: {
+            required: true,
+            type: Object
+        }
+    },
+
+    computed: {
+        ...mapGetters({
+            children: 'children'
+        })
+    },
+
     methods: {
-        ...mapActions([
-            'GET_POST_COMMENTS'
-        ])
-    },
-    components: {
-        PostCommentItem,
-        TextBtn,
-        Fragment
-    },
-    mounted() {
-        this.GET_POST_COMMENTS();
+        ...mapActions({
+            deleteComment: 'deleteComment'
+        })
     }
 }
 </script>

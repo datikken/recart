@@ -1,7 +1,7 @@
 let state = {
     //
     posts: false,
-    comments: false,
+    comments: [],
     dashboardLayout: 0,
     //paths
     productImages: '',

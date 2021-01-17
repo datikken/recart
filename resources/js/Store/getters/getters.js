@@ -28,7 +28,16 @@ let getters = {
     prevDelAdrAccepted: state => state.prevDelAdrAccepted,
     ofertaPolicy: state => state.ofertaPolicy,
     cartStep: state => state.cartStep,
-    viewedProducts: state => state.viewedProducts
+    comments: state => {
+        return state.comments.filter((c) => {
+            return c.parent_id === null
+        })
+    },
+    children: state => {
+        return parentId => state.comments.filter((c) => {
+            return c.parent_id === parentId
+        })
+    }
 }
 
 export default getters;
