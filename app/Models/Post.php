@@ -36,6 +36,7 @@ class Post extends Model
     public function url()
     {
         $id = $this->id;
+
         URL::to('/blog/' . $id);
     }
 

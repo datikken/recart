@@ -76,14 +76,27 @@ export default {
         TextBtn
     },
     mounted() {
+        let likes = [];
+        let dislikes = [];
+
         this.createPostCover()
+
+        this.$props.post.likes.forEach(item => {
+            if(item.value > 0){
+                likes.push(item)
+            } else {
+                dislikes.push(item)
+            }
+        })
+
+        this.likesCount = likes.length;
+        this.dislikesCount = dislikes.length;
+
+        console.log(this.$props.post)
     },
     methods: {
-        ...mapActions([
-            'TOGGLE_LIKE_POST'
-        ]),
         toggleLike(id) {
-            return this.TOGGLE_LIKE_POST(id);
+            console.log('toggleLikes')
         },
         createPostCover() {
             let postCont = this.$props.post.content;

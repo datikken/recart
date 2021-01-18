@@ -35,14 +35,14 @@
         <PostComment
             v-for="(child, ind) in children(comment.id)"
             v-if="comment.parent_id > 0"
-            :key="child.id"
+            :key="ind"
             :comment="child"
             :class="`ml50`"
         />
         <PostComment
             v-else
             v-for="(child, ind) in children(comment.id)"
-            :key="child.id"
+            :key="`${Math.random()}`"
             :comment="child"
             :class="`ml${50}`"
         />
