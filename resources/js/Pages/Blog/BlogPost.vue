@@ -28,7 +28,7 @@
 
                     <a href="#blogCom" class="postList_comment">
                         <div class="postList_comment_icon"></div>
-                        <div class="postList_comment_val">{{ comments.length }}</div>
+                        <div class="postList_comment_val">{{ commentsCount }}</div>
                     </a>
 
                     <div class="postList_share">
@@ -112,8 +112,8 @@ export default {
         likes: false,
         likesCount: 0,
         dislikesCount: 0,
-        nextLink: null,
-        tmpBlocks: []
+        commentsCount: 0,
+        nextLink: null
     }),
     components: {
         PostComments,
@@ -130,13 +130,12 @@ export default {
     created() {
         this.post = this.$page.post.post[0];
         this.likes = this.$page.post.post[0].likes;
+        this.commentsCount = this.$page.post.post[0].comments.length;
         this.nextLink = this.$page.post.next;
-
-        console.log(this.$page.post, 'inner blog')
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
-        block.innerHTML = this.post.content;
+            block.innerHTML = this.post.content;
 
         this.likes.forEach(el => {
             if (el.value > 0) {

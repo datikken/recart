@@ -19,7 +19,7 @@ class PostRepository implements PostRepositoryInterface
     public function post($id)
     {
         $post = Post::where('id', $id)
-            ->with('Likes')
+            ->with(['Likes', 'Comments'])
             ->get();
 
         $next = Post::where('id', '>', $id)
