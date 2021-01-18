@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="postItem_comments_item">
             <div class="postItem_comments_col">
                 <div class="postItem_comments_avatar"></div>
@@ -17,9 +16,9 @@
             <div class="postItem_comments_col">
                 <div class="postItem_comments_col_item">
                     <div class="postItem_comments_like" @click="toggleLike(comment.id, 1)"></div>
-                    <span class="postItem_comments_likeCount">0</span>
+                    <span class="postItem_comments_likeCount">{{ likesCount }}</span>
                     <div class="postItem_comments_dislike" @click="toggleLike(comment.id, 0)"></div>
-                    <span class="postItem_comments_dislikeCount">0</span>
+                    <span class="postItem_comments_dislikeCount">{{ dislikesCount }}</span>
                     <div class="postItem_comments_response"></div>
                     <div class="postItem_comments_responseCount">{{ comment.replies }}</div>
                 </div>
@@ -61,20 +60,50 @@ export default {
             type: Object
         }
     },
-
+    data: () => ({
+        likesCount: 0,
+        dislikesCount: 0
+    }),
     computed: {
         ...mapGetters({
             children: 'children'
         })
     },
-
+    watch: {
+        comment(newVal, oldVal) {
+            this.updateUI(newVal.likes)
+        }
+    },
+    mounted() {
+        let likes = this.$props.comment.likes;
+        this.updateUI(likes);
+    },
     methods: {
         ...mapActions([
             'deleteComment',
+            'getComments',
             'TOGGLE_LIKE_COMMENT'
         ]),
+        updateUI(likes) {
+            this.likesCount = 0;
+            this.dislikesCount = 0;
+
+            likes.forEach(like => {
+                if(like.value > 0) {
+                    this.likesCount = this.likesCount + 1;
+                }
+
+                if(like.value === 0){
+                    this.dislikesCount = this.dislikesCount + 1;
+                }
+            });
+        },
         toggleLike(id, val) {
+            let postid = this.$page.post.post[0].id;
+
             this.TOGGLE_LIKE_COMMENT({id, val});
+
+            this.getComments(postid);
         },
         replyToComment(comm) {
             let comId = comm.id;
