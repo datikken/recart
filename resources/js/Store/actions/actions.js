@@ -28,6 +28,9 @@ let actions = {
     TOGGLE_LIKE_POST({commit}, {id, val}) {
         commit('likeBlogPost', {id, val})
     },
+    TOGGLE_LIKE_COMMENT({commit}, {id, val}) {
+        commit('likeBlogComment', {id, val})
+    },
     SWITCH_DASH_MENU({commit}, val) {
         commit('switchDashMenu', val);
     },

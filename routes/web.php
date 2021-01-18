@@ -30,6 +30,8 @@ use App\Http\Controllers\LikeController;
 //Likes API
 Route::post('like.post',[LikeController::class, 'like_post'])
     ->name('like.post');
+Route::post('like.comment',[LikeController::class, 'like_comment'])
+    ->name('like.comment');
 
 //Posts API
 Route::get('getAllPosts', [PostController::class, 'getAllPosts'])

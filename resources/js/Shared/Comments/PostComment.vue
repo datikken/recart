@@ -16,9 +16,9 @@
             </div>
             <div class="postItem_comments_col">
                 <div class="postItem_comments_col_item">
-                    <div class="postItem_comments_like"></div>
+                    <div class="postItem_comments_like" @click="toggleLike(comment.id, 1)"></div>
                     <span class="postItem_comments_likeCount">0</span>
-                    <div class="postItem_comments_dislike"></div>
+                    <div class="postItem_comments_dislike" @click="toggleLike(comment.id, 0)"></div>
                     <span class="postItem_comments_dislikeCount">0</span>
                     <div class="postItem_comments_response"></div>
                     <div class="postItem_comments_responseCount">{{ comment.replies }}</div>
@@ -69,9 +69,13 @@ export default {
     },
 
     methods: {
-        ...mapActions({
-            deleteComment: 'deleteComment'
-        }),
+        ...mapActions([
+            'deleteComment',
+            'TOGGLE_LIKE_COMMENT'
+        ]),
+        toggleLike(id, val) {
+            this.TOGGLE_LIKE_COMMENT({id, val});
+        },
         replyToComment(comm) {
             let comId = comm.id;
             let form = document.querySelector('#blogCom');

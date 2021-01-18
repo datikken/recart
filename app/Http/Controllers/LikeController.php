@@ -39,4 +39,36 @@ class LikeController extends Controller
 
         return response()->json(['status' => 200, 'message' => 'Success']);
     }
+
+    public function like_comment(Request $request)
+    {
+        $user_id = Auth::id();
+        $comment_id = $request->comment_id;
+        $like_value = $request->like_value;
+
+        if(!$user_id) throw new \Exception('User should be logged in');
+        if(!$comment_id) throw new \Exception('Post id should be provided');
+
+        $exists = Like::where([
+            'comment_id' => $comment_id,
+            'user_id' => $user_id
+        ])->get();
+
+        if(sizeof($exists) > 0) {
+            Like::where([
+                'comment_id' => $comment_id,
+                'user_id' => $user_id
+            ])->update(['value' => $like_value]);
+        } else {
+            $like = new Like([
+                'user_id' => $user_id,
+                'comment_id' => $comment_id,
+                'value' => $like_value
+            ]);
+
+            $like->save();
+        }
+
+        return response()->json(['status' => 200, 'message' => 'Success']);
+    }
 }

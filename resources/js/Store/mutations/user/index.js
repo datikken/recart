@@ -15,6 +15,21 @@ function likeBlogPost(state, {id, val}) {
         })
     })
 }
+function likeBlogComment(state, {id, val}) {
+    return fetch('/like.comment', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            comment_id: id,
+            like_value: val
+        })
+    })
+}
 function switchDashMenu(state, val) {
     state.dashboardLayout = val;
     return val;
@@ -104,5 +119,6 @@ export {
     resetUserPassword,
     switchDashMenu,
     submitPostComment,
-    likeBlogPost
+    likeBlogPost,
+    likeBlogComment
 }
