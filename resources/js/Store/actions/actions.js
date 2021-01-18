@@ -25,8 +25,8 @@ let actions = {
     GET_ALL_POSTS({commit}) {
         commit('getAllPosts');
     },
-    TOGGLE_LIKE_POST({commit}, id) {
-        commit('likeBlogPost', id)
+    TOGGLE_LIKE_POST({commit}, {id, val}) {
+        commit('likeBlogPost', {id, val})
     },
     SWITCH_DASH_MENU({commit}, val) {
         commit('switchDashMenu', val);

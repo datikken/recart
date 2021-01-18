@@ -1,6 +1,6 @@
 import {fetch_call} from "@/vanilla/functions/fetch_call";
 
-function likeBlogPost(state, id) {
+function likeBlogPost(state, {id, val}) {
     return fetch('/like.post', {
         method: "POST",
         headers: {
@@ -10,7 +10,8 @@ function likeBlogPost(state, id) {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
-            id
+            post_id: id,
+            like_value: val
         })
     })
 }

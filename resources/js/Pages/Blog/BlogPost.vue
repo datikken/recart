@@ -72,8 +72,8 @@
                 <div class="postItem_footer_inner">
                     <div class="postItem_footer_item">
                         <span class="postItem_text">Понравилась статья?</span>
-                        <span class="postItem_like" @click="toggleLike()"></span>
-                        <span class="postItem_dislike" @click="toggleLike()"></span>
+                        <span class="postItem_like" @click="toggleLike(1)"></span>
+                        <span class="postItem_dislike" @click="toggleLike(0)"></span>
                     </div>
                     <div class="postItem_footer_item">
                         <span class="postItem_text">Поделиться в соц.сетях</span>
@@ -125,7 +125,12 @@ export default {
         ...mapGetters(['comments'])
     },
     methods: {
-        ...mapActions(['getComments'])
+        ...mapActions(['getComments', 'TOGGLE_LIKE_POST']),
+        toggleLike(val) {
+            let id = this.post.id;
+
+            this.TOGGLE_LIKE_POST({id, val});
+        }
     },
     created() {
         this.post = this.$page.post.post[0];

@@ -26,6 +26,11 @@ use App\Http\Controllers\LikeController;
 /*
  * API
  */
+
+//Likes API
+Route::post('like.post',[LikeController::class, 'like_post'])
+    ->name('like.post');
+
 //Posts API
 Route::get('getAllPosts', [PostController::class, 'getAllPosts'])
     ->name('getAllPosts');
@@ -100,9 +105,6 @@ Route::post('/reply.store', [CommentController::class, 'replyStore'])
 //Checkout API
 Route::get('/checkCartState', [CartController::class, 'show'])
     ->name('checkCartState');
-//Likes
-Route::post('/like.post',[LikeController::class, 'likePost'])
-    ->name('like.post');
 //Search API
 Route::group(['middleware' => 'ajax'], function () {
     Route::post('/search', [SearchController::class, 'search'])
