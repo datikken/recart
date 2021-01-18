@@ -1,45 +1,56 @@
 <template>
-    <article class="media">
-        <figure class="media-left">
-            <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-            </p>
-        </figure>
-        <div class="media-content">
-            <div class="content">
-                <p>
-                    <strong>{{ comment.user.name }}</strong>
-                    <br>
-                    <strong>{{ comment.id }}</strong> {{ comment.body }}
-                </p>
+    <div>
+
+        <div class="postItem_comments_item">
+            <div class="postItem_comments_col">
+                <div class="postItem_comments_avatar"></div>
             </div>
-
-            <nav class="level is-mobile">
-                <div class="level-left">
-                    <a class="level-item">
-                        Reply
-                    </a>
-                    <a class="level-item">
-                        Edit
-                    </a>
-                    <a class="level-item" @click.prevent="deleteComment(comment.id)">
-                        Delete
-                    </a>
+            <div class="postItem_comments_col">
+                <div class="postItem_comments_nick">
+                    <span>{{ comment.user.name }}</span>
+                    <span class="postItem_date">{{ comment.created_at | formatDate }}</span>
                 </div>
-            </nav>
-
-            <PostComment
-                v-for="(child, ind) in children(comment.id)"
-                :key="child.id"
-                :comment="child"
-                :class="`ml${50 * ind}`"
-            />
+                <div class="postItem_comments_comment">
+                    <span>{{ comment.body }}</span>
+                </div>
+            </div>
+            <div class="postItem_comments_col">
+                <div class="postItem_comments_col_item">
+                    <div class="postItem_comments_like"></div>
+                    <span class="postItem_comments_likeCount">0</span>
+                    <div class="postItem_comments_dislike"></div>
+                    <span class="postItem_comments_dislikeCount">0</span>
+                    <div class="postItem_comments_response"></div>
+                    <div class="postItem_comments_responseCount">0</div>
+                </div>
+                <div class="postItem_comments_col_item">
+                    <div class="postItem_comments_responseBtn">
+                        <span class="postItem_comments_responseBtn_icon"></span>
+                        <span class="postItem_comments_responseBtn_item">ответить</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </article>
+
+        <PostComment
+            v-for="(child, ind) in children(comment.id)"
+            v-if="ind > 0"
+            :key="child.id"
+            :comment="child"
+            :class="`ml${50 * ind}`"
+        />
+        <PostComment
+            v-for="(child, ind) in children(comment.id)"
+            v-if="ind === 0"
+            :key="child.id"
+            :comment="child"
+            :class="`ml${50}`"
+        />
+    </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
     name: 'PostComment',

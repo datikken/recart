@@ -28,7 +28,7 @@
 
                     <a href="#blogCom" class="postList_comment">
                         <div class="postList_comment_icon"></div>
-                        <div class="postList_comment_val">{{ 0 }}</div>
+                        <div class="postList_comment_val">{{ comments.length }}</div>
                     </a>
 
                     <div class="postList_share">
@@ -86,23 +86,11 @@
             </div>
 
             <div class="postItem_block">
-                <div class="postItem_comments postItem_comments-shorten">
-                    <div class="postItem_comments_header">
-                        <div class="postItem_comments_header_item">
-                            <span>комментарии</span>
-                        </div>
-                        <div class="postItem_comments_header_item">
-                            <span>{{ commentsCount }}</span>
-                        </div>
-                    </div>
-
-                    <PostComments :comments="comments" />
-
-                </div>
+                <PostComments :comments="comments"/>
             </div>
 
             <PostCommentForm
-                :postId="post.id" />
+                :postId="post.id"/>
 
         </div>
     </div>
@@ -125,8 +113,7 @@ export default {
         likesCount: 0,
         dislikesCount: 0,
         nextLink: null,
-        tmpBlocks: [],
-        commentsCount: 0
+        tmpBlocks: []
     }),
     components: {
         PostComments,
@@ -147,7 +134,7 @@ export default {
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
-            block.innerHTML = this.post.content;
+        block.innerHTML = this.post.content;
 
         this.likes.forEach(el => {
             if (el.like > 0) {
