@@ -35,4 +35,9 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'parent_id')->latest();
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

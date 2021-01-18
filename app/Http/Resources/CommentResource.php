@@ -21,6 +21,7 @@ class CommentResource extends JsonResource
             'parent_id' => $this->parent_id,
             'created_at' => $this->created_at,
             'replies' => count($this->children),
+            'likes' => $this->likes,
             'post' => new PostResource($this->post),
             'user' => new PublicUserResource($this->user),
         ];
