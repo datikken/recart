@@ -1,6 +1,6 @@
 let actions = {
     async getComments ({ commit }, id) {
-        let response = await axios.get('http://127.0.0.1:8000/getPostComments', {
+        let response = await axios.get('/getPostComments', {
             params: {
                 id
             }
@@ -9,7 +9,7 @@ let actions = {
         commit('SET_COMMENTS', response.data.data)
     },
     async deleteComment ({ commit }, id) {
-        await fetch(`http://127.0.0.1:8000/comment.delete`, {
+        await fetch(`/comment.delete`, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': window.token
