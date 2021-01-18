@@ -131,16 +131,18 @@ export default {
         this.post = this.$page.post.post[0];
         this.likes = this.$page.post.post[0].likes;
         this.nextLink = this.$page.post.next;
+
+        console.log(this.$page.post, 'inner blog')
     },
     mounted() {
         let block = document.querySelector('[data-postContent]');
         block.innerHTML = this.post.content;
 
         this.likes.forEach(el => {
-            if (el.like > 0) {
-                this.likesCount = this.likesCount + el.like;
+            if (el.value > 0) {
+                this.likesCount = this.likesCount + el.value;
             }
-            if (el.like === 0) {
+            if (el.value === 0) {
                 this.dislikesCount = this.dislikesCount + 1;
             }
         });

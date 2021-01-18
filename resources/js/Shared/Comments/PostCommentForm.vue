@@ -1,7 +1,7 @@
 <template>
     <div id="blogCom"
          class="blogCom"
-         data-answerId="0"
+         data-answerId="null"
     >
         <div class="blogCom_wrap">
             <div class="blogCom_head">

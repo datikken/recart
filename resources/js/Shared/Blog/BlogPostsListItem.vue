@@ -91,8 +91,9 @@ export default {
 
         this.likesCount = likes.length;
         this.dislikesCount = dislikes.length;
+        this.commentsCount = this.$props.post.comments.length;
 
-        console.log(this.$props.post)
+        console.log(this.$props.post, 'blog list')
     },
     methods: {
         toggleLike(id) {

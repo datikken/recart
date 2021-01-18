@@ -11,7 +11,7 @@ class PostRepository implements PostRepositoryInterface
 {
     public function all()
     {
-        $posts = Post::with('Likes')->get();
+        $posts = Post::with(['Likes', 'Comments'])->get();
 
         return $posts;
     }
