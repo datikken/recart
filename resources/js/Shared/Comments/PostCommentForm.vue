@@ -54,10 +54,7 @@ export default {
         }
     },
     mounted() {
-        if (this.$page.user) {
-            this.name = this.$page.user.name;
-            this.email = this.$page.user.email;
-        }
+        this.prepareForm();
     },
     methods: {
         ...mapActions([
@@ -65,6 +62,12 @@ export default {
             'SHOW_NOTIFICATION',
             'getComments'
         ]),
+        prepareForm() {
+            if (this.$page.user) {
+                this.name = this.$page.user.name;
+                this.email = this.$page.user.email;
+            }
+        },
         flushForm() {
             this.name = '';
             this.email = '';
@@ -90,6 +93,7 @@ export default {
                 })
                 .then(() => {
                     this.getComments(this.$props.postId);
+                    this.prepareForm();
                 })
         }
     }
