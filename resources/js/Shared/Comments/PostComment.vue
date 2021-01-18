@@ -21,9 +21,9 @@
                     <div class="postItem_comments_dislike"></div>
                     <span class="postItem_comments_dislikeCount">0</span>
                     <div class="postItem_comments_response"></div>
-                    <div class="postItem_comments_responseCount">0</div>
+                    <div class="postItem_comments_responseCount">{{ comment.replies }}</div>
                 </div>
-                <div class="postItem_comments_col_item">
+                <div @click="replyToComment(comment)" class="postItem_comments_col_item">
                     <div class="postItem_comments_responseBtn">
                         <span class="postItem_comments_responseBtn_icon"></span>
                         <span class="postItem_comments_responseBtn_item">ответить</span>
@@ -34,14 +34,14 @@
 
         <PostComment
             v-for="(child, ind) in children(comment.id)"
-            v-if="ind > 0"
+            v-if="comment.parent_id > 0"
             :key="child.id"
             :comment="child"
-            :class="`ml${50 * ind}`"
+            :class="`ml50`"
         />
         <PostComment
+            v-else
             v-for="(child, ind) in children(comment.id)"
-            v-if="ind === 0"
             :key="child.id"
             :comment="child"
             :class="`ml${50}`"
@@ -51,10 +51,10 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import {scrollTo} from '@/vanilla/functions/scrollTo'
 
 export default {
     name: 'PostComment',
-
     props: {
         comment: {
             required: true,
@@ -71,7 +71,14 @@ export default {
     methods: {
         ...mapActions({
             deleteComment: 'deleteComment'
-        })
+        }),
+        replyToComment(comm) {
+            let comId = comm.id;
+            let form = document.querySelector('#blogCom');
+                form.setAttribute('data-answerId', comId);
+
+            scrollTo(document.querySelector('#blogCom'));
+        }
     }
 }
 </script>

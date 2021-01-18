@@ -1,7 +1,8 @@
 <template>
-    <div class="blogCom"
-         data-blogCommentsForm
-         data-blogCommentPostId="1">
+    <div id="blogCom"
+         class="blogCom"
+         data-answerId="0"
+    >
         <div class="blogCom_wrap">
             <div class="blogCom_head">
                 <p class="blogCom_head-item">оставить комментарий</p>
@@ -70,12 +71,16 @@ export default {
             this.body = '';
         },
         submitComment() {
+            let parent = document.querySelector('#blogCom');
+            let parent_id = parseInt(parent.getAttribute('data-answerId'));
+
             let form = {
                 name: this.name,
                 email: this.email,
                 body: this.body,
                 post_id: this.$props.postId,
-                user_id: this.$page.user ? this.$page.user.id : 0
+                user_id: this.$page.user ? this.$page.user.id : 0,
+                parent_id
             }
 
             this.SUBMIT_POST_COMMENT(form)

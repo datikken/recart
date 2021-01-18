@@ -22,7 +22,7 @@ function createNewUser(state, obj) {
     state.user = obj;
     return state.user;
 }
-function submitPostComment(state, {name, email, body, post_id, user_id}) {
+function submitPostComment(state, {name, email, body, post_id, user_id, parent_id}) {
     return fetch('/comment.store', {
         method: "POST",
         headers: {
@@ -32,7 +32,7 @@ function submitPostComment(state, {name, email, body, post_id, user_id}) {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
-            name, email, body, post_id, user_id
+            name, email, body, post_id, user_id, parent_id
         })
     })
 }

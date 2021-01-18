@@ -14,8 +14,6 @@
             :key="comment.id"
             :comment="comment"
         />
-
-
     </div>
 </template>
 
