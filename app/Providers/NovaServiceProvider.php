@@ -73,7 +73,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [];
     }
-
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
@@ -89,7 +88,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new \Spatie\BackupTool\BackupTool()
         ];
     }
-
     /**
      * Register any application services.
      *
