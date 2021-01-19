@@ -16,8 +16,8 @@ function likeBlogPost(state, {id, val}) {
     })
 }
 
-function getPostLikesAndDislikes(state, id) {
-    return fetch('/getPostLikesAndDislikes', {
+async function getPostLikesAndDislikes(state, id) {
+    await fetch('/getPostLikesAndDislikes', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -29,6 +29,13 @@ function getPostLikesAndDislikes(state, id) {
             post_id: id
         })
     })
+        .then(response => response.json())
+        .then(data => {
+            state.postLikes = {
+                likes: data.likes,
+                dislikes: data.dislikes
+            }
+        })
 }
 
 function likeBlogComment(state, {id, val}) {
@@ -46,14 +53,17 @@ function likeBlogComment(state, {id, val}) {
         })
     })
 }
+
 function switchDashMenu(state, val) {
     state.dashboardLayout = val;
     return val;
 }
+
 function createNewUser(state, obj) {
     state.user = obj;
     return state.user;
 }
+
 function submitPostComment(state, {name, email, body, post_id, user_id, parent_id}) {
     return fetch('/comment.store', {
         method: "POST",
@@ -68,6 +78,7 @@ function submitPostComment(state, {name, email, body, post_id, user_id, parent_i
         })
     })
 }
+
 function resetUserPassword(state, email) {
     return fetch('/forgot-password', {
         method: "POST",

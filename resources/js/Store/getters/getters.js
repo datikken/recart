@@ -1,5 +1,6 @@
 let getters = {
     post: state => state.post,
+    postLikes: state => state.postLikes,
     user: state => state.user,
     searchProducts: state => state.searchProducts,
     filteredProducts: state => state.filteredProducts,

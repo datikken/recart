@@ -124,10 +124,15 @@ export default {
     computed: {
         ...mapGetters([
             'comments',
-            'post'
+            'post',
+            'postLikes'
         ])
     },
     watch: {
+        postLikes(newVal) {
+            this.likesCount = newVal.likes.length;
+            this.dislikesCount = newVal.dislikes.length;
+        },
         post(newVal) {
             this.blogPost = newVal.post[0];
             this.likes = this.post.post[0].likes;
@@ -135,7 +140,6 @@ export default {
             this.nextLink = this.post.next;
 
             this.prepare();
-            // this.updateUI(this.likes);
         }
     },
     methods: {
@@ -156,17 +160,15 @@ export default {
 
             this.getComments(this.id);
         },
-        getBlogPost() {
-            this.id = parseInt(this.$page.id);
-            this.GET_POST_BY_ID(this.id);
-        },
         updateUI() {
-            // this.likesCount = this.postLikesCount.likes;
-            // this.dislikesCount = this.postLikesCount.dislikes;
+            this.UPDATE_POST_LIKES_AND_DISLIKES(this.id);
         },
     },
     created() {
-        this.getBlogPost();
+        this.id = parseInt(this.$page.id);
+
+        this.GET_POST_BY_ID(this.id);
+        this.UPDATE_POST_LIKES_AND_DISLIKES(this.id);
     }
 }
 </script>

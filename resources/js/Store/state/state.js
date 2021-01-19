@@ -2,6 +2,7 @@ let state = {
     //
     posts: false,
     post: false,
+    postLikes: {},
     comments: [],
     dashboardLayout: 0,
     //paths
