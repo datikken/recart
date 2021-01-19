@@ -1,6 +1,7 @@
 let state = {
     //
     posts: false,
+    post: false,
     comments: [],
     dashboardLayout: 0,
     //paths

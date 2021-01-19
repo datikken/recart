@@ -1,7 +1,8 @@
 import _ from "lodash";
 
 import {
-    getAllPosts
+    getAllPosts,
+    getPostById
 } from './posts/index'
 import {
     showNotification,
@@ -20,7 +21,8 @@ import {
     switchDashMenu,
     submitPostComment,
     likeBlogPost,
-    likeBlogComment
+    likeBlogComment,
+    getPostLikesAndDislikes
 } from './user/index'
 import {
     getFilteredProducts,
@@ -43,7 +45,9 @@ import {
 import {fetch_call} from '@/vanilla/functions/fetch_call'
 
 let mutations = {
+    getPostLikesAndDislikes,
     getAllPosts,
+    getPostById,
     createNewUser,
     resendEmailVerify,
     subscribeEmail,

@@ -7,6 +7,18 @@ function getAllPosts(state) {
         })
 }
 
+async function getPostById(state, id) {
+    return await axios.get('/getPostById', {
+        params: {
+            id
+        }
+    })
+        .then(data => {
+            state.post = data.data;
+        })
+}
+
 export {
-    getAllPosts
+    getAllPosts,
+    getPostById
 }

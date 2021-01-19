@@ -29,6 +29,28 @@ class PostRepository implements PostRepositoryInterface
         return array('post' => $post, 'next' => $next);
     }
 
+    public function getLikesAndDislikes($id) {
+        $post = $this->post($id);
+        $likesAndDislikes = $post['post'][0]->likes;
+
+        $likes = array();
+        $dislikes = array();
+
+        foreach ($likesAndDislikes as $item) {
+            if($item->value > 0) {
+                array_push($likes, $item);
+            }
+            if($item->value === 0) {
+                array_push($dislikes, $item);
+            }
+        }
+
+        return [
+            'likes' => $likes,
+            'dislikes' => $dislikes
+        ];
+    }
+
     public function getByUser(User $user)
     {
         return Post::where('user_id'. $user->id)->get();

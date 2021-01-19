@@ -1,14 +1,14 @@
 <template>
     <div>
-        <Breadcrumbs :links="['index', 'blog', post.id]"/>
+        <Breadcrumbs :links="['index', 'blog', blogPost.id]"/>
 
         <div class="postItem">
             <div class="postItem_top">
                 <div class="postList_cat postItem_cat">
-                    <span>{{ post.category }}</span>
+                    <span>{{ blogPost.category }}</span>
                 </div>
                 <div class="postList_head postItem_head">
-                    <span>{{ post.heading }}</span>
+                    <span>{{ blogPost.heading }}</span>
                 </div>
             </div>
             <div class="postItem_wrap" data-postContent></div>
@@ -86,11 +86,10 @@
             </div>
 
             <div class="postItem_block">
-                <PostComments :comments="comments"/>
+                <PostComments :comments="comments" />
             </div>
 
-            <PostCommentForm
-                :postId="post.id"/>
+            <PostCommentForm :postId="blogPost.id"/>
 
         </div>
     </div>
@@ -108,7 +107,8 @@ export default {
     name: "BlogPost",
     layout: MainLayout,
     data: () => ({
-        post: false,
+        id: false,
+        blogPost: false,
         likes: false,
         likesCount: 0,
         dislikesCount: 0,
@@ -122,36 +122,51 @@ export default {
         Fragment
     },
     computed: {
-        ...mapGetters(['comments'])
+        ...mapGetters([
+            'comments',
+            'post'
+        ])
     },
-    methods: {
-        ...mapActions(['getComments', 'TOGGLE_LIKE_POST']),
-        toggleLike(val) {
-            let id = this.post.id;
+    watch: {
+        post(newVal) {
+            this.blogPost = newVal.post[0];
+            this.likes = this.post.post[0].likes;
+            this.commentsCount = this.post.post[0].comments.length;
+            this.nextLink = this.post.next;
 
-            this.TOGGLE_LIKE_POST({id, val});
+            this.prepare();
+            // this.updateUI(this.likes);
         }
     },
-    created() {
-        this.post = this.$page.post.post[0];
-        this.likes = this.$page.post.post[0].likes;
-        this.commentsCount = this.$page.post.post[0].comments.length;
-        this.nextLink = this.$page.post.next;
+    methods: {
+        ...mapActions([
+            'getComments',
+            'TOGGLE_LIKE_POST',
+            'GET_POST_BY_ID',
+            'UPDATE_POST_LIKES_AND_DISLIKES'
+        ]),
+        toggleLike(val) {
+            let id = this.blogPost.id;
+            this.TOGGLE_LIKE_POST({id, val});
+            this.UPDATE_POST_LIKES_AND_DISLIKES(id);
+        },
+        prepare() {
+            let block = document.querySelector('[data-postContent]');
+                block.innerHTML = this.blogPost.content;
+
+            this.getComments(this.id);
+        },
+        getBlogPost() {
+            this.id = parseInt(this.$page.id);
+            this.GET_POST_BY_ID(this.id);
+        },
+        updateUI() {
+            // this.likesCount = this.postLikesCount.likes;
+            // this.dislikesCount = this.postLikesCount.dislikes;
+        },
     },
-    mounted() {
-        let block = document.querySelector('[data-postContent]');
-            block.innerHTML = this.post.content;
-
-        this.likes.forEach(el => {
-            if (el.value > 0) {
-                this.likesCount = this.likesCount + el.value;
-            }
-            if (el.value === 0) {
-                this.dislikesCount = this.dislikesCount + 1;
-            }
-        });
-
-        this.getComments(this.post.id)
+    created() {
+        this.getBlogPost();
     }
 }
 </script>

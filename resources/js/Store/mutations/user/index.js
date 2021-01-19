@@ -15,6 +15,22 @@ function likeBlogPost(state, {id, val}) {
         })
     })
 }
+
+function getPostLikesAndDislikes(state, id) {
+    return fetch('/getPostLikesAndDislikes', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            post_id: id
+        })
+    })
+}
+
 function likeBlogComment(state, {id, val}) {
     return fetch('/like.comment', {
         method: "POST",
@@ -120,5 +136,6 @@ export {
     switchDashMenu,
     submitPostComment,
     likeBlogPost,
-    likeBlogComment
+    likeBlogComment,
+    getPostLikesAndDislikes
 }

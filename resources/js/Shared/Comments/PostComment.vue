@@ -65,9 +65,7 @@ export default {
         dislikesCount: 0
     }),
     computed: {
-        ...mapGetters({
-            children: 'children'
-        })
+        ...mapGetters(['children', 'post'])
     },
     watch: {
         comment(newVal, oldVal) {
@@ -99,7 +97,7 @@ export default {
             });
         },
         toggleLike(id, val) {
-            let postid = this.$page.post.post[0].id;
+            let postid = this.post.post[0].id;
 
             this.TOGGLE_LIKE_COMMENT({id, val});
 

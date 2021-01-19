@@ -32,10 +32,13 @@ Route::post('like.post',[LikeController::class, 'like_post'])
     ->name('like.post');
 Route::post('like.comment',[LikeController::class, 'like_comment'])
     ->name('like.comment');
-
+Route::post('getPostLikesAndDislikes', [PostController::class, 'getPostLikesAndDislikes'])
+    ->name('getPostLikesAndDislikes');
 //Posts API
 Route::get('getAllPosts', [PostController::class, 'getAllPosts'])
     ->name('getAllPosts');
+Route::get('getPostById', [PostController::class, 'get'])
+    ->name('getPostById');
 //Subscriptions API
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
     ->name('subscribe');

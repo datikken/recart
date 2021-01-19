@@ -37,7 +37,10 @@ class LikeController extends Controller
             $like->save();
         }
 
-        return response()->json(['status' => 200, 'message' => 'Success']);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Success'
+        ]);
     }
 
     public function like_comment(Request $request)

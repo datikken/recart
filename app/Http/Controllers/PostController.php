@@ -29,18 +29,26 @@ class PostController extends Controller
 
     public function detail($id)
     {
-        $post = $this->get($id);
-
-        return Inertia::render('Blog/BlogPost',[
-            'post' => $post
+        return Inertia::render('Blog/BlogPost', [
+            'id' => $id
         ]);
     }
 
-    public function get($id)
+    public function get(Request $request)
     {
+        $id = $request->id;
         $post = $this->postRepository->post($id);
 
         return $post;
+    }
+
+    public function getPostLikesAndDislikes(Request $request)
+    {
+        $post_id = $request->post_id;
+
+        $likesAndDislikes = $this->postRepository->getLikesAndDislikes($post_id);
+
+        return $likesAndDislikes;
     }
 
     public function likePost(Request $request)

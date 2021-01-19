@@ -25,6 +25,12 @@ let actions = {
     GET_ALL_POSTS({commit}) {
         commit('getAllPosts');
     },
+    UPDATE_POST_LIKES_AND_DISLIKES({commit}, id) {
+        commit('getPostLikesAndDislikes', id);
+    },
+    GET_POST_BY_ID({commit}, id) {
+        commit('getPostById', id);
+    },
     TOGGLE_LIKE_POST({commit}, {id, val}) {
         commit('likeBlogPost', {id, val})
     },
