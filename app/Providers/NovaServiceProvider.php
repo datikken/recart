@@ -85,7 +85,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new FilemanagerTool(),
             new NovaPermissionTool(),
             new Tool(),
-            (new \vmitchell85\NovaLinks\Links())
+            new \vmitchell85\NovaLinks\Links(),
+            new \Spatie\BackupTool\BackupTool()
         ];
     }
 

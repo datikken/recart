@@ -37,6 +37,7 @@
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^3.18",
         "spatie/laravel-responsecache": "^6.6",
+        "spatie/nova-backup-tool": "^4.1",
         "spatie/nova-tags-field": "^3.1",
         "stevebauman/location": "^5.2",
         "tightenco/ziggy": "^0.9.4",
