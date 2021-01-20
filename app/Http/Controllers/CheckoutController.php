@@ -11,4 +11,9 @@ class CheckoutController extends Controller
     {
         return Inertia::render('Checkout/Checkout');
     }
+
+    public function checkoutDelivery()
+    {
+        return Inertia::render('Checkout/CheckoutDelivery');
+    }
 }

@@ -31,7 +31,7 @@
     import {mapState, mapActions} from 'vuex'
 
     export default {
-        name: "agreementCheck",
+        name: "AgreementCheck",
         data: () => {
             return {
                 errObj: null
@@ -57,9 +57,9 @@
         methods: {
             ...mapActions(['SET_OFERTA_POLICY_STATE']),
             throwHideErr() {
-                // if (this.ofertaPolicy != true) {
+                if (this.ofertaPolicy != true) {
                     this.errObj.classList.toggle('as-none')
-                // }
+                }
             },
             hideErrorResetState() {
                 this.errObj.classList.add('as-none');

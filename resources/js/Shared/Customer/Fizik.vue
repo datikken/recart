@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <agreementCheck refs="oferta" />
+            <AgreementCheck refs="oferta" />
 
         </div>
     </div>
@@ -54,7 +54,7 @@
     import SimpleCheckbox from '../Checkboxes/SimpleCheckbox'
     import {mapActions,mapGetters} from 'vuex'
     import MaskedInput from '../Inputs/MaskedInput'
-    import agreementCheck from '../Policy/agreementCheck';
+    import AgreementCheck from '../Policy/AgreementCheck';
     import MagicBtn from '@/Shared/Btns/MagicBtn'
 
     export default {
@@ -63,7 +63,7 @@
             SimpleCheckbox,
             MaskedInput,
             MagicBtn,
-            agreementCheck
+            AgreementCheck
         },
         data: function () {
             return {
@@ -115,23 +115,22 @@
             saveDataToStorage() {
                 let data = this.collectInputData();
 
-                // try {
-                   // window.app.validator.formValidate([], $(this.$el));
-                // } catch(err) {
-                //     this.setFormError();
-                    // console.error(err)
-                    // return;
-                // }
-                //
-                //
-                // if(data.save) {
-                //         localStorage.setItem('checkoutProductsData', JSON.stringify(data));
-                //     let phone = this.trimPhoneNumber(data.tel)
-                //         delete data.save;
-                //         data.tel = phone;
-                //
-                //         this.REFRESH_CUTOMER_DATA(data);
-                // }
+                try {
+                   window.app.validator.formValidate([], $(this.$el));
+                } catch(err) {
+                    this.setFormError();
+                    console.error(err)
+                    return;
+                }
+
+                if(data.save) {
+                        localStorage.setItem('checkoutProductsData', JSON.stringify(data));
+                    let phone = this.trimPhoneNumber(data.tel)
+                        delete data.save;
+                        data.tel = phone;
+
+                        this.REFRESH_CUTOMER_DATA(data);
+                }
             },
             fillInputsData() {
                 let locUser = this.$page.user;
@@ -182,7 +181,6 @@
                 let obj = this.collectInputData();
 
                 try {
-                    window.app.validator.formValidate([], $(this.$el));
                     this.validateNumberLength(obj.tel);
                     this.validateAgreement();
                 } catch (err) {

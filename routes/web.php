@@ -152,6 +152,8 @@ Route::get('/cart', [CartController::class, 'index'])
     ->name('cart');
 Route::get('/checkout', [CheckoutController::class, 'get'])
     ->name('checkout');
+Route::get('/checkoutDelivery', [CheckoutController::class, 'checkoutDelivery'])
+    ->name('checkoutDelivery');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
