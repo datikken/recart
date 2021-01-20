@@ -79,6 +79,8 @@ export default {
         let likes = [];
         let dislikes = [];
 
+        console.log(this.$props, 'blog list item')
+
         this.createPostCover()
 
         this.$props.post.likes.forEach(item => {

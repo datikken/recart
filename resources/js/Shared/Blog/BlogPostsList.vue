@@ -1,6 +1,6 @@
 <template>
     <div class="postList">
-        <div v-if="allPosts.length > 0">
+        <div v-if="allPosts.length > 1">
             <vue-ads-pagination
                 :total-items="allPosts.length"
                 :max-visible-pages="5"
@@ -12,7 +12,7 @@
 
                 <template slot-scope="props">
                     <BlogPostsListItem
-                        v-for="item in allPosts.slice(props.start, props.end)"
+                        v-for="item in allPosts.slice(0, props.end)"
                         :post="item"
                         :key="item.name"/>
                 </template>
@@ -37,6 +37,10 @@
 
             </vue-ads-pagination>
         </div>
+        <BlogPostsListItem
+            v-if="allPosts.length === 1"
+            :post="allPosts[0]"
+            :key="allPosts[0].name"/>
     </div>
 </template>
 
@@ -77,6 +81,8 @@ export default {
     watch: {
         posts(newVal, oldVal) {
             this.allPosts = newVal;
+
+            console.log(this.allPosts)
         }
     },
     methods: {

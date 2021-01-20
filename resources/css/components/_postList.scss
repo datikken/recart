@@ -3,7 +3,7 @@
     min-width: $layoutw;
     margin: 0 auto;
     margin-bottom: 20px;
-    min-height: 570px;
+    min-height: 710px;
 
     div {
         .vue-ads-flex {
@@ -14,6 +14,11 @@
 
             &-grow {
                 flex-direction: row;
+                right: 0;
+                width: 100%;
+                height: 40px;
+                align-items: center;
+                bottom: 0;
             }
         }
     }
