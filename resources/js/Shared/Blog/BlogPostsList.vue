@@ -78,7 +78,7 @@ export default {
         posts(newVal, oldVal) {
             this.allPosts = newVal;
 
-            console.log('blog')
+            console.log('blog', this.allPosts)
         }
     },
     methods: {
