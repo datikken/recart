@@ -259,6 +259,9 @@ let mutations = {
         helper.classList.add('no_opacity');
     }
     ,
+    blogPostLoadMore(state) {
+        state.postPerPage = state.postPerPage + 3;
+    },
     catalogLoadMore(state) {
         state.catalogPerPage = state.catalogPerPage + 15;
     }

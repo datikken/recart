@@ -28,7 +28,7 @@
                     rows="10" placeholder="Напишите свой комментарий"/>
             </div>
 
-            <TextBtn className="yellow_btn" text="Отправить" @click.native="submitComment"/>
+            <TextBtn className="yellow_btn animated_btn" text="Отправить" @click.native="submitComment"/>
 
         </div>
     </div>
@@ -84,6 +84,11 @@ export default {
                 post_id: this.$props.postId,
                 user_id: this.$page.user ? this.$page.user.id : 0,
                 parent_id
+            }
+
+            if (this.body === '') {
+                this.SHOW_NOTIFICATION({msg: 'Впишите комментарий.', type: 'danger'});
+                return;
             }
 
             this.SUBMIT_POST_COMMENT(form)

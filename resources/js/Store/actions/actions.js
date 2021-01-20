@@ -106,6 +106,9 @@ let actions = {
     SEND_GOOGLE_ANALYTICS({commit}, obj) {
         // commit('sendGoogleAnalytics', obj);
     },
+    BLOG_POST_LOAD_MORE({commit}) {
+        commit('blogPostLoadMore');
+    },
     CATALOG_LOAD_MORE({commit}) {
         commit('catalogLoadMore');
     },

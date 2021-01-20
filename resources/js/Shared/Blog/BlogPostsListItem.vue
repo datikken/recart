@@ -18,7 +18,7 @@
             <div class="postList_btns_inner">
 
                 <inertia-link :href="route('blog.view', post.id)">
-                    <TextBtn className="yellow_btn" text="Читать далее"/>
+                    <TextBtn className="yellow_btn animated_btn" text="Читать далее"/>
                 </inertia-link>
 
                 <div class="postList_btns_actions">
@@ -78,8 +78,6 @@ export default {
     mounted() {
         let likes = [];
         let dislikes = [];
-
-        console.log(this.$props, 'blog list item')
 
         this.createPostCover()
 

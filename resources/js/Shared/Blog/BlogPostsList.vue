@@ -12,7 +12,7 @@
 
                 <template slot-scope="props">
                     <BlogPostsListItem
-                        v-for="item in allPosts.slice(0, props.end)"
+                        v-for="item in allPosts.slice(props.start, props.end)"
                         :post="item"
                         :key="item.name"/>
                 </template>
@@ -24,7 +24,7 @@
                 >
 
                     <div class="load_more-btn" @click="loadMore">
-                        <TextBtn text="загрузить еще" className="flat_btn animated_btn"/>
+                        <TextBtn text="загрузить еще" className="flat_btn"/>
                     </div>
 
                     <vue-ads-page-button
@@ -81,8 +81,6 @@ export default {
     watch: {
         posts(newVal, oldVal) {
             this.allPosts = newVal;
-
-            console.log(this.allPosts)
         }
     },
     methods: {
@@ -91,13 +89,14 @@ export default {
             'GET_ALL_PRODUCTS',
             'CATALOG_LOAD_MORE',
             'SEND_GOOGLE_ANALYTICS',
-            'CREATE_STICKY_COLUMN'
+            'CREATE_STICKY_COLUMN',
+            'BLOG_POST_LOAD_MORE'
         ]),
         pageChange(page) {
             this.page = page;
         },
-        loadMore(e) {
-            this.CATALOG_LOAD_MORE();
+        loadMore() {
+            this.BLOG_POST_LOAD_MORE();
         }
     },
     created() {

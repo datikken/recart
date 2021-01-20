@@ -2,15 +2,17 @@
     max-width: $layoutw;
     min-width: $layoutw;
     margin: 0 auto;
-    margin-bottom: 20px;
-    min-height: 710px;
+    margin-bottom: 30px;
 
     div {
+
         .vue-ads-flex {
             display: flex;
             flex-direction: column;
             position: relative;
             margin: 0;
+
+            @include vueAdsPagi();
 
             &-grow {
                 flex-direction: row;
