@@ -1,6 +1,6 @@
 <template>
     <div class="postList">
-        <div v-if="allPosts.length > 1">
+        <div v-if="allPosts.length > 0">
             <vue-ads-pagination
                 :total-items="allPosts.length"
                 :max-visible-pages="5"
@@ -77,8 +77,6 @@ export default {
     watch: {
         posts(newVal, oldVal) {
             this.allPosts = newVal;
-
-            console.log('blog', this.allPosts)
         }
     },
     methods: {
