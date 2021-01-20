@@ -402,11 +402,9 @@ let mutations = {
     }
     ,
     finishContract() {
-        console.log('send contract via email')
         // router.push('/success');
         // this.SCROLL_TO_TOP();
-    }
-    ,
+    },
     checkPaymentError() {
         let error = document.querySelector('[data-payment-error]');
         let heading = document.querySelector('[data-payment-head]');
