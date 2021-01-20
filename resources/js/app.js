@@ -30,9 +30,6 @@ new Vue({
         })
 }).$mount(app);
 
-
-console.log('app3');
-
 Vue.use(VueTruncate)
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
@@ -45,6 +42,7 @@ Vue.filter('formatDate', function(value) {
         return moment(String(value)).format('MM.DD.YYYY')
     }
 });
+
 Vue.use(vueDebounce, {
     listenTo: ['input', 'keyup'],
     defaultTime: '1000ms'
