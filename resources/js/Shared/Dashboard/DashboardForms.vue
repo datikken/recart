@@ -181,9 +181,6 @@
                     .then(response => {
                         return response.json();
                     })
-                    .then(text => {
-                        return console.log(text);
-                    })
                     .catch(error => console.error(error));
             }
         },

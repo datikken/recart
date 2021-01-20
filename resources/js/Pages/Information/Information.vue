@@ -36,8 +36,6 @@
         watch: {
             informationPosts(newVal, oldVal) {
                 this.posts = newVal;
-
-                console.log('watch2', newVal, oldVal)
             }
         },
         created() {
