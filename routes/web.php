@@ -22,6 +22,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\BackupController;
 
 /*
  * API
@@ -156,9 +157,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 /*
- * Test routes
+ * Tech routes
  * to clear cachedMiddlewares: php artisan responsecache:clear
  */
+Route::get('/backup', [BackupController::class, 'back_up_from_last_archive'])
+    ->name('backup');
 Route::get('/test', [TestController::class, 'index'])->name('test');
 //    ->middleware('cacheResponse:30');
 Route::get('/all', [TestController::class, 'all'])->name('all');

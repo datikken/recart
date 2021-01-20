@@ -9,14 +9,7 @@ mix.js('resources/js/app.js', 'public/js')
     .options({
         postCss: [
             cssImport(),
-            cssNesting(),
-            ...mix.inProduction() ? [
-                purgecss({
-                    content: ['./resources/js/**/*.vue'],
-                    defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
-                    whitelistPatternsChildren: [/nprogress/],
-                }),
-            ] : [],
+            cssNesting()
         ],
     })
     .webpackConfig({

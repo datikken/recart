@@ -36,6 +36,8 @@
         "@inertiajs/progress": "^0.2.3",
         "inputmask-core": "^2.2.0",
         "jquery": "^3.5.1",
+        "postcss": "^8.2.2",
+        "postcss-loader": "^3.0.0",
         "rxjs": "^6.6.3",
         "rxjs-compat": "^6.6.3",
         "simplebar-vue": "^1.6.0",

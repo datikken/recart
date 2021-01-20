@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-file-upload-field": "^0.4.0",
+        "gobrightspot/nova-detached-actions": "^1.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.2.4",
         "infinety-es/nova-filemanager": "^2.8",
@@ -42,7 +43,8 @@
         "stevebauman/location": "^5.2",
         "tightenco/ziggy": "^0.9.4",
         "vmitchell85/nova-links": "^1.0",
-        "vyuldashev/nova-permission": "^2.10"
+        "vyuldashev/nova-permission": "^2.10",
+        "zanysoft/laravel-zip": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

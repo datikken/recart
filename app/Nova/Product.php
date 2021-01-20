@@ -124,7 +124,8 @@ class Product extends Resource
     {
         return [
             Actions\GetProducts::make()->standalone(),
-            Actions\DeleteProducts::make()->standalone()
+            Actions\DeleteProducts::make()->standalone(),
+            Actions\RestoreFromBackup::make()->standalone()
         ];
     }
 }

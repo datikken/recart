@@ -3,9 +3,19 @@
     min-width: $layoutw;
     margin: 0 auto;
     margin-bottom: 20px;
+    min-height: 570px;
 
-    &:last-child {
-        margin: 0;
+    div {
+        .vue-ads-flex {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 0;
+
+            &-grow {
+                flex-direction: row;
+            }
+        }
     }
 
     &_pagination {
@@ -96,9 +106,6 @@
         margin-bottom: 30px;
         padding-bottom: 30px;
         border-bottom: 1px solid $light_gray;
-        &:last-child {
-            margin: 0;
-        }
         img {
             object-fit: cover;
         }

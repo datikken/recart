@@ -3,6 +3,7 @@ let state = {
     posts: false,
     post: false,
     postLikes: {},
+    postPerPage: 3,
     comments: [],
     dashboardLayout: 0,
     //paths

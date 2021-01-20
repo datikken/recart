@@ -23,12 +23,12 @@
 
                 <div class="postList_btns_actions">
                     <div class="postList_like">
-                        <div class="postList_like_icon" @click="toggleLike(post.id)"></div>
+                        <div class="postList_like_icon"></div>
                         <div class="postList_like_val">{{ likesCount }}</div>
                     </div>
 
                     <div class="postList_dislike">
-                        <div class="postList_dislike_icon" @click="toggleLike(post.id)"></div>
+                        <div class="postList_dislike_icon"></div>
                         <div class="postList_dislike_val">{{ dislikesCount }}</div>
                     </div>
 
@@ -92,13 +92,8 @@ export default {
         this.likesCount = likes.length;
         this.dislikesCount = dislikes.length;
         this.commentsCount = this.$props.post.comments.length;
-
-        console.log(this.$props.post, 'blog list')
     },
     methods: {
-        toggleLike(id) {
-            console.log('toggleLikes')
-        },
         createPostCover() {
             let postCont = this.$props.post.content;
 
