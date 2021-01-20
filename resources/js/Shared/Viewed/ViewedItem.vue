@@ -1,9 +1,7 @@
 <template>
     <inertia-link class="viewed_wrapper-item" :href="`/catalog/${prdct.id}`">
         <div class="viewed_wrapper-item_image">
-            <img
-                onerror="this.src = '/images/unnecessary/owl-swiper.svg';" :src="modifyPrImage()" />
-
+            <img onerror="this.src = '/images/unnecessary/owl-swiper.svg';" :src="modifyPrImage()" />
         </div>
         <div class="viewed_wrapper-item_text">
             <div class="viewed_wrapper-item_text-heading">

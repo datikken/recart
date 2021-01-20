@@ -316,90 +316,90 @@
         </div>
     </div>
 
-    <div class="hits_offers">
-        <div class="hits_offers-wrap">
-            <div class="hits_offers-wrap_heading">
+<!--    <div class="hits_offers">-->
+<!--        <div class="hits_offers-wrap">-->
+<!--            <div class="hits_offers-wrap_heading">-->
 
-                <div class="hits_offers-wrap_heading-item">
-                    <div class="hits_offers-wrap_heading-item_head">
-                    <span>
-                        Наше <span class="blue">предложение</span> по картриджам
-                    </span>
-                    </div>
+<!--                <div class="hits_offers-wrap_heading-item">-->
+<!--                    <div class="hits_offers-wrap_heading-item_head">-->
+<!--                    <span>-->
+<!--                        Наше <span class="blue">предложение</span> по картриджам-->
+<!--                    </span>-->
+<!--                    </div>-->
 
-                    <div class="hits_offers-wrap_heading-item_btns">
-                        <div class="hits_offers-wrap_heading-item_btns-item">
-                            <span>струйные</span>
-                        </div>
-                        <div class="hits_offers-wrap_heading-item_btns-item">
-                            <span>лазерные</span>
-                        </div>
-                    </div>
-                </div>
+<!--                    <div class="hits_offers-wrap_heading-item_btns">-->
+<!--                        <div class="hits_offers-wrap_heading-item_btns-item">-->
+<!--                            <span>струйные</span>-->
+<!--                        </div>-->
+<!--                        <div class="hits_offers-wrap_heading-item_btns-item">-->
+<!--                            <span>лазерные</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <!--@for ($i = 0; $i < 3; $i++)-->
-                <div class="hits_offers-wrap_item">
-                    <div class="hits_offers-wrap_inner">
-                        <div class="hits_offers-wrap_inner-item">
-                            <div class="hits_offers-wrap_inner-item_image">
-                            </div>
-                        </div>
-                        <div class="hits_offers-wrap_inner-item">
-                            <div class="hits_offers-wrap_inner-item_heading">
-                                <span>СОВМЕСТИМАЯ ТУБА С ТОНЕРОМ ZVK TK-570K (АНАЛОГ KYOCERA TK-570K) (BLACK)</span>
-                            </div>
-                            <div class="hits_offers-wrap_inner-item_props">
-                                <div class="hits_offers-wrap_inner-item_props-item">
-                                    <span>Бренд</span>
-                                    <span>Производитель</span>
-                                    <span>Артикул</span>
-                                    <span>Модель</span>
-                                    <span>Цвет печати картриджа</span>
-                                    <span>Тип картриджа</span>
-                                    <span>Совместимость с аппаратами</span>
-                                </div>
-                                <div class="hits_offers-wrap_inner-item_props-item">
-                                    <span>KYOCERA</span>
-                                    <span>ZVK</span>
-                                    <span>K-ZVK</span>
-                                    <span>TK-570K-ZVK</span>
-                                    <span>Black</span>
-                                    <span>Тонер-картридж/Туба с тонером</span>
-                                    <span>ECOSYS P7035cdn, FS-C5400dn</span>
-                                </div>
-                            </div>
+<!--                &lt;!&ndash;@for ($i = 0; $i < 3; $i++)&ndash;&gt;-->
+<!--                <div class="hits_offers-wrap_item">-->
+<!--                    <div class="hits_offers-wrap_inner">-->
+<!--                        <div class="hits_offers-wrap_inner-item">-->
+<!--                            <div class="hits_offers-wrap_inner-item_image">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="hits_offers-wrap_inner-item">-->
+<!--                            <div class="hits_offers-wrap_inner-item_heading">-->
+<!--                                <span>СОВМЕСТИМАЯ ТУБА С ТОНЕРОМ ZVK TK-570K (АНАЛОГ KYOCERA TK-570K) (BLACK)</span>-->
+<!--                            </div>-->
+<!--                            <div class="hits_offers-wrap_inner-item_props">-->
+<!--                                <div class="hits_offers-wrap_inner-item_props-item">-->
+<!--                                    <span>Бренд</span>-->
+<!--                                    <span>Производитель</span>-->
+<!--                                    <span>Артикул</span>-->
+<!--                                    <span>Модель</span>-->
+<!--                                    <span>Цвет печати картриджа</span>-->
+<!--                                    <span>Тип картриджа</span>-->
+<!--                                    <span>Совместимость с аппаратами</span>-->
+<!--                                </div>-->
+<!--                                <div class="hits_offers-wrap_inner-item_props-item">-->
+<!--                                    <span>KYOCERA</span>-->
+<!--                                    <span>ZVK</span>-->
+<!--                                    <span>K-ZVK</span>-->
+<!--                                    <span>TK-570K-ZVK</span>-->
+<!--                                    <span>Black</span>-->
+<!--                                    <span>Тонер-картридж/Туба с тонером</span>-->
+<!--                                    <span>ECOSYS P7035cdn, FS-C5400dn</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
 
-                            <div class="hits_offers-wrap_item-actions">
-                                <div class="hits_offers-wrap_item-actions-price">
-                                    <span>456738</span>
-                                </div>
+<!--                            <div class="hits_offers-wrap_item-actions">-->
+<!--                                <div class="hits_offers-wrap_item-actions-price">-->
+<!--                                    <span>456738</span>-->
+<!--                                </div>-->
 
-                                <div class="hits_offers-wrap_item-actions-btns">
-                                    <BuyBtn className="empty_cart-btn" text="В корзину"/>
-                                    <!--<a href="#" class="ajaxGETproduct" data-url="{{ route('AddToCartAjaxGet', ['id' => '1']) }}">-->
-                                        <!--@include('components.btn.buy_btn', [ 'class' => 'empty_cart-btn', 'text' => 'в корзину'])-->
-                                    <!--</a>-->
+<!--                                <div class="hits_offers-wrap_item-actions-btns">-->
+<!--                                    <BuyBtn className="empty_cart-btn" text="В корзину"/>-->
+<!--                                    &lt;!&ndash;<a href="#" class="ajaxGETproduct" data-url="{{ route('AddToCartAjaxGet', ['id' => '1']) }}">&ndash;&gt;-->
+<!--                                        &lt;!&ndash;@include('components.btn.buy_btn', [ 'class' => 'empty_cart-btn', 'text' => 'в корзину'])&ndash;&gt;-->
+<!--                                    &lt;!&ndash;</a>&ndash;&gt;-->
 
-                                    <div class="details_wrap-info_item-left">
-                                        <div class="cart_wrap-item_inner-table_row-col col_amount">
-                                            <span>Количество (шт)</span>
-                                        </div>
+<!--                                    <div class="details_wrap-info_item-left">-->
+<!--                                        <div class="cart_wrap-item_inner-table_row-col col_amount">-->
+<!--                                            <span>Количество (шт)</span>-->
+<!--                                        </div>-->
 
-                                        <AmountBtn />
+<!--                                        <AmountBtn />-->
 
-                                    </div>
+<!--                                    </div>-->
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--@endfor-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;@endfor&ndash;&gt;-->
 
-            </div>
-        </div>
-    </div>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     </Fragment>
 </template>
 
